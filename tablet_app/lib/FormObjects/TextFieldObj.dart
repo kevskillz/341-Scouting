@@ -9,11 +9,15 @@ class TextFieldObj extends StatelessWidget {
   late FormBuilderTextField textField;
   late TitleTxt txt;
 
-  TextFieldObj(String label, String id, FieldInfo typeRestrictions,
-      {Function(dynamic)? onChanged,
-      String? initalValue,
-      double? fontSize = TitleTxt.FONT_SIZE,
-      TextEditingController? controller}) {
+  TextFieldObj(
+    String label,
+    String id,
+    FieldInfo typeRestrictions, {
+    Function(dynamic)? onChanged,
+    String? initalValue,
+    double? fontSize = TitleTxt.FONT_SIZE,
+    TextEditingController? controller,
+  }) {
     txt = TitleTxt(label, fontSize: fontSize);
     textField = FormBuilderTextField(
       controller: controller,
@@ -38,6 +42,7 @@ class TextFieldObj extends StatelessWidget {
       inputFormatters: [typeRestrictions.formatter],
       onChanged: onChanged,
       initialValue: initalValue,
+      enabled: typeRestrictions.enabled,
     );
   }
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_sct_app/CustomIcons.dart';
 
 import 'package:mobile_sct_app/Globals.dart';
+import 'package:mobile_sct_app/Pages/CasinoPage.dart';
 
 import 'Pages/ConfigPage.dart';
 import 'Pages/MatchPage.dart';
@@ -95,6 +96,15 @@ class NavigationDrawer extends StatelessWidget {
 
             Navigator.of(context)
                 .pushReplacement(MaterialPageRoute(builder: (ctx) => QRPage()));
+          },
+        ),
+        ListTile(
+          leading: const Icon(Icons.casino_outlined),
+          title: const Text("Backdoor"),
+          onTap: () {
+            onPageTap?.call();
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (ctx) => CasinoPage()));
           },
         ),
       ],

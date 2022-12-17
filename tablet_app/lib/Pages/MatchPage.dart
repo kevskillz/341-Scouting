@@ -35,7 +35,7 @@ class _MatchPage extends State<MatchPage> with TickerProviderStateMixin {
   bool enableTimer = true;
   bool resetCall = false;
 
-  static const pageLabel = ["Autonomous", "Teleop", "Endgame"];
+  static const pageLabel = ["Match Info", "Autonomous", "Teleop"];
 
   final StreamController<bool> _validTimerController =
       StreamController<bool>.broadcast();

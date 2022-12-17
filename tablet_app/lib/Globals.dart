@@ -12,6 +12,7 @@ final Color BLUE_TEAM = Colors.blue[200]!;
 List<dynamic> json = [];
 // List<QRWrapper> qrCodes = [];
 List<Map<String, dynamic>> rawMatchQRData = [];
+
 List<Map<String, dynamic>> rawPitQRData = [];
 
 List<Map<String, dynamic>> matchCache = [
@@ -20,6 +21,7 @@ List<Map<String, dynamic>> matchCache = [
   Map<String, dynamic>()
 ];
 
+Map<String, dynamic> casinoCache = {};
 Map<String, dynamic> pitCache = {};
 XFile? pic;
 const double HORIZ_PADDING = 10.0;
@@ -71,6 +73,18 @@ final Map<String, FieldInfo> MATCH_FIELDS = {
   'CLIMB_LEVEL': FieldInfo(
       formatter: FilteringTextInputFormatter.deny(''),
       inputType: TextInputType.text),
+  'BET_COLOR': FieldInfo(
+      formatter: FilteringTextInputFormatter.deny(''),
+      inputType: TextInputType.number,
+      enabled: false),
+  'BET_AMOUNT': FieldInfo(
+      formatter: FilteringTextInputFormatter.digitsOnly,
+      inputType: TextInputType.number,
+      enabled: false),
+  'OVER_UNDER': FieldInfo(
+      formatter: FilteringTextInputFormatter.deny(''),
+      inputType: TextInputType.number,
+      enabled: false),
 };
 
 final Map<String, FieldInfo> PIT_FIELDS = {
