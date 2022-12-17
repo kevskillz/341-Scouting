@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+  <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles-merged.css">
+  <link rel="stylesheet" href="css/style.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+
+  <!--[if lt IE 9]>
+      <script src="js/vendor/html5shiv.min.js"></script>
+      <script src="js/vendor/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+  <!-- START: header -->
+
+  <div class="probootstrap-loader"></div>
+
+  <header role="banner" class="probootstrap-header">
+    <div class="container">
+      <a href="index.html" class="probootstrap-logo">Team 341 Scouting App<span>.</span></a>
+      <a><span  id="comp"></span></a>
+
+
+      <a href="#" class="probootstrap-burger-menu visible-xs"><i>Menu</i></a>
+      <div class="mobile-menu-overlay"></div>
+
+      <nav role="navigation" class="probootstrap-nav hidden-xs">
+        <ul class="probootstrap-main-nav">
+          <li><a href="#">Comp Chooser</a>
+            <ul>
+<li><a onclick="chooseComp(this)">Ramp Riot</a></li>
+              <li><a onclick="chooseComp(this)">HAVOC</a></li>
+            </ul>
+          </li>
+          <li class="active"><a href="searchTeam.html">Search by Team</a></li>
+          <li><a href="allTeam.html">All Team Data</a></li>
+          <li><a href="rawData.html">Raw Data</a></li>
+          <li><a href="matchPredict.html">Match Predictor</a></li>
+        </ul>
+
+      </nav>
+    </div>
+  </header>
+  <!-- END: header -->
+
+  <body>
+
+    <div class="Card">
+      <div class="CardInner">
+        <label>Search a team number up!</label>
+        <div class="container">
+          <div class="Icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="#657789" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+              class="feather feather-search" onclick="_search()">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </div>
+          <div class="InputContainer">
+            <input type="number" placeholder="" onkeydown="search(this)" id="inp" />
+          </div>
+        </div>
+      </div>
+    </div>
+  <div id="pit_table"></div>
+
+    <div>
+      <select id="filter-field">
+        <option></option>
+      </select>
+
+
+      <select id="filter-type">
+        <option value="like">like</option>
+        <option value="=">=</option>
+        <option value="<">
+          << /option>
+        <option value="<=">
+          <=< /option>
+        <option value=">">></option>
+        <option value=">=">>=</option>
+        <option value="!=">!=</option>
+        <option value="!=">!=</option>
+      </select>
+
+      <input id="filter-value" type="text" placeholder="value to filter">
+
+      <button id="filter-clear">Clear Filter</button>
+    </div>
+  </body>
+  <div id="match_table"></div>
+  <div id="spider"></div>
+  <div id="point_graph"></div>
+  <div id="ball_point_graph"></div>
+  <div id="auto_graph"></div>
+  <div id="climb_point_graph"></div>
+
+
+
+
+
+  <!-- Load d3.js -->
+
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
+  <link href="https://unpkg.com/tabulator-tables@5.4.2/dist/css/tabulator.min.css" rel="stylesheet">
+  <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.4.2/dist/js/tabulator.min.js"></script>
+  <script src='https://cdn.plot.ly/plotly-2.16.1.min.js'></script>
+  <link rel="stylesheet" href="style.css">
+
+  <script src="lib.js"></script>
+  <script src="search_by_team.js"></script>
+
+
+
+
+  <!-- END section -->
+
+  <footer class="probootstrap-footer" role="contentinfo">
+
+  </footer>
+
+  <div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
+  </div>
+
+
+  <script src="js/scripts.min.js"></script>
+  <script src="js/main.min.js"></script>
+  <script src="js/custom.js"></script>
+</body>
+
+</html>

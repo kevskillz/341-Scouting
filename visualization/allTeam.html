@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles-merged.css">
+  <link rel="stylesheet" href="css/style.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+
+  <!--[if lt IE 9]>
+      <script src="js/vendor/html5shiv.min.js"></script>
+      <script src="js/vendor/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+  <!-- START: header -->
+
+  <div class="probootstrap-loader"></div>
+
+  <header role="banner" class="probootstrap-header">
+    <div class="container">
+      <a href="index.html" class="probootstrap-logo">Team 341 Scouting App<span>.</span></a>
+      <a><span id="comp"></span></a>
+
+
+      <a href="#" class="probootstrap-burger-menu visible-xs"><i>Menu</i></a>
+      <div class="mobile-menu-overlay"></div>
+
+      <nav role="navigation" class="probootstrap-nav hidden-xs">
+        <ul class="probootstrap-main-nav">
+          <li><a href="#">Comp Chooser</a>
+            <ul>
+              <li><a onclick="chooseComp(this)">Ramp Riot</a></li>
+              <li><a onclick="chooseComp(this)">HAVOC</a></li>
+            </ul>
+          </li>
+          <li><a href="searchTeam.html">Search by Team</a></li>
+          <li class="active"><a href="allTeam.html">All Team Data</a></li>
+          <li><a href="rawData.html">Raw Data</a></li>
+          <li><a href="matchPredict.html">Match Predictor</a></li>
+        </ul>
+
+      </nav>
+    </div>
+  </header>
+  <!-- END: header -->
+
+
+  <div id="title">All Team Data</div>
+
+
+  <div>
+    <select id="filter-field">
+      <option></option>
+    </select>
+
+
+    <select id="filter-type">
+      <option value="like">like</option>
+      <option value="=">=</option>
+      <option value="<">
+        << /option>
+      <option value="<=">
+        <=< /option>
+      <option value=">">></option>
+      <option value=">=">>=</option>
+      <option value="!=">!=</option>
+    </select>
+
+    <input id="filter-value" type="text" placeholder="value to filter">
+
+    <button id="filter-clear">Clear Filter</button>
+  </div>
+  <div id="table"></div>
+  <div id="bar_chart"></div>
+
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased !important;
+
+}
+
+body {
+    margin: 2%;
+    justify-content: center !important;
+    width: 100% !important;
+}
+
+    .box-wrapper {
+      height: 95vh;
+      display: flex;
+      flex-direction: row;
+      text-align: center;
+    }
+
+    #box1 {
+      padding: 0px;
+    }
+
+    #box2 {
+      padding: 0px;
+    }
+
+    #box3 {
+      padding: 0px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: row;
+    }
+
+    #box4 {
+      flex-grow: 100;
+    }
+
+    .middle-column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .middle-column div {
+      flex-grow: 1;
+      margin-block-start: 10px;
+    }
+  </style>
+
+
+
+
+
+  <div id="box3">
+    <div class="middle-column">
+      Options
+      <div id="encasing-1">
+
+
+        <div id="x-axis-drop" class="dropzone">
+          X Axis
+        </div>
+  
+        <div id="y-axis-drop" class="dropzone">
+          Y Axis
+        </div>
+      </div>
+  
+    </div>
+    <div id="box4">
+      <div id="dataviz_cust_axisZoom" class="scatter middle-column"></div>
+    </div>
+    
+   
+
+
+
+
+
+
+    <!-- Load d3.js -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
+    <link href="https://unpkg.com/tabulator-tables@5.4.2/dist/css/tabulator.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.4.2/dist/js/tabulator.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="lib.js"></script>
+    <script src="all_team_data.js"></script>
+
+
+
+    <!-- END section -->
+
+    <footer class="probootstrap-footer" role="contentinfo">
+
+    </footer>
+
+    <div class="gototop js-top">
+      <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
+    </div>
+
+
+    <script src="js/scripts.min.js"></script>
+    <script src="js/main.min.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+
+</html>

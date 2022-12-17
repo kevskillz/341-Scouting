@@ -1,0 +1,241 @@
+
+@import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Hind&display=swap');
+.axisT {
+    fill: darkslateblue;
+    font-family: monospace;
+}
+body {
+  margin: 2%;
+      
+    }
+    nav ul li {
+      position: relative;
+      float: left;
+    }
+
+    li>a:after {
+      content: ' »';
+
+      
+    }
+
+    /* Change this in order to change the Dropdown symbol */
+
+    li>a:only-child:after {
+      content: '';
+
+    }
+
+    ul li a {
+      color: white;
+      text-decoration: none;
+      
+
+    }
+
+    
+    nav li ul {
+      display: none;
+  position: absolute;
+  left: 0;
+
+  width: fit-content;
+  float: left;
+
+  z-index: 100;
+    }
+    
+    nav ul li:hover ul {
+      display: block;
+      
+    }
+    a:hover {
+      cursor: pointer;
+    }
+    li li {
+  background-color: rgb(27, 21, 21);
+    }
+    
+
+#grid-snap {
+    position: relative;
+    width: 10%;
+    border-radius: 4px;
+    padding: 2%;
+    margin: 1rem 0 0 1rem;
+    background-color: #29e;
+    color: #fff;
+    font-size: 1.2em;
+    touch-action: none;
+}
+
+.dropzone {
+    height: 140px;
+    background-color: #bfe4ff;
+    border: dashed 4px transparent;
+    border-radius: 4px;
+    margin: 10px auto 30px;
+    padding: 10px;
+    width: 160px;
+    transition: background-color 0.3s;
+}
+
+.drop-active {
+    border-color: #aaa;
+}
+
+
+
+.drop-target {
+    background-color: #29e;
+    border-color: #fff;
+    border-style: solid;
+}
+
+.drag-drop {
+    display: inline-block;
+    width: fit-content;
+    padding: 1em 0.5em;
+    margin: 0.5rem 0 0 0.5rem;
+    font-size: small;
+
+    color: #fff;
+    background-color: #29e;
+    border: solid 2px #fff;
+
+    touch-action: none;
+    transform: translate(0px, 0px);
+
+    transition: background-color 0.3s;
+}
+
+.drag-drop.can-drop {
+    color: #000;
+    background-color: #4e4;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.radar-chart .area {
+    fill-opacity: 0.7;
+}
+
+.radar-chart.focus .area {
+    fill-opacity: 0.3;
+}
+
+.radar-chart.focus .area.focused {
+    fill-opacity: 0.9;
+}
+
+.area.t1,
+.t1 .circle {
+    fill: #F76F72;
+    stroke: none;
+}
+
+.area.t2,
+.t2 .circle {
+    fill: #C9DAF8;
+    stroke: none;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  color: #000000;
+}
+:root {
+  --border-radius: 10px;
+}
+
+.Card {
+  justify-content: center;
+  border-radius: var(--border-radius);
+  background: linear-gradient(-67deg, rgba(200, 216, 231, 0.7), rgba(255, 255, 255, 0.8));
+  overflow: hidden;
+  box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.6), 2px 2px 12px #c8d8e7;
+  width: 370px;
+  margin: auto;
+}
+.CardInner {
+  padding: 16px 16px;
+  background-color: #e2e9f4;
+  border-radius: var(--border-radius);
+}
+.container {
+  display: flex;
+}
+.Icon {
+  min-width: 46px;
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius);
+  margin-right: 12px;
+  box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.6), 2px 2px 12px #c8d8e7;
+}
+.Icon svg {
+  transform: translate(-1px, -1px);
+}
+label {
+  font-family: "Hind", sans-serif;
+  display: block;
+  color: #3c4b66;
+  margin-bottom: 12px;
+  background: linear-gradient(45deg, #6b7b8f, #3c4b66);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.InputContainer {
+  width: 100%;
+}
+#inp {
+  background-color: #e3edf7;
+  padding: 16px 32px;
+  border: none;
+  display: block;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  color: #a9b8c9;
+  -webkit-appearance: none;
+  transition: all 240ms ease-out;
+}
+#inp::placeholder {
+  color: #6d7f8f;
+}
+#inp:focus {
+  outline: none;
+  color: #6d7f8f;
+  background-color: #eff5fa;
+}
+.InputContainer {
+  --top-shadow: inset 1px 1px 3px #c5d4e3, inset 2px 2px 6px #c5d4e3;
+  --bottom-shadow: inset -2px -2px 4px rgba(255, 255, 255, 0.7);
+  position: relative;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+.InputContainer:before, .InputContainer:after {
+  left: 0;
+  top: 0;
+  display: block;
+  content: "";
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  
+}
+.InputContainer:before {
+  box-shadow: var(--bottom-shadow);
+}
+.InputContainer:after {
+  box-shadow: var(--top-shadow);
+}
+
