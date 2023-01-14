@@ -20,11 +20,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp( 
         title: _title,
         theme: ThemeData.dark().copyWith(
             elevatedButtonTheme: ElevatedButtonThemeData(
-          style: TextButton.styleFrom(
+          style: TextButton.styleFrom( 
               shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20.0))),
               backgroundColor: Colors.black87,

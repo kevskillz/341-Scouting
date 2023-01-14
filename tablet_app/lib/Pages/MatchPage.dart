@@ -9,6 +9,7 @@ import 'package:mobile_sct_app/QRProcess.dart';
 import 'package:mobile_sct_app/TBAQuery.dart';
 
 import '../CustomIcons.dart';
+import '../FormObjects/ScoringTable.dart';
 import '../UIFunctions.dart';
 import '../FormObjects/CheckboxObj.dart';
 import '../FormObjects/CounterObj.dart';
@@ -167,110 +168,89 @@ class _MatchPage extends State<MatchPage> with TickerProviderStateMixin {
             ),
           ),
           // auton
-          FormBuilder(
-            key: _keys[1],
-            initialValue: matchCache[1],
+           FormBuilder(
+             key: _keys[1],
+             initialValue: matchCache[1],
 
-            autovalidateMode: AutovalidateMode.always,
-            // ignore: prefer_const_literals_to_create_immutables
+             autovalidateMode: AutovalidateMode.always,
+             // ignore: prefer_const_literals_to_create_immutables
 
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
+             child: SingleChildScrollView(
+               child: Column(
+                 children: [
                   Row(
                     children: <Widget>[
+                    ScoringTable(),
+                      
+                 ],
+               ),
+               Row(
+                 children: <Widget>[
                       Expanded(
                           flex: 1,
                           child:
-                              CounterObj("High Scored", "HIGH_SCORED_AUTON")),
-                      Expanded(
-                        flex: 1,
-                        child: CounterObj("High Missed", "HIGH_MISSED_AUTON"),
+                  CounterObj("Cones Intaked", "AUTO_CONES_INTAKED"),
                       ),
-                    ],
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                          flex: 1,
-                          child: CounterObj("Low Scored", "LOW_SCORED_AUTON")),
-                      Expanded(
+                  Expanded(
                         flex: 1,
-                        child: CounterObj("Low Missed", "LOW_MISSED_AUTON"),
+                        child: CounterObj("Cubes Intaked", "AUTO_CUBES_INTAKES"),
                       ),
+                 ],
+               ),
+               CheckboxObj("Mobility", "MOBILITY"),
+               RadioGroupObj(
+                    "Charging Station",
+                    "AUTO_CHARGING_STATION",
+                    const [
+                      FormBuilderChipOption(value: "None"),
+                      FormBuilderChipOption(value: "Docked"),
+                      FormBuilderChipOption(value: "Engaged")
                     ],
-                  ),
-                  CheckboxObj("Taxi", "TAXI"),
-                  ElevatedButton(
-                      onPressed: () {
-                        _tabController.animateTo(_tabController.index + 1);
-                      },
-                      child: const Text("Next"))
-                ],
-              ),
-            ),
-          ),
+                  )
+                 ],
+                 
+               ),
+             ),
+           ),
           // teleop
           FormBuilder(
-            key: _keys[2],
-            initialValue: matchCache[2],
+             key: _keys[2],
+             initialValue: matchCache[2],
 
-            autovalidateMode: AutovalidateMode.always,
-            // ignore: prefer_const_literals_to_create_immutables
+             autovalidateMode: AutovalidateMode.always,
+             // ignore: prefer_const_literals_to_create_immutables
 
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
+             child: SingleChildScrollView(
+               child: Column(
+                 children: [
                   Row(
                     children: <Widget>[
+                    ScoringTable(),
+                      
+                 ],
+               ),
+               Row(
+                 children: <Widget>[
                       Expanded(
                           flex: 1,
                           child:
-                              CounterObj("High Scored", "HIGH_SCORED_TELEOP")),
-                      Expanded(
-                        flex: 1,
-                        child: CounterObj("High Missed", "HIGH_MISSED_TELEOP"),
+                  CounterObj("Cones Intaked", "TELE_CONES_INTAKED"),
                       ),
-                    ],
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                          flex: 1,
-                          child: CounterObj("Low Scored", "LOW_SCORED_TELEOP")),
-                      Expanded(
+                  Expanded(
                         flex: 1,
-                        child: CounterObj("Low Missed", "LOW_MISSED_TELEOP"),
+                        child: CounterObj("Cubes Intaked", "TELE_CUBES_INTAKES"),
                       ),
-                    ],
-                  ),
-
-                  // ignore: prefer_const_literals_to_create_immutables
-                  RadioGroupObj(
-                    "Climb Level",
-                    "CLIMB_LEVEL",
+                 ],
+               ),
+               RadioGroupObj(
+                    "Charging Station",
+                    "TELE_CHARGING_STATION",
                     const [
-                      FormBuilderChipOption(value: "No Climb"),
-                      FormBuilderChipOption(value: "Low"),
-                      FormBuilderChipOption(value: "Mid"),
-                      FormBuilderChipOption(value: "High"),
-                      FormBuilderChipOption(value: "Traversal")
+                      FormBuilderChipOption(value: "None"),
+                      FormBuilderChipOption(value: "Parked"),
+                      FormBuilderChipOption(value: "Docked"),
+                      FormBuilderChipOption(value: "Engaged")
                     ],
-                    onChanged: (val) {
-                      if (val == null) {
-                        _validTimerController.add(true);
-                      } else {
-                        _validTimerController
-                            .add("No Climb".compareTo(val) != 0);
-                      }
-                    },
-                  ),
-                  StopwatchObj(
-                    "Climb Time",
-                    "CLIMB_TIME",
-                    _keys[2],
-                    enabled: enableTimer,
-                    enabledController: _validTimerController.stream,
                   ),
                   ElevatedButton(
                       onPressed: () {
@@ -315,10 +295,11 @@ class _MatchPage extends State<MatchPage> with TickerProviderStateMixin {
                         }
                       },
                       child: const Text("Submit"))
-                ],
-              ),
-            ),
-          ),
+                 ],
+               ),
+             ),
+             
+           ),
         ],
       ),
     );

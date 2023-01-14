@@ -28,15 +28,12 @@ class CustomIcons {
 
   static const _kFontFam = 'CustomIcons';
   static const String? _kFontPkg = null;
-
-  static const IconData robot_arm =
-      IconData(0xea85, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData gamepad =
-      IconData(0xf11b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData clipboard_list =
+  static const IconData traffic_cone = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData robot_arm = IconData(0xea85, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData gamepad = IconData(0xf11b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData cube = IconData(0xf1b2, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData user_edit = IconData(0xf4ff, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData robot = IconData(0xf544, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+   static const IconData clipboard_list =
       IconData(0xf46d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData user_edit =
-      IconData(0xf4ff, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData robot =
-      IconData(0xf544, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

@@ -63,7 +63,7 @@ class _ConfigPage extends State<ConfigPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(centerTitle: true, title: const Text("QR Codes")),
+        appBar: AppBar(centerTitle: true, title: const Text("Config")),
         drawer: NavigationDrawer(),
         body: FormBuilder(
             key: _key,

@@ -112,33 +112,35 @@ class _PitPageState extends State<PitPage> {
                     value: "Other",
                   )
                 ]),
-                SliderObj(
-                  "Motor Count",
-                  "MOTOR_COUNT",
-                  1,
-                  8,
-                  discreteDivisions: 7,
-                  initialVal: pitCache["MOTOR_COUNT"],
+                TextFieldObj(
+                  "Robot Width",
+                  "ROBOT_WIDTH",
+                  PIT_FIELDS["ROBOT_WIDTH"]!,
                 ),
-                RadioGroupObj("Motor Type", "MOTOR_TYPE", const [
+                TextFieldObj(
+                  "Robot Length",
+                  "ROBOT_LENGTH",
+                  PIT_FIELDS["ROBOT_LENGTH"]!,
+                ),
+                TextFieldObj(
+                  "Station Robot Width",
+                  "STATION_ROBOT_WIDTH",
+                  PIT_FIELDS["ROBOT_LENGTH"]!,
+                ),
+                RadioGroupObj("Vision", "VISION", const [
                   FormBuilderChipOption(
-                    value: "Falcon",
+                    value: "Retroreflective Tape",
                   ),
                   FormBuilderChipOption(
-                    value: "NEO",
+                    value: "April Tags",
                   ),
                   FormBuilderChipOption(
-                    value: "CIM",
+                    value: "Both",
                   ),
                   FormBuilderChipOption(
-                    value: "MINI CIM",
+                    value: "Neither",
                   )
                 ]),
-                TextFieldObj(
-                  "Width while Hanging",
-                  "WIDTH_WHILE_HANGING",
-                  PIT_FIELDS["WIDTH_WHILE_HANGING"]!,
-                ),
                 CheckboxObj("Can score in high hub", "CAN_HIGH_HUB"),
                 CheckboxObj("Can score in low hub", "CAN_LOW_HUB"),
                 CheckboxGroupObj(
