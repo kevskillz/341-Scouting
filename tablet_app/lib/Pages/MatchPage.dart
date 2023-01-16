@@ -232,6 +232,7 @@ class _MatchPage extends State<MatchPage> with TickerProviderStateMixin {
                     children: <Widget>[
                       Expanded(
                         flex: 1,
+                        
                         child: CounterObj("Cones Intaked", "TeleConesIntaked"),
                       ),
                       Expanded(

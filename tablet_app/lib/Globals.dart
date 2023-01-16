@@ -231,12 +231,15 @@ final Map<String, FieldInfo> MATCH_FIELDS = {
       formatter: FilteringTextInputFormatter.digitsOnly,
       inputType: TextInputType.number),
 'BET_COLOR': FieldInfo(
+      enabled: false,
       formatter: FilteringTextInputFormatter.allow(RegExp(r'^[BR]$')),
       inputType: TextInputType.name),
 'BET_AMOUNT': FieldInfo(
+      enabled: false,
       formatter: FilteringTextInputFormatter.digitsOnly,
       inputType: TextInputType.number),
 'OVER_UNDER': FieldInfo(
+      enabled: false,
       formatter: FilteringTextInputFormatter.deny(''),
       inputType: TextInputType.number),
 };

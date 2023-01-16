@@ -4,7 +4,7 @@ import 'LocalDataHandler.dart';
 
 void addEntry(Map<String, dynamic> arr, bool isMatchQR) {
   if (isMatchQR) {
-    arr["TEAM_COLOR"] = tabletColor;
+    arr["TeamColor"] = tabletColor;
     if (casinoCache.isEmpty) {
       casinoCache['BET_AMOUNT'] = 0;
       casinoCache['BET_COLOR'] = 'null';
