@@ -48,6 +48,9 @@ class _MatchPage extends State<MatchPage> with TickerProviderStateMixin {
     _tabController = TabController(length: 3, vsync: this);
     _tabController.addListener(() {
       hideKeyboard(context);
+      if (_tabController.index >= 1) {
+        MatchStarted = true;
+      }
       if (!resetCall) {
         try {
           _keys[_tabController.previousIndex].currentState!.save();
@@ -123,8 +126,8 @@ class _MatchPage extends State<MatchPage> with TickerProviderStateMixin {
                           flex: 1,
                           child: TextFieldObj(
                             "Match Number",
-                            "MATCH_NUMBER",
-                            MATCH_FIELDS["MATCH_NUMBER"]!,
+                            "MatchNumber",
+                            MATCH_FIELDS["MatchNumber"]!,
                             onChanged: (val) async {
                               if (val == null || int.tryParse(val) == null) {
                                 return;
@@ -147,16 +150,16 @@ class _MatchPage extends State<MatchPage> with TickerProviderStateMixin {
                         flex: 1,
                         child: TextFieldObj(
                           "Team Number",
-                          "TEAM",
-                          MATCH_FIELDS["TEAM"]!,
+                          "TeamName",
+                          MATCH_FIELDS["TeamName"]!,
                         ),
                       ),
                     ],
                   ),
                   TextFieldObj(
                     "Scout Name",
-                    "SCOUT_NAME",
-                    MATCH_FIELDS["SCOUT_NAME"]!,
+                    "ScoutName",
+                    MATCH_FIELDS["ScoutName"]!,
                   ),
                   ElevatedButton(
                       onPressed: () {
@@ -168,83 +171,78 @@ class _MatchPage extends State<MatchPage> with TickerProviderStateMixin {
             ),
           ),
           // auton
-           FormBuilder(
-             key: _keys[1],
-             initialValue: matchCache[1],
+          FormBuilder(
+            key: _keys[1],
+            initialValue: matchCache[1],
 
-             autovalidateMode: AutovalidateMode.always,
-             // ignore: prefer_const_literals_to_create_immutables
+            autovalidateMode: AutovalidateMode.always,
+            // ignore: prefer_const_literals_to_create_immutables
 
-             child: SingleChildScrollView(
-               child: Column(
-                 children: [
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
                   Row(
                     children: <Widget>[
-                    ScoringTable(),
-                      
-                 ],
-               ),
-               Row(
-                 children: <Widget>[
+                      ScoringTable(isAuto: true),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
                       Expanded(
-                          flex: 1,
-                          child:
-                  CounterObj("Cones Intaked", "AUTO_CONES_INTAKED"),
-                      ),
-                  Expanded(
                         flex: 1,
-                        child: CounterObj("Cubes Intaked", "AUTO_CUBES_INTAKES"),
+                        child: CounterObj("Cones Intaked", "AutoConesIntaked"),
                       ),
-                 ],
-               ),
-               CheckboxObj("Mobility", "MOBILITY"),
-               RadioGroupObj(
+                      Expanded(
+                        flex: 1,
+                        child: CounterObj("Cubes Intaked", "AutoCubesIntaked"),
+                      ),
+                    ],
+                  ),
+                  CheckboxObj("Mobility", "Mobility"),
+                  RadioGroupObj(
                     "Charging Station",
-                    "AUTO_CHARGING_STATION",
+                    "AutoDockedState",
                     const [
                       FormBuilderChipOption(value: "None"),
                       FormBuilderChipOption(value: "Docked"),
                       FormBuilderChipOption(value: "Engaged")
                     ],
                   )
-                 ],
-                 
-               ),
-             ),
-           ),
+                ],
+              ),
+            ),
+          ),
           // teleop
           FormBuilder(
-             key: _keys[2],
-             initialValue: matchCache[2],
+            key: _keys[2],
+            initialValue: matchCache[2],
 
-             autovalidateMode: AutovalidateMode.always,
-             // ignore: prefer_const_literals_to_create_immutables
+            autovalidateMode: AutovalidateMode.always,
+            // ignore: prefer_const_literals_to_create_immutables
 
-             child: SingleChildScrollView(
-               child: Column(
-                 children: [
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
                   Row(
                     children: <Widget>[
-                    ScoringTable(),
-                      
-                 ],
-               ),
-               Row(
-                 children: <Widget>[
+                      ScoringTable(isAuto: false),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
                       Expanded(
-                          flex: 1,
-                          child:
-                  CounterObj("Cones Intaked", "TELE_CONES_INTAKED"),
-                      ),
-                  Expanded(
                         flex: 1,
-                        child: CounterObj("Cubes Intaked", "TELE_CUBES_INTAKES"),
+                        child: CounterObj("Cones Intaked", "TeleConesIntaked"),
                       ),
-                 ],
-               ),
-               RadioGroupObj(
+                      Expanded(
+                        flex: 1,
+                        child: CounterObj("Cubes Intaked", "TeleCubesIntaked"),
+                      ),
+                    ],
+                  ),
+                  RadioGroupObj(
                     "Charging Station",
-                    "TELE_CHARGING_STATION",
+                    "TeleDockedState",
                     const [
                       FormBuilderChipOption(value: "None"),
                       FormBuilderChipOption(value: "Parked"),
@@ -254,6 +252,7 @@ class _MatchPage extends State<MatchPage> with TickerProviderStateMixin {
                   ),
                   ElevatedButton(
                       onPressed: () {
+                        MatchStarted = false;
                         _keys[2].currentState!.save();
                         matchCache[2] = Map<String, dynamic>.from(
                             _keys[2].currentState!.value);
@@ -279,10 +278,16 @@ class _MatchPage extends State<MatchPage> with TickerProviderStateMixin {
                           }, true);
                           matchCache[1].clear();
                           matchCache[2].clear();
-                          String name = matchCache[0]["SCOUT_NAME"];
+                          String name = matchCache[0]["ScoutName"];
                           matchCache[0].clear();
-                          matchCache[0]["SCOUT_NAME"] = name;
+                          matchCache[0]["ScoutName"] = name;
                           resetCall = true;
+
+                          TABLE_AUTO = List.generate(
+                              3, (_) => List.generate(9, (_) => "empty"));
+                          TABLE_TELEOP = List.generate(
+                              3, (_) => List.generate(9, (_) => "empty"));
+
                           showSnackBar(context, "Added QR Code!",
                               action: SnackBarAction(
                                   label: "Go to QR Codes",
@@ -295,11 +300,10 @@ class _MatchPage extends State<MatchPage> with TickerProviderStateMixin {
                         }
                       },
                       child: const Text("Submit"))
-                 ],
-               ),
-             ),
-             
-           ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );

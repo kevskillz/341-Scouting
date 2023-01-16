@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../CustomIcons.dart';
+import '../Globals.dart';
 
 class ScoringTable extends StatefulWidget {
+
+  late bool isAuto;
+
+  ScoringTable({required this.isAuto});
+  
   @override
   _ScoringTable createState() => _ScoringTable();
 }
@@ -10,13 +16,55 @@ class ScoringTable extends StatefulWidget {
 
 
 class _ScoringTable extends State<ScoringTable> {
-  late List<List<String>> _table;
+  
   
   @override
   void initState() {
     super.initState();
-    _table = List.generate(3, (_) => List.generate(9, (_) => "empty"));
   }
+
+  Color getColor(int row, int col) {
+    if (widget.isAuto) {
+      if (TABLE_TELEOP[row][col] != "empty") {
+        return Colors.grey;
+      }
+      else {
+return TABLE_AUTO[row][col] == "empty"
+                    ? Colors.white
+                    : TABLE_AUTO[row][col] == "triangle"
+                        ? Color.fromARGB(255, 192, 195, 25)
+                        : Color.fromARGB(255, 208, 0, 255);
+      }
+    
+    }
+    else {
+      if (TABLE_AUTO[row][col] != "empty") {
+        return Colors.grey;
+      }
+      else {
+return TABLE_TELEOP[row][col] == "empty"
+                    ? Colors.white
+                    : TABLE_TELEOP[row][col] == "triangle"
+                        ? Color.fromARGB(255, 192, 195, 25)
+                        : Color.fromARGB(255, 208, 0, 255);
+      }
+    }
+  }
+
+  Icon getIcon(int row, int col) {
+    if (TABLE_AUTO[row][col] != "empty") {
+      return  TABLE_AUTO[row][col] == "triangle"
+                        ? const Icon(CustomIcons.traffic_cone, size: 100)
+                        : const Icon(CustomIcons.cube, size: 100);
+    }
+    else if (TABLE_TELEOP[row][col] != "empty") {
+      return  TABLE_TELEOP[row][col] == "triangle"
+                        ? const Icon(CustomIcons.traffic_cone, size: 100)
+                        : const Icon(CustomIcons.cube, size: 100);
+    }
+    return const Icon(CustomIcons.robot, color: Colors.white,);
+  }
+
 
   
   @override
@@ -29,38 +77,54 @@ class _ScoringTable extends State<ScoringTable> {
         return TableRow( 
           children: List.generate(9, (col) {
             return Container(
-              color: _table[row][col] == "empty"
-                    ? Colors.white
-                    : _table[row][col] == "triangle"
-                        ? Color.fromARGB(255, 192, 195, 25)
-                        : Color.fromARGB(255, 208, 0, 255),
+              color: getColor(row, col),
               height: 125, child:
             TableRowInkWell(
               onTap: () {
                 setState(() {
-                  if (row>1) {
-                  _table[row][col] = _table[row][col] == "empty" ? "triangle" : _table[row][col] == "triangle" ? "cube" : "empty";
+                  if (widget.isAuto && TABLE_TELEOP[row][col] != "empty") {
+                    return;
+                  }
+                  if (!widget.isAuto && TABLE_AUTO[row][col] != "empty") {
+                    return;
+                  }
+                  if (widget.isAuto) {
+if (row>1) {
+                  TABLE_AUTO[row][col] = TABLE_AUTO[row][col] == "empty" ? "triangle" : TABLE_AUTO[row][col] == "triangle" ? "cube" : "empty";
 
                   }
                   else {
                     if ([0,2,3,5,6,8].contains(col)) {
-                      _table[row][col] = _table[row][col] == "empty" ? "triangle" : "empty";
+                      TABLE_AUTO[row][col] = TABLE_AUTO[row][col] == "empty" ? "triangle" : "empty";
                     }
                     else {
-                      _table[row][col] = _table[row][col] == "empty" ? "cube" : "empty";
+                      TABLE_AUTO[row][col] = TABLE_AUTO[row][col] == "empty" ? "cube" : "empty";
 
                     }
+                  }
+                  }
+                  else {
+if (row>1) {
+                  TABLE_TELEOP[row][col] = TABLE_TELEOP[row][col] == "empty" ? "triangle" : TABLE_TELEOP[row][col] == "triangle" ? "cube" : "empty";
+
+                  }
+                  else {
+                    if ([0,2,3,5,6,8].contains(col)) {
+                      TABLE_TELEOP[row][col] = TABLE_TELEOP[row][col] == "empty" ? "triangle" : "empty";
+                    }
+                    else {
+                      TABLE_TELEOP[row][col] = TABLE_TELEOP[row][col] == "empty" ? "cube" : "empty";
+
+                    }
+                  }
                   }
                 });
               },
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [_table[row][col] == "empty"
-                    ? const Icon(CustomIcons.robot, color: Colors.white,)
-                    : _table[row][col] == "triangle"
-                        ? const Icon(CustomIcons.traffic_cone, size: 100)
-                        : const Icon(CustomIcons.cube, size: 100,),]
+                children: [
+                  getIcon(row,col),]
               ),
            )
             );

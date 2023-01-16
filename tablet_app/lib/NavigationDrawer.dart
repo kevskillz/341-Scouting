@@ -8,6 +8,7 @@ import 'Pages/ConfigPage.dart';
 import 'Pages/MatchPage.dart';
 import 'Pages/PitPage.dart';
 import 'Pages/QRPage.dart';
+import 'UIFunctions.dart';
 
 class NavigationDrawer extends StatelessWidget {
   void Function()? onPageTap;
@@ -103,8 +104,14 @@ class NavigationDrawer extends StatelessWidget {
           title: const Text("Backdoor"),
           onTap: () {
             onPageTap?.call();
+            if(MatchStarted){
+          showSnackBar(context, "It seems the backdoor is locked right now...");
+              
+            }
+            else{
             Navigator.of(context)
                 .push(MaterialPageRoute(builder: (ctx) => CasinoPage()));
+            }
           },
         ),
       ],

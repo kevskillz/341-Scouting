@@ -21,6 +21,18 @@ void addEntry(Map<String, dynamic> arr, bool isMatchQR) {
       arr[key] = arr[key].join(',');
     }
   }
+  int idx = 1;
+  for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 9; j++) {
+      arr["Auto"+(idx++).toString()]=["empty", "triangle", "cube"].indexOf(TABLE_AUTO[i][j]);
+    }
+  }
+  idx = 1;
+  for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 9; j++) {
+      arr["Tele"+(idx++).toString()]=["empty", "triangle", "cube"].indexOf(TABLE_TELEOP[i][j]);
+    }
+  }
 
   if (isMatchQR) {
     rawMatchQRData.add(arr);

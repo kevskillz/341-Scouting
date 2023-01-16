@@ -30,7 +30,7 @@ class _CasinoPage extends State<CasinoPage> with TickerProviderStateMixin {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: const Text("CASINO"),
+          title: const Text("CASINO🎲"),
           backgroundColor: Colors.black,
           foregroundColor: const Color.fromARGB(255, 255, 201, 14),
         ),
@@ -41,7 +41,7 @@ class _CasinoPage extends State<CasinoPage> with TickerProviderStateMixin {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   RadioGroupObj(
-                    "Who will win",
+                    "Who will win?",
                     "BET_COLOR",
                     [
                       FormBuilderChipOption(
@@ -56,12 +56,13 @@ class _CasinoPage extends State<CasinoPage> with TickerProviderStateMixin {
                       ),
                     ],
                   ),
+                 
                   SliderObj(
                     "Bet",
                     'BET_AMOUNT',
                     0,
-                    50,
-                    discreteDivisions: 50,
+                    100,
+                    discreteDivisions: 100,
                   ),
                   RadioGroupObj(
                     "Will your team score Over/Under 50 points",
@@ -79,6 +80,7 @@ class _CasinoPage extends State<CasinoPage> with TickerProviderStateMixin {
                       ),
                     ],
                   ),
+              
                   ElevatedButton(
                       onPressed: () {
                         if (_key.currentState!.saveAndValidate()) {

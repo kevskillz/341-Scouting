@@ -91,14 +91,14 @@ class _PitPageState extends State<PitPage> {
                 TextFieldObj(
                   "Scout Name",
                   "SCOUT_NAME",
-                  PIT_FIELDS["SCOUT_NAME"]!,
+                  PIT_FIELDS["ScoutName"]!,
                 ),
                 TextFieldObj(
                   "Team",
-                  "TEAM",
-                  PIT_FIELDS["TEAM"]!,
+                  "TeamName",
+                  PIT_FIELDS["TeamName"]!,
                 ),
-                RadioGroupObj("Drivetrain", "DRIVETRAIN", const [
+                RadioGroupObj("Drivetrain", "Drivetrain", const [
                   FormBuilderChipOption(
                     value: "Tank",
                   ),
@@ -114,20 +114,20 @@ class _PitPageState extends State<PitPage> {
                 ]),
                 TextFieldObj(
                   "Robot Width",
-                  "ROBOT_WIDTH",
-                  PIT_FIELDS["ROBOT_WIDTH"]!,
+                  "RobotWidth",
+                  PIT_FIELDS["RobotWidth"]!,
                 ),
                 TextFieldObj(
                   "Robot Length",
-                  "ROBOT_LENGTH",
-                  PIT_FIELDS["ROBOT_LENGTH"]!,
+                  "RobotLength",
+                  PIT_FIELDS["RobotLength"]!,
                 ),
                 TextFieldObj(
                   "Station Robot Width",
-                  "STATION_ROBOT_WIDTH",
-                  PIT_FIELDS["ROBOT_LENGTH"]!,
+                  "StationRobotWidth",
+                  PIT_FIELDS["StationRobotWidth"]!,
                 ),
-                RadioGroupObj("Vision", "VISION", const [
+                RadioGroupObj("Vision", "RobotVision", const [
                   FormBuilderChipOption(
                     value: "Retroreflective Tape",
                   ),
@@ -141,10 +141,37 @@ class _PitPageState extends State<PitPage> {
                     value: "Neither",
                   )
                 ]),
-                CheckboxObj("Can score in high hub", "CAN_HIGH_HUB"),
-                CheckboxObj("Can score in low hub", "CAN_LOW_HUB"),
+                CheckboxObj("Can you achieve moibility (driving out of community) during auto?", "AutoMobility"),
+                RadioGroupObj("Can you drive onto the charging station during auto?", "AutoStationDrive", const [
+                  FormBuilderChipOption(
+                    value: "Yes, can dock and engage",
+                  ),
+                  FormBuilderChipOption(
+                    value: "Yes, can dock but not engage",
+                  ),
+                  FormBuilderChipOption(
+                    value: "Both",
+                  ),
+                  FormBuilderChipOption(
+                    value: "Neither",
+                  )
+                ]),
+                TextFieldObj(
+                  "How many game pieces can you score during auto?",
+                  "AutoPiecesScored",
+                  PIT_FIELDS["AutoPiecesScored"]!,
+                ),
+                CheckboxObj("Can you intake cubes from the ground?", "CubeGround"),
+                CheckboxObj("Can you intake cubes from the shelf?", "CubeShelf"),
+                CheckboxObj("Can you intake cubes from the portal?", "CubePortal"),
+                CheckboxObj("Can you intake upright cones from the ground?", "ConeGround"),
+                CheckboxObj("Can you intake upright cones from the shelf?", "ConeShelf"),
+                CheckboxObj("Can you intake upright cones from the portal?", "ConePortal"),
+                CheckboxObj("Can you intake not upright cones from the ground?", "SideConeGround"),
+                CheckboxObj("Can you intake not upright cones from the shelf?", "SideConeShelf"),
+                CheckboxObj("Can you intake not upright cones from the portal?", "SideConePortal"),
                 CheckboxGroupObj(
-                    "Select ALL Climb Levels", "CLIMB_LEVELS", const [
+                    "What levels can you score cubes at?", "TeleCubeScoreLevel", const [
                   FormBuilderChipOption(
                     value: "Low",
                   ),
@@ -154,24 +181,35 @@ class _PitPageState extends State<PitPage> {
                   FormBuilderChipOption(
                     value: "High",
                   ),
-                  FormBuilderChipOption(
-                    value: "Traversal",
-                  )
                 ]),
-                RadioGroupObj("Vision Type", "VISION_TYPE", const [
+                CheckboxGroupObj(
+                    "What levels can you score cones at?", "TeleConeScoreLevel", const [
                   FormBuilderChipOption(
-                    value: "Limelight",
+                    value: "Low",
                   ),
                   FormBuilderChipOption(
-                    value: "Custom",
+                    value: "Mid",
                   ),
                   FormBuilderChipOption(
-                    value: "Just a camera",
+                    value: "High",
                   ),
-                  FormBuilderChipOption(
-                    value: "No vision",
-                  )
                 ]),
+                RadioGroupObj("Can you drive onto the charging station during endgame?", "EndStationDrive", const [
+                  FormBuilderChipOption(
+                    value: "Yes, can dock and engage",
+                  ),
+                  FormBuilderChipOption(
+                    value: "Yes, can dock but not engage",
+                  ),
+                  FormBuilderChipOption(
+                    value: "No, can't dock or engage",
+                  ),
+                ]),
+                TextFieldObj(
+                  "Any other notable features?",
+                  "NotableFeat",
+                  PIT_FIELDS["NotableFeat"]!,
+                ),
                 const Text("Picture of robot"),
                 Row(
                   children: [

@@ -39,6 +39,7 @@ void saveLocalTBAData() async {
   getExternalStorageDirectory().then((dir) {
     File f = File('${dir?.path}/TBACache.json');
     f.writeAsString(convert.jsonEncode(json));
+    
   }, onError: (e) => print(e));
 }
 
