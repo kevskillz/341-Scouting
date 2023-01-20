@@ -16,8 +16,7 @@ class CheckboxObj extends StatelessWidget {
       initialValue: false,
       checkColor: checkColor,
       activeColor: activeColor,
-      controlAffinity: ListTileControlAffinity.leading,
-    );
+      controlAffinity: ListTileControlAffinity.leading);
   }
 
   FormBuilderCheckbox getCheckbox() {

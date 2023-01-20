@@ -31,7 +31,7 @@ class _CasinoPage extends State<CasinoPage> with TickerProviderStateMixin {
         appBar: AppBar(
           centerTitle: true,
           title: const Text("CASINO🎲"),
-          backgroundColor: Colors.black,
+          backgroundColor: Color.fromARGB(255, 0, 0, 0),
           foregroundColor: const Color.fromARGB(255, 255, 201, 14),
         ),
         body: FormBuilder(

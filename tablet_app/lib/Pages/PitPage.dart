@@ -1,3 +1,4 @@
+// import 'dart:html';
 import 'dart:typed_data';
 
 import 'package:camera/camera.dart';
@@ -113,17 +114,17 @@ class _PitPageState extends State<PitPage> {
                   )
                 ]),
                 TextFieldObj(
-                  "Robot Width",
+                  "Robot Width With Bumpers (EXACT IN INCHES)",
                   "RobotWidth",
                   PIT_FIELDS["RobotWidth"]!,
                 ),
                 TextFieldObj(
-                  "Robot Length",
+                  "Robot Length With Bumpers (EXACT IN INCHES)",
                   "RobotLength",
                   PIT_FIELDS["RobotLength"]!,
                 ),
                 TextFieldObj(
-                  "Station Robot Width",
+                  "Robot Width On Charging Station With Bumpers (EXACT IN INCHES)",
                   "StationRobotWidth",
                   PIT_FIELDS["StationRobotWidth"]!,
                 ),
@@ -157,7 +158,7 @@ class _PitPageState extends State<PitPage> {
                   )
                 ]),
                 TextFieldObj(
-                  "How many game pieces can you score during auto?",
+                  "What is the maximum amount of game pieces can you score during auto?",
                   "AutoPiecesScored",
                   PIT_FIELDS["AutoPiecesScored"]!,
                 ),

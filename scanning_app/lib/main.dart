@@ -139,13 +139,13 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void pushMatch(String data) async {
-    print('https://api-7vne.onrender.com/add_match/' +
+    print('http://127.0.0.1:3030/add_match/' +
         "Ω" +
         "/" +
         SEP +
         "/" +
         data);
-    var url = Uri.parse('https://api-7vne.onrender.com/add_match/' +
+    var url = Uri.parse('http://127.0.0.1:3030/add_match/' +
         "Ω" +
         "/" +
         SEP +
@@ -161,13 +161,13 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void pushPit(String data) async {
-    print('https://api-7vne.onrender.com/add_pit/' +
+    print('http://127.0.0.1:3030/add_pit/' +
         "Ω" +
         "/" +
         SEP +
         "/" +
         data);
-    var url = Uri.parse('https://api-7vne.onrender.com/add_pit/' +
+    var url = Uri.parse('http://127.0.0.1:3030/add_pit/' +
         "Ω" +
         "/" +
         SEP +
@@ -366,32 +366,32 @@ class _MyHomePageState extends State<MyHomePage> {
                       direction: Axis.vertical,
                       children: [
                         Row(children: [
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              primary: Colors.blue,
-                              onPrimary: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(32.0)),
-                              minimumSize: Size(200, 100), //////// HERE
-                            ),
-                            child: Text(names[0]),
-                            onPressed: () {
-                              _openScan(context, 0);
-                            },
-                          ),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              primary: Colors.purple,
-                              onPrimary: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(32.0)),
-                              minimumSize: Size(100, 100), //////// HERE
-                            ),
-                            child: Text("Clear"),
-                            onPressed: () {
-                              clear(0);
-                            },
-                          )
+                          // ElevatedButton(
+                          //   style: ElevatedButton.styleFrom(
+                          //     primary: Colors.blue,
+                          //     onPrimary: Colors.white,
+                          //     shape: RoundedRectangleBorder(
+                          //         borderRadius: BorderRadius.circular(32.0)),
+                          //     minimumSize: Size(200, 100), //////// HERE
+                          //   ),
+                          //   child: Text(names[0]),
+                          //   onPressed: () {
+                          //     _openScan(context, 0);
+                          //   },
+                          // ),
+                          // ElevatedButton(
+                          //   style: ElevatedButton.styleFrom(
+                          //     primary: Colors.purple,
+                          //     onPrimary: Colors.white,
+                          //     shape: RoundedRectangleBorder(
+                          //         borderRadius: BorderRadius.circular(32.0)),
+                          //     minimumSize: Size(100, 100), //////// HERE
+                          //   ),
+                            // child: Text("Clear"),
+                            // onPressed: () {
+                            //   clear(0);
+                            // },
+                          // )
                         ]),
                         Row(children: [
                           ElevatedButton(
@@ -543,32 +543,32 @@ class _MyHomePageState extends State<MyHomePage> {
                     direction: Axis.vertical,
                     children: [
                       Row(children: [
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.red,
-                            onPrimary: Colors.white,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(32.0)),
-                            minimumSize: Size(200, 100), //////// HERE
-                          ),
-                          child: Text(names[4]),
-                          onPressed: () {
-                            _openScan(context, 4);
-                          },
-                        ),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.purple,
-                            onPrimary: Colors.white,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(32.0)),
-                            minimumSize: Size(100, 100), //////// HERE
-                          ),
-                          child: Text("Clear"),
-                          onPressed: () {
-                            clear(4);
-                          },
-                        )
+                        // ElevatedButton(
+                        //   style: ElevatedButton.styleFrom(
+                        //     primary: Colors.red,
+                        //     onPrimary: Colors.white,
+                        //     shape: RoundedRectangleBorder(
+                        //         borderRadius: BorderRadius.circular(32.0)),
+                        //     minimumSize: Size(200, 100), //////// HERE
+                        //   ),
+                        //   child: Text(names[4]),
+                        //   onPressed: () {
+                        //     _openScan(context, 4);
+                        //   },
+                        // ),
+                        // ElevatedButton(
+                        //   style: ElevatedButton.styleFrom(
+                        //     primary: Colors.purple,
+                        //     onPrimary: Colors.white,
+                        //     shape: RoundedRectangleBorder(
+                        //         borderRadius: BorderRadius.circular(32.0)),
+                        //     minimumSize: Size(100, 100), //////// HERE
+                        //   ),
+                        //   child: Text("Clear"),
+                        //   onPressed: () {
+                        //     clear(4);
+                        //   },
+                        // )
                       ]),
                       Row(children: [
                         ElevatedButton(

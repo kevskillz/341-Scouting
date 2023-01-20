@@ -24,7 +24,7 @@ $.ajax({
             type: 'GET',
             url: `${ROOT_URL}/from_comp/${localStorage.getItem('COMP')}/all_teams_arr`,
             success: function (response) {
-                createScatterplot(response, 'CLIMB PPG', 'BALL PPG', 'TEAM', 'dataviz_cust_axisZoom')
+                createScatterplot(response, 'CHARGING STATION PPG', 'GAME PIECE PPG', 'TEAM', 'dataviz_cust_axisZoom')
                 
                 createDragDrop(['x-axis-drop', 'y-axis-drop'], fields, 'encasing-1', function (zones) {
                     console.log('creating...', zones)

@@ -241,7 +241,7 @@ final Map<String, FieldInfo> MATCH_FIELDS = {
 'OVER_UNDER': FieldInfo(
       enabled: false,
       formatter: FilteringTextInputFormatter.deny(''),
-      inputType: TextInputType.number),
+      inputType: TextInputType.numberWithOptions()),
 };
 
 final Map<String, FieldInfo> PIT_FIELDS = {

@@ -40,7 +40,7 @@ function search(e) {
                 document.getElementById('spider').innerHTML = ''
                 document.getElementById('linear').innerHTML = ''
 
-                createSpider([response.B, response.R],['CLIMB PPG','AUTO PPG','BALL PPG', 'TOTAL PPG'],'spider',900)
+                createSpider([response.B, response.R],['TELE CHARGING STATION PPG','AUTO PPG','GAME PIECE PPG', 'CONE_PIECE_POINTS', 'CUBE_PIECE_POINTS', 'TOTAL PPG'],'spider',900)
 
                 let teamData = []
                 for (let key in response) {

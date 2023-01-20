@@ -28,11 +28,11 @@ function process_num(num) {
                     document.getElementById('point_graph').innerHTML = ''
                     document.getElementById('spider').innerHTML = ''
 
-                    createLineGraph(response, 'MATCH_NUMBER', 'CLIMB_POINTS', 'climb_point_graph')
+                    createLineGraph(response, 'MATCH_NUMBER', 'TELE_CHARGING_STATION_POINTS', 'tele_charge_point_graph')
                     
                     createLineGraph(response, 'MATCH_NUMBER', 'AUTO_POINTS', 'auto_graph')
 
-                    createLineGraph(response, 'MATCH_NUMBER', 'BALL_POINTS', 'ball_point_graph')
+                    createLineGraph(response, 'MATCH_NUMBER', 'GAME_PIECE_POINTS', 'ball_point_graph')
 
                     createLineGraph(response, 'MATCH_NUMBER', 'TOTAL_POINTS', 'point_graph')
                     createSpider([last],['CLIMB PPG','AUTO PPG','BALL PPG','TOTAL PPG'],'spider')
