@@ -251,7 +251,7 @@ final Map<String, FieldInfo> PIT_FIELDS = {
   'TeamName': FieldInfo(
       formatter: FilteringTextInputFormatter.digitsOnly,
       inputType: TextInputType.number),
-  'MatchNumber': FieldInfo(
+  'Drivetrain': FieldInfo(
       formatter: FilteringTextInputFormatter.deny(''),
       inputType: TextInputType.text),
   'RobotWidth': FieldInfo(

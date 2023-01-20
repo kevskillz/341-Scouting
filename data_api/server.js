@@ -517,7 +517,9 @@ function processData(sepBig, sepSmall, fieldsArr, data) {
     let final = [];
     for (let el of data.split(sepBig)) {
         let arr = el.split(sepSmall);
-
+        for(let i = 0; i < arr.length; i++){
+            console.log(arr[i]);
+        }
         if (arr.length != fieldsArr.length) {
             return;
         }
@@ -555,6 +557,7 @@ function getProcessedData(sepBig, sepSmall, fieldsArr, data) {
     let final = [];
     for (let el of data.split(sepBig)) {
     let arr = el.split(sepSmall);
+    
     
     if (arr.length != fieldsArr.length) {
     return;

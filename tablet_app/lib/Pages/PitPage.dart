@@ -91,7 +91,7 @@ class _PitPageState extends State<PitPage> {
               children: [
                 TextFieldObj(
                   "Scout Name",
-                  "SCOUT_NAME",
+                  "ScoutName",
                   PIT_FIELDS["ScoutName"]!,
                 ),
                 TextFieldObj(
@@ -211,7 +211,7 @@ class _PitPageState extends State<PitPage> {
                   "NotableFeat",
                   PIT_FIELDS["NotableFeat"]!,
                 ),
-                const Text("Picture of robot"),
+                const Text("Remember to Take a Picture!"),
                 Row(
                   children: [
                     Expanded(
