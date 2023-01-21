@@ -212,54 +212,54 @@ class _PitPageState extends State<PitPage> {
                   PIT_FIELDS["NotableFeat"]!,
                 ),
                 const Text("Remember to Take a Picture!"),
-                Row(
-                  children: [
-                    Expanded(
-                        flex: 100,
-                        child: ElevatedButton.icon(
-                            onPressed: () {
-                              _key.currentState!.save();
-                              pitCache = Map<String, dynamic>.from(
-                                  _key.currentState!.value);
-                              Navigator.of(context).pushReplacement(
-                                  MaterialPageRoute(
-                                      builder: (ctx) => TakePicturePage(
-                                          camera: firstCamera)));
-                            },
-                            icon: const Icon(Icons.camera_alt),
-                            label: const Text("Take picture"))),
-                    const Spacer(flex: 20),
-                    Expanded(
-                        flex: 100,
-                        child: ElevatedButton.icon(
-                            onPressed: () {
-                              pic = null;
-                              loadImage().then((value) {
-                                setState(() {
-                                  img = value;
-                                });
-                              });
-                            },
-                            icon: const Icon(Icons.delete_rounded),
-                            label: const Text("Delete picture"))),
-                    const Spacer(flex: 20),
-                    Expanded(
-                        flex: 100,
-                        child: ElevatedButton.icon(
-                            onPressed: () async {
-                              pic = await _picker.pickImage(
-                                  source: ImageSource.gallery);
-                              loadImage().then((value) {
-                                setState(() {
-                                  img = value;
-                                });
-                              });
-                            },
-                            icon: const Icon(Icons.camera),
-                            label: const Text("Choose picture"))),
-                  ],
-                ),
-                img,
+                // Row(
+                //   children: [
+                //     Expanded(
+                //         flex: 100,
+                //         child: ElevatedButton.icon(
+                //             onPressed: () {
+                //               _key.currentState!.save();
+                //               pitCache = Map<String, dynamic>.from(
+                //                   _key.currentState!.value);
+                //               Navigator.of(context).pushReplacement(
+                //                   MaterialPageRoute(
+                //                       builder: (ctx) => TakePicturePage(
+                //                           camera: firstCamera)));
+                //             },
+                //             icon: const Icon(Icons.camera_alt),
+                //             label: const Text("Take picture"))),
+                //     const Spacer(flex: 20),
+                //     Expanded(
+                //         flex: 100,
+                //         child: ElevatedButton.icon(
+                //             onPressed: () {
+                //               pic = null;
+                //               loadImage().then((value) {
+                //                 setState(() {
+                //                   img = value;
+                //                 });
+                //               });
+                //             },
+                //             icon: const Icon(Icons.delete_rounded),
+                //             label: const Text("Delete picture"))),
+                //     const Spacer(flex: 20),
+                //     Expanded(
+                //         flex: 100,
+                //         child: ElevatedButton.icon(
+                //             onPressed: () async {
+                //               pic = await _picker.pickImage(
+                //                   source: ImageSource.gallery);
+                //               loadImage().then((value) {
+                //                 setState(() {
+                //                   img = value;
+                //                 });
+                //               });
+                //             },
+                //             icon: const Icon(Icons.camera),
+                //             label: const Text("Choose picture"))),
+                //   ],
+                // ),
+                // img,
                 ElevatedButton(
                     onPressed: () async {
                       if (_key.currentState!.saveAndValidate()) {

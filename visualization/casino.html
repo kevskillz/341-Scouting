@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles-merged.css">
-  <link rel="stylesheet" href="css/style.min.css">
-  <link rel="stylesheet" href="css/custom.css">
-
-  <!--[if lt IE 9]>
-      <script src="js/vendor/html5shiv.min.js"></script>
-      <script src="js/vendor/respond.min.js"></script>
-    <![endif]-->
-</head>
-
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+        <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+        <link rel="stylesheet" href="css/styles-merged.css">
+        <link rel="stylesheet" href="css/style.min.css">
+        <link rel="stylesheet" href="css/custom.css">
+      
+        <!--[if lt IE 9]>
+            <script src="js/vendor/html5shiv.min.js"></script>
+            <script src="js/vendor/respond.min.js"></script>
+          <![endif]-->
+      </head>
 <body>
 
-  <!-- START: header -->
+<!-- START: header -->
 
-  <div class="probootstrap-loader"></div>
+<div class="probootstrap-loader"></div>
 
   <header role="banner" class="probootstrap-header">
     <div class="container">
@@ -40,10 +38,10 @@
             </ul>
           </li>
           <li><a href="searchTeam.html">Search by Team</a></li>
-          <li class="active"><a href="allTeam.html">All Team Data</a></li>
+          <li><a href="allTeam.html">All Team Data</a></li>
           <li><a href="rawData.html">Raw Data</a></li>
           <li><a href="matchPredict.html">Match Predictor</a></li>
-          <li><a href="casino.html">Casino</a></li>
+          <li class="active"><a href="casino.html">Casino</a></li>
         </ul>
 
       </nav>
@@ -52,33 +50,10 @@
   <!-- END: header -->
 
 
-  <div id="title">All Team Data</div>
+  <div id="title">Backdoor Casino Statistics 🎲</div>
 
 
-  <div>
-    <select id="filter-field">
-      <option></option>
-    </select>
 
-
-    <select id="filter-type">
-      <option value="like">like</option>
-      <option value="=">=</option>
-      <option value="<">
-        << /option>
-      <option value="<=">
-        <=< /option>
-      <option value=">">></option>
-      <option value=">=">>=</option>
-      <option value="!=">!=</option>
-    </select>
-
-    <input id="filter-value" type="text" placeholder="value to filter">
-
-    <button id="filter-clear">Clear Filter</button>
-  </div>
-  <div id="table"></div>
-  <div id="bar_chart"></div>
 
   <style>
   * {
@@ -89,11 +64,19 @@
 
 }
 
+
 body {
     margin: 2%;
     justify-content: center !important;
     width: 100% !important;
+    text-align: center;
+    font-weight: normal;
 }
+     #title{
+    font-weight: bold;
+    font-size: 25px;
+
+    }
 
     .box-wrapper {
       height: 95vh;
@@ -138,19 +121,8 @@ body {
 
   <div id="box3">
     <div class="middle-column">
-      Options
-      <div id="encasing-1">
 
-
-        <div id="x-axis-drop" class="dropzone">
-          X Axis
-        </div>
-  
-        <div id="y-axis-drop" class="dropzone">
-          Y Axis
-        </div>
-      </div>
-  
+    
     </div>
     <div id="box4">
       <div id="dataviz_cust_axisZoom" class="scatter middle-column"></div>
@@ -170,6 +142,7 @@ body {
     <link href="https://unpkg.com/tabulator-tables@5.4.2/dist/css/tabulator.min.css" rel="stylesheet">
     <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.4.2/dist/js/tabulator.min.js"></script>
     <link rel="stylesheet" href="style.css">
+    <script src="casino_leaderboard.js"></script>
     <script src="lib.js"></script>
     <script src="all_team_data.js"></script>
 
@@ -192,3 +165,5 @@ body {
 </body>
 
 </html>
+
+
