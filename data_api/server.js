@@ -67,6 +67,7 @@ function per_team_helper(data, fields, just_last = false) {
         for (let entry in data) {
             if (entry == data.length - 1) break
             entry = data[entry]
+            console.log(entry)
             if (val.includes('ConesIntaked')) {
                 entry['CONES_INTAKED'] += entry[val]
                 coneintaked++
@@ -253,7 +254,6 @@ function per_team_helper(data, fields, just_last = false) {
     data[data.length - 1]["TELE PPG"] = tele.toFixed(2);
     data[data.length - 1]["TOTAL PPG"] = pts.toFixed(2);
 
-
     if (just_last) return data[data.length - 1]
     return data
 }
@@ -352,6 +352,7 @@ app.get('/from_comp/:comp/all_teams_arr', function (req, res) {
 
     })
 })
+console.log((1==1)*5)
 
 app.get('/team_fields', function (req, res) {
     const ret = [

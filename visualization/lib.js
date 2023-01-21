@@ -307,7 +307,7 @@ function createSpider(data, fields, div_id, width=900) {
 }
 
 
-function createTable(data, fields, spec, id, initialSort, height = 500) {
+function createTable(data, fields, spec, id, initialSort, height = 500, haveFilter = true) {
     temp = []
     let color_store = null;
     for (const dt in fields) {
@@ -332,11 +332,13 @@ function createTable(data, fields, spec, id, initialSort, height = 500) {
                 width: 150
             })
         }
-
-        let sa = document.createElement('option')
-        sa.text = fields[dt].Field
-        sa.value = fields[dt].Field
-        document.getElementById('filter-field').appendChild(sa)
+        if (haveFilter) {
+            let sa = document.createElement('option')
+            sa.text = fields[dt].Field
+            sa.value = fields[dt].Field
+            document.getElementById('filter-field').appendChild(sa)
+        }
+        
     }
     let table = new Tabulator("#" + id, {
         height: height, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)

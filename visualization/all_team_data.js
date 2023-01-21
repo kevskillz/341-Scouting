@@ -32,6 +32,7 @@ $.ajax({
                     parent.innerHTML = ''
                     createScatterplot(response, zones[0], zones[1], 'TeamName', 'dataviz_cust_axisZoom')
                     console.log('done?')
+                    console.log(response)
                 });
 
                 fields.unshift({
