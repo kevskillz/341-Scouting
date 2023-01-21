@@ -47,9 +47,9 @@ class CounterObj extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: HORIZ_PADDING),
               child: NumberInputWithIncrementDecrement(
                 numberFieldDecoration: InputDecoration(
-                  
                   border: InputBorder.none,
                 ),
+                style: TextStyle(fontSize: 40),
                 widgetContainerDecoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     border: Border.all(

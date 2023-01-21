@@ -57,20 +57,22 @@ class _ScoringTable extends State<ScoringTable> {
         return const Icon(CustomIcons.traffic_cone,
             color: Colors.grey, size: 100);
       }
-      else
+      else{
       return const Icon(
         CustomIcons.robot,
         color: Colors.white,
       );
+      }
     } else if ([1, 4, 7].contains(col)) {
       if (row != 2) {
         return const Icon(CustomIcons.cube, color: Colors.grey, size: 100);
       }
-      else
+      else{
       return const Icon(
         CustomIcons.robot,
         color: Colors.white,
       );
+      }
     } else {
       return const Icon(
         CustomIcons.robot,
