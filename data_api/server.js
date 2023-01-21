@@ -230,24 +230,28 @@ function per_team_helper(data, fields, just_last = false) {
     //     }
     // }
     pts = auto + tele
-    data[data.length - 1]["CHARGING STATION PPG"] = charge / Math.max(1, data.length - 1)
-    data[data.length - 1]["MOBILITY PPG"] = mobility / Math.max(1, data.length - 1)
-    data[data.length - 1]["TELE CHARGING STATION PPG"] = charge - autocharge / Math.max(1, data.length - 1)
-    data[data.length - 1]["CUBES INTAKED PG"] = cubeintaked / Math.max(1, data.length - 1)
-    data[data.length - 1]["CONES INTAKED PG"] = coneintaked / Math.max(1, data.length - 1)
+    data[data.length - 1]["CHARGING STATION PPG"] = (charge / Math.max(1, data.length - 1)).toFixed(2);
+    data[data.length - 1]["MOBILITY PPG"] = (mobility / Math.max(1, data.length - 1)).toFixed(2);
+    data[data.length - 1]["TELE CHARGING STATION PPG"] = (charge - autocharge / Math.max(1, data.length - 1)).toFixed(2);
+    data[data.length - 1]["CUBES INTAKED PG"] = (cubeintaked / Math.max(1, data.length - 1)).toFixed(2);
+    data[data.length - 1]["CONES INTAKED PG"] = (coneintaked / Math.max(1, data.length - 1)).toFixed(2);
     data[data.length - 1]["HIGH AUTON PPG"] = (autohigh / Math.max(1, data.length - 1)).toFixed(2);
-    data[data.length - 1]["MID AUTON PPG"] = automid / Math.max(1, data.length - 1)
-    data[data.length - 1]["LOW AUTON PPG"] = autolow / Math.max(1, data.length - 1)
-    data[data.length - 1]["HIGH TELE PPG"] = telehigh / Math.max(1, data.length - 1)
-    data[data.length - 1]["HIGH TELE PPG"] = telemid / Math.max(1, data.length - 1)
-    data[data.length - 1]["LOW TELE PPG"] = telelow / Math.max(1, data.length - 1)
+    data[data.length - 1]["MID AUTON PPG"] = (automid / Math.max(1, data.length - 1)).toFixed(2);
+    data[data.length - 1]["LOW AUTON PPG"] = (autolow / Math.max(1, data.length - 1)).toFixed(2);
+    data[data.length - 1]["HIGH TELE PPG"] = (telehigh / Math.max(1, data.length - 1)).toFixed(2);
+    data[data.length - 1]["MID TELE PPG"] = (telemid / Math.max(1, data.length - 1)).toFixed(2);
+    data[data.length - 1]["LOW TELE PPG"] = (telelow / Math.max(1, data.length - 1)).toFixed(2);
+    data[data.length - 1]["CONE PPG"] = (cone / Math.max(1, data.length - 1)).toFixed(2);
+    data[data.length - 1]["CUBE PPG"] = (cube / Math.max(1, data.length - 1)).toFixed(2);
+
+
     // pts += tmp2;
     pts /= Math.max(1, data.length - 1)
     auto /= Math.max(1, data.length - 1)
-    data[data.length - 1]["GAME PIECE PPG"] = pts - data[data.length - 1]["CHARGING STATION PPG"] - data[data.length - 1]["MOBILITY PPG"]
-    data[data.length - 1]["AUTO PPG"] = auto
-    data[data.length - 1]["TELE PPG"] = tele
-    data[data.length - 1]["TOTAL PPG"] = pts
+    data[data.length - 1]["GAME PIECE PPG"] = (pts - data[data.length - 1]["CHARGING STATION PPG"] - data[data.length - 1]["MOBILITY PPG"]).toFixed(2);
+    data[data.length - 1]["AUTO PPG"] = auto.toFixed(2);
+    data[data.length - 1]["TELE PPG"] = tele.toFixed(2);
+    data[data.length - 1]["TOTAL PPG"] = pts.toFixed(2);
 
 
     if (just_last) return data[data.length - 1]

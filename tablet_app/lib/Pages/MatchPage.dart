@@ -198,7 +198,20 @@ class _MatchPage extends State<MatchPage> with TickerProviderStateMixin {
                       ),
                     ],
                   ),
-                  CheckboxObj("Mobility", "Mobility"),
+                  // CheckboxObj("Mobility", "Mobility"),
+                 Row(
+                    children: <Widget>[
+                      Expanded(child: 
+                 RadioGroupObj(
+                    "Mobility",
+                    "Mobility",
+                    const [
+                       FormBuilderChipOption(value: "Yes"),
+                      FormBuilderChipOption(value: "No")
+                    ]
+                  ), 
+                      ),
+                      Expanded(child: 
                   RadioGroupObj(
                     "Charging Station",
                     "AutoDockedState",
@@ -208,6 +221,8 @@ class _MatchPage extends State<MatchPage> with TickerProviderStateMixin {
                       FormBuilderChipOption(value: "Engaged")
                     ],
                   )
+                      )
+                  ])
                 ],
               ),
             ),
@@ -241,6 +256,9 @@ class _MatchPage extends State<MatchPage> with TickerProviderStateMixin {
                       ),
                     ],
                   ),
+                  Row(
+                    children: <Widget>[
+                      Expanded(child:
                   RadioGroupObj(
                     "Charging Station",
                     "TeleDockedState",
@@ -251,6 +269,8 @@ class _MatchPage extends State<MatchPage> with TickerProviderStateMixin {
                       FormBuilderChipOption(value: "Engaged")
                     ],
                   ),
+                      ),
+                      Expanded(child: 
                   ElevatedButton(
                       onPressed: () {
                         MatchStarted = false;
@@ -301,6 +321,8 @@ class _MatchPage extends State<MatchPage> with TickerProviderStateMixin {
                         }
                       },
                       child: const Text("Submit"))
+                      )])
+                      
                 ],
               ),
             ),

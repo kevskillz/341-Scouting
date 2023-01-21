@@ -20,6 +20,9 @@ void addEntry(Map<String, dynamic> arr, bool isMatchQR) {
     } else if (arr[key] is List<dynamic>) {
       arr[key] = arr[key].join(',');
     }
+    else if (key == 'Mobility') {
+      arr[key] ='Yes'==arr[key] ? '1' : '0';
+    }
   }
   int idx = 1;
   for (int i = 0; i < 3; i++) {

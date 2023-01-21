@@ -18,6 +18,25 @@ class CounterObj extends StatelessWidget {
   }) {
     txt = TitleTxt(label);
     TextEditingController edit = TextEditingController();
+    // numberInput = FormBuilderField<int>(
+    //     name: id,
+    //     initialValue: 0,
+    //     onSaved: (newValue) => edit.text = newValue.toString(),
+    //     onReset: () => edit.text = "0",
+    //     builder: (FormFieldState<dynamic> field) {
+    //       return Container(
+    //         padding: const EdgeInsets.symmetric(horizontal: HORIZ_PADDING),
+    //         child: NumberInputPrefabbed.leafyButtons(
+    //           controller: edit,
+    //           incDecBgColor: color,
+    //           buttonArrangement: arrangement,
+    //           min: 0,
+    //           onChanged: (newValue) => field.didChange(newValue),
+    //           onIncrement: (newValue) => field.didChange(newValue),
+    //           onDecrement: (newValue) => field.didChange(newValue),
+    //         ),
+    //       );
+    //     });
     numberInput = FormBuilderField<int>(
         name: id,
         initialValue: 0,
@@ -25,17 +44,44 @@ class CounterObj extends StatelessWidget {
         onReset: () => edit.text = "0",
         builder: (FormFieldState<dynamic> field) {
           return Container(
-            padding: const EdgeInsets.symmetric(horizontal: HORIZ_PADDING),
-            child: NumberInputPrefabbed.leafyButtons(
-              controller: edit,
+              padding: const EdgeInsets.symmetric(horizontal: HORIZ_PADDING),
+              child: NumberInputWithIncrementDecrement(
+                numberFieldDecoration: InputDecoration(
+                  
+                  border: InputBorder.none,
+                ),
+                widgetContainerDecoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    border: Border.all(
+                      color: Colors.black,
+                      width: 2,
+                    )),
+                incIconDecoration: BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(10),
+                  ),
+                ),
+                separateIcons: true,
+                decIconDecoration: BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                  ),
+                ),
+                incIconSize: 100,
+                decIconSize: 100,
+                incIcon: Icons.plus_one,
+                decIcon: Icons.exposure_neg_1,
+                              controller: edit,
               incDecBgColor: color,
               buttonArrangement: arrangement,
               min: 0,
               onChanged: (newValue) => field.didChange(newValue),
               onIncrement: (newValue) => field.didChange(newValue),
               onDecrement: (newValue) => field.didChange(newValue),
-            ),
-          );
+
+              ));
         });
   }
 
