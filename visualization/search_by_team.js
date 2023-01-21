@@ -1,12 +1,12 @@
 function process_num(num) {
     $.ajax({
         type: 'GET',
-        url: `${ROOT_URL}/match_fields`,
+        url: `${ROOT_URL}match_fields`,
         success: function (fields) {
 
             $.ajax({
                 type: 'GET',
-                url: `${ROOT_URL}/from_comp/${localStorage.getItem('COMP')}/team/${num}`,
+                url: `${ROOT_URL}from_comp/${localStorage.getItem('COMP')}/team/${num}`,
                 success: function (response) {
                    
                     
@@ -17,7 +17,7 @@ function process_num(num) {
                     let last = response.pop()
                     
                     
-                    createTable(response, fields, spec, "match_table", [{ column: "MATCH_NUMBER", dir: "asc" }],150)
+                    createTable(response, fields, spec, "match_table", [{ column: "MatchNumber", dir: "asc" }],150)
                     
                     /**
                      * REVERSE ORDER OF DIV INIT
@@ -28,14 +28,14 @@ function process_num(num) {
                     document.getElementById('point_graph').innerHTML = ''
                     document.getElementById('spider').innerHTML = ''
 
-                    createLineGraph(response, 'MATCH_NUMBER', 'TELE_CHARGING_STATION_POINTS', 'tele_charge_point_graph')
+                    createLineGraph(response, 'MatchNumber', 'TELE_CHARGING_STATION_POINTS', 'tele_charge_point_graph')
                     
-                    createLineGraph(response, 'MATCH_NUMBER', 'AUTO_POINTS', 'auto_graph')
+                    createLineGraph(response, 'MatchNumber', 'AUTO_POINTS', 'auto_graph')
 
-                    createLineGraph(response, 'MATCH_NUMBER', 'GAME_PIECE_POINTS', 'ball_point_graph')
+                    createLineGraph(response, 'MatchNumber', 'GAME_PIECE_POINTS', 'ball_point_graph')
 
-                    createLineGraph(response, 'MATCH_NUMBER', 'TOTAL_POINTS', 'point_graph')
-                    createSpider([last],['CLIMB PPG','AUTO PPG','BALL PPG','TOTAL PPG'],'spider')
+                    createLineGraph(response, 'MatchNumber', 'TOTAL_POINTS', 'point_graph')
+                    createSpider([last],['CHARGING STATION PPG','AUTO PPG','GAME PIECE PPG','TOTAL PPG'],'spider')
 
                    
 
@@ -56,12 +56,12 @@ function process_num(num) {
     });
     $.ajax({
         type: 'GET',
-        url: `${ROOT_URL}/pit_fields`,
+        url: `${ROOT_URL}pit_fields`,
         success: function (fields) {
 
             $.ajax({
                 type: 'GET',
-                url: `${ROOT_URL}/from_comp/${localStorage.getItem('COMP')}/pit/${num}`,
+                url: `${ROOT_URL}from_comp/${localStorage.getItem('COMP')}/pit/${num}`,
                 success: function (response) {
                    
                     

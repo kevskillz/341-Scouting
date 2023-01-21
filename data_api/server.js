@@ -235,7 +235,7 @@ function per_team_helper(data, fields, just_last = false) {
     data[data.length - 1]["TELE CHARGING STATION PPG"] = charge - autocharge / Math.max(1, data.length - 1)
     data[data.length - 1]["CUBES INTAKED PG"] = cubeintaked / Math.max(1, data.length - 1)
     data[data.length - 1]["CONES INTAKED PG"] = coneintaked / Math.max(1, data.length - 1)
-    data[data.length - 1]["HIGH AUTON PPG"] = autohigh / Math.max(1, data.length - 1)
+    data[data.length - 1]["HIGH AUTON PPG"] = (autohigh / Math.max(1, data.length - 1)).toFixed(2);
     data[data.length - 1]["MID AUTON PPG"] = automid / Math.max(1, data.length - 1)
     data[data.length - 1]["LOW AUTON PPG"] = autolow / Math.max(1, data.length - 1)
     data[data.length - 1]["HIGH TELE PPG"] = telehigh / Math.max(1, data.length - 1)
@@ -263,7 +263,7 @@ app.get('/from_comp/:comp/team/:team', function (req, res) {
 
     lib.query().then((conn) => {
 
-        conn.query(`SELECT * FROM MATCH_DATA WHERE COMP_NAME='${req.params.comp}' AND TeamName=${req.params.team}`, function (err, result, fields) {
+        conn.query(`SELECT * FROM MATCH_DATA WHERE CompName='${req.params.comp}' AND TeamName=${req.params.team}`, function (err, result, fields) {
             if (err) { console.log(err); return; }
             res.send(per_team_helper(result, fields))
         });
@@ -279,7 +279,7 @@ app.get('/from_comp/:comp/team/:team', function (req, res) {
 
     lib.query().then((conn) => {
 
-        conn.query(`SELECT * FROM MATCH_DATA WHERE COMP_NAME='${req.params.comp}' AND TeamName=${req.params.team}`, function (err, result, fields) {
+        conn.query(`SELECT * FROM MATCH_DATA WHERE CompName='${req.params.comp}' AND TeamName=${req.params.team}`, function (err, result, fields) {
             if (err) { console.log(err); return; }
             res.send(per_team_helper(result, fields))
         });
@@ -294,7 +294,7 @@ app.get('/from_comp/:comp/all_teams', function (req, res) {
 
     lib.query().then((conn) => {
 
-        conn.query(`SELECT * FROM MATCH_DATA WHERE COMP_NAME='${req.params.comp}'`, function (err, result, fields) {
+        conn.query(`SELECT * FROM MATCH_DATA WHERE CompName='${req.params.comp}'`, function (err, result, fields) {
             if (err) { console.log(err); return; }
             const teams = [...new Set(result.map(item => item.TeamName))];
             const resp = {}
@@ -315,7 +315,7 @@ app.get('/from_comp/:comp/pit/:team', function (req, res) {
 
     lib.query().then((conn) => {
 
-        conn.query(`SELECT * FROM PIT_DATA WHERE COMP_NAME='${req.params.comp}' AND TeamName=${req.params.team}`, function (err, result, fields) {
+        conn.query(`SELECT * FROM PIT_DATA WHERE CompName='${req.params.comp}' AND TeamName=${req.params.team}`, function (err, result, fields) {
             if (err) { console.log(err); return; }
             res.send(result)
         });
@@ -330,7 +330,7 @@ app.get('/from_comp/:comp/all_teams_arr', function (req, res) {
 
     lib.query().then((conn) => {
 
-        conn.query(`SELECT * FROM MATCH_DATA WHERE COMP_NAME='${req.params.comp}'`, function (err, result, fields) {
+        conn.query(`SELECT * FROM MATCH_DATA WHERE CompName='${req.params.comp}'`, function (err, result, fields) {
             if (err) { console.log(err); return; }
             const teams = [...new Set(result.map(item => item.TeamName))];
             const resp = []
@@ -376,7 +376,7 @@ app.get('/team_fields', function (req, res) {
 
 app.get('/from_comp/:comp/match_predict/:match', function (req, res) {
     lib.query().then((conn) => {
-        conn.query(`SELECT * FROM MATCH_DATA WHERE COMP_NAME='${req.params.comp}'`, function (err, result, fields) {
+        conn.query(`SELECT * FROM MATCH_DATA WHERE CompName='${req.params.comp}'`, function (err, result, fields) {
             if (err) { console.log(err); return; }
             let vis = {}
             const match = req.params.match
@@ -424,7 +424,7 @@ app.get('/from_comp/:comp/match_predict/:match', function (req, res) {
 
 app.get('/from_comp/:comp/match_predict_custom/:teams', function (req, res) {
     lib.query().then((conn) => {
-        conn.query(`SELECT * FROM MATCH_DATA WHERE COMP_NAME='${req.params.comp}'`, function (err, result, fields) {
+        conn.query(`SELECT * FROM MATCH_DATA WHERE CompName='${req.params.comp}'`, function (err, result, fields) {
             if (err) { console.log(err); return; }
             let vis = {}
             const types = req.params.teams.split('|')
@@ -476,7 +476,7 @@ app.get('/from_comp/:comp/match_predict_custom/:teams', function (req, res) {
 
 app.get('/from_comp/:comp', function (req, res) {
     lib.query().then((conn) => {
-        conn.query(`SELECT * FROM MATCH_DATA WHERE COMP_NAME='${req.params.comp}'`, function (err, result, fields) {
+        conn.query(`SELECT * FROM MATCH_DATA WHERE CompName='${req.params.comp}'`, function (err, result, fields) {
             if (err) { console.log(err); return; }
             res.send(result)
         });

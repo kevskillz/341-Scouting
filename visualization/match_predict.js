@@ -33,7 +33,7 @@ function search(e) {
         console.log(str3)
         $.ajax({
             type: 'GET',
-            url: `${ROOT_URL}/from_comp/${localStorage.getItem('COMP')}/match_predict_custom/${str3}`,
+            url: `${ROOT_URL}from_comp/${localStorage.getItem('COMP')}/match_predict_custom/${str3}`,
             success: function (response) {
                 console.log(response)
 

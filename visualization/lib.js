@@ -6,7 +6,7 @@ $(document).mousemove(function (e) {
 
 
 const defaultComp = 'Ramp Riot'
-const ROOT_URL = 'https://127.0.0.1:3030/'
+const ROOT_URL = 'http://127.0.0.1:3030/'
 
 
 const TableSpec = {

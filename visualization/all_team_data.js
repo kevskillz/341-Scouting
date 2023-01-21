@@ -17,30 +17,30 @@ function dragMoveListener(event) {
 
 $.ajax({
     type: 'GET',
-    url: `${ROOT_URL}/team_fields`,
+    url: `${ROOT_URL}team_fields`,
     success: function (fields) {
 
         $.ajax({
             type: 'GET',
-            url: `${ROOT_URL}/from_comp/${localStorage.getItem('COMP')}/all_teams_arr`,
+            url: `${ROOT_URL}from_comp/${localStorage.getItem('COMP')}/all_teams_arr`,
             success: function (response) {
-                createScatterplot(response, 'CHARGING STATION PPG', 'GAME PIECE PPG', 'TEAM', 'dataviz_cust_axisZoom')
+                createScatterplot(response, 'CHARGING STATION PPG', 'GAME PIECE PPG', 'TeamName', 'dataviz_cust_axisZoom')
                 
                 createDragDrop(['x-axis-drop', 'y-axis-drop'], fields, 'encasing-1', function (zones) {
                     console.log('creating...', zones)
                     let parent = document.getElementById('dataviz_cust_axisZoom')
                     parent.innerHTML = ''
-                    createScatterplot(response, zones[0], zones[1], 'TEAM', 'dataviz_cust_axisZoom')
+                    createScatterplot(response, zones[0], zones[1], 'TeamName', 'dataviz_cust_axisZoom')
                     console.log('done?')
                 });
 
                 fields.unshift({
-                    Field: 'TEAM'
+                    Field: 'TeamName'
                 });
 
                 spec = new Array(response.length).fill(TableSpec.NORMAL)
                 createTable(response, fields, spec, 'table')
-                createBarChart(response, 'TEAM', 'TOTAL PPG', 'bar_chart')
+                createBarChart(response, 'TeamName', 'TOTAL PPG', 'bar_chart')
 
             },
             error: function (xhr, status, err) {
