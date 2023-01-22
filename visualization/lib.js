@@ -447,6 +447,10 @@ function createLineGraph(data, x_axis, y_axis, div_id, w = 690, h = 600, dur = 8
     }
 
     function createLine(xScale, yScale) {
+        d3
+            .line()
+            .x((dataPoint) => {console.log(dataPoint[x_axis]);xScale(dataPoint[x_axis])})
+            .y(dataPoint => yScale(dataPoint[y_axis]))
         return d3
             .line()
             .x(dataPoint => xScale(dataPoint[x_axis]))

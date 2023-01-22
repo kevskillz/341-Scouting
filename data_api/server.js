@@ -40,6 +40,10 @@ function per_team_helper(data, fields, just_last = false) {
         entry['AUTO_POINTS'] = 0
         entry['CONES_INTAKED'] = 0
         entry['CUBES_INTAKED'] = 0
+        entry['TELE_POINTS'] = 0
+        entry['TELE_HIGH_PIECE_POINTS'] = 0
+        entry['TELE_MID_PIECE_POINTS'] = 0
+        entry['TELE_LOW_PIECE_POINTS'] = 0
 
     }
     data.push({})
@@ -79,17 +83,18 @@ function per_team_helper(data, fields, just_last = false) {
             if (val.includes('MOBILITY')) {
                 mobility++
             }
-            entry['AUTO_CHARGING_STATION_POINTS'] += entry[val] * POINTS[val]
             if (val.includes('AutoDockedState')) {
                 if (entry[val] == 'Docked') {
                     entry['AUTO_POINTS'] += POINTS.AUTO_DOCK
                     entry['TOTAL_POINTS'] += POINTS.AUTO_DOCK
+                    entry['AUTO_CHARGING_STATION_POINTS'] += POINTS.AUTO_DOCK
                     auto += POINTS.AUTO_DOCK
                     autocharge += POINTS.AUTO_DOCK
                     charge += POINTS.AUTO_DOCK
                 }
                 else if (entry[val] == 'Engaged') {
                     entry['AUTO_POINTS'] += POINTS.AUTO_ENGAGE
+                    entry['AUTO_CHARGING_STATION_POINTS'] += POINTS.AUTO_ENGAGE
                     entry['TOTAL_POINTS'] += POINTS.AUTO_ENGAGE
                     auto += POINTS.AUTO_ENGAGE
                     autocharge += POINTS.AUTO_ENGAGE
@@ -102,8 +107,10 @@ function per_team_helper(data, fields, just_last = false) {
             }
             if (val.includes('Auto') && (val.charAt(val.length - 1) - '0') <= 9) {
                 entry['AUTO_POINTS'] += (entry[val] != 0) * POINTS.AUTO_HIGH
-                entry['AUTO_HIGH_PIECE_POINTS'] += (entry[val] != 0) * POINTS[val]
-                entry['TOTAL_POINTS'] += (entry[val] != 0) * POINTS[val]
+                entry['AUTO_HIGH_PIECE_POINTS'] += (entry[val] != 0) * POINTS.AUTO_HIGH
+                entry['GAME_PIECE_POINTS'] += (entry[val] != 0) * POINTS.AUTO_HIGH
+                entry['HIGH_PIECE_POINTS'] += (entry[val] != 0) * POINTS.AUTO_HIGH
+                entry['TOTAL_POINTS'] += (entry[val] != 0) * POINTS.AUTO_HIGH
                 auto += (entry[val] != 0) * POINTS.AUTO_HIGH
                 autohigh += (entry[val] != 0) * POINTS.AUTO_HIGH 
                 if (entry[val] == 1) {
@@ -117,8 +124,10 @@ function per_team_helper(data, fields, just_last = false) {
             }
             else if (val.includes('Auto') && (val.charAt(val.length - 1) - '0') <= 18) {
                 entry['AUTO_POINTS'] += (entry[val] != 0) * POINTS.AUTO_MID
-                entry['AUTO_MID_PIECE_POINTS'] += (entry[val] != 0) * POINTS[val]
-                entry['TOTAL_POINTS'] += (entry[val] != 0) * POINTS[val]
+                entry['AUTO_MID_PIECE_POINTS'] += (entry[val] != 0) * POINTS.AUTO_MID
+                entry['GAME_PIECE_POINTS'] += (entry[val] != 0) * POINTS.AUTO_MID
+                entry['MID_PIECE_POINTS'] += (entry[val] != 0) * POINTS.AUTO_MID
+                entry['TOTAL_POINTS'] += (entry[val] != 0) * POINTS.AUTO_MID
                 auto += (entry[val] != 0) * POINTS.AUTO_MID
                 automid += (entry[val] != 0) * POINTS.AUTO_MID
                 if (entry[val] == 1) {
@@ -132,10 +141,12 @@ function per_team_helper(data, fields, just_last = false) {
             }
             else if (val.includes('Auto') && (val.charAt(val.length - 1) - '0') <= 27) {
                 entry['AUTO_POINTS'] += (entry[val] != 0) * POINTS.AUTO_LOW
-                entry['AUTO_LOW_PIECE_POINTS'] += (entry[val] != 0) * POINTS[val]
-                entry['TOTAL_POINTS'] += (entry[val] != 0) * POINTS[val]
+                entry['AUTO_LOW_PIECE_POINTS'] += (entry[val] != 0) * POINTS.AUTO_LOW
+                entry['GAME_PIECE_POINTS'] += (entry[val] != 0) * POINTS.AUTO_LOW
+                entry['LOW_PIECE_POINTS'] += (entry[val] != 0) * POINTS.AUTO_LOW
+                entry['TOTAL_POINTS'] += (entry[val] != 0) * POINTS.AUTO_LOW
                 auto += (entry[val] != 0) * POINTS.AUTO_LOW
-                autolow += (entry[val] != 0) * POINTS.TELE_LOW
+                autolow += (entry[val] != 0) * POINTS.AUTO_LOW
                 if (entry[val] == 1) {
                     cone += POINTS.AUTO_LOW
                     entry['CONE_PIECE_POINTS'] += POINTS.AUTO_LOW
@@ -147,8 +158,10 @@ function per_team_helper(data, fields, just_last = false) {
             }
             else if (val.includes('Tele') && (val.charAt(val.length - 1) - '0') <= 9) {
                 entry['TELE_POINTS'] += (entry[val] != 0) * POINTS.TELE_HIGH
-                entry['TELE_HIGH_PIECE_POINTS'] += (entry[val] != 0) * POINTS[val]
-                entry['TOTAL_POINTS'] += (entry[val] != 0) * POINTS[val]
+                entry['TELE_HIGH_PIECE_POINTS'] += (entry[val] != 0) * POINTS.TELE_HIGH
+                entry['TOTAL_POINTS'] += (entry[val] != 0) * POINTS.TELE_HIGH
+                entry['GAME_PIECE_POINTS'] += (entry[val] != 0) * POINTS.TELE_HIGH
+                entry['HIGH_PIECE_POINTS'] += (entry[val] != 0) * POINTS.TELE_HIGH
                 tele += (entry[val] != 0) * POINTS.TELE_HIGH
                 telehigh += (entry[val] != 0) * POINTS.TELE_HIGH
                 if (entry[val] == 1) {
@@ -162,8 +175,10 @@ function per_team_helper(data, fields, just_last = false) {
             }
             else if (val.includes('Tele') && (val.charAt(val.length - 1) - '0') <= 18) {
                 entry['TELE_POINTS'] += (entry[val] != 0) * POINTS.TELE_MID
-                entry['TELE_MID_PIECE_POINTS'] += (entry[val] != 0) * POINTS[val]
-                entry['TOTAL_POINTS'] += (entry[val] != 0) * POINTS[val]
+                entry['TELE_MID_PIECE_POINTS'] += (entry[val] != 0) * POINTS.TELE_MID
+                entry['TOTAL_POINTS'] += (entry[val] != 0) * POINTS.TELE_MID
+                entry['GAME_PIECE_POINTS'] += (entry[val] != 0) * POINTS.TELE_MID
+                entry['MID_PIECE_POINTS'] += (entry[val] != 0) * POINTS.TELE_MID
                 tele += (entry[val] != 0) * POINTS.TELE_MID
                 telemid += (entry[val] != 0) * POINTS.TELE_MID 
                 if (entry[val] == 1) {
@@ -177,8 +192,10 @@ function per_team_helper(data, fields, just_last = false) {
             }
             else if (val.includes('Tele') && (val.charAt(val.length - 1) - '0') <= 27) {
                 entry['TELE_POINTS'] += (entry[val] != 0) * POINTS.TELE_LOW
-                entry['TELE_LOW_PIECE_POINTS'] += (entry[val] != 0) * POINTS[val]
-                entry['TOTAL_POINTS'] += (entry[val] != 0) * POINTS[val]
+                entry['TELE_LOW_PIECE_POINTS'] += (entry[val] != 0) * POINTS.TELE_LOW
+                entry['TOTAL_POINTS'] += (entry[val] != 0) * POINTS.TELE_LOW
+                entry['GAME_PIECE_POINTS'] += (entry[val] != 0) * POINTS.TELE_LOW
+                entry['LOW_PIECE_POINTS'] += (entry[val] != 0) * POINTS.TELE_LOW
                 tele += (entry[val] != 0) * POINTS.TELE_LOW
                 telelow += (entry[val] != 0) * POINTS.TELE_LOW
                 if (entry[val] == 1) {
@@ -190,9 +207,10 @@ function per_team_helper(data, fields, just_last = false) {
                     entry['CUBE_PIECE_POINTS'] += POINTS.TELE_LOW
                 }
             }
-            entry['TELE_CHARGING_STATION_POINTS'] += entry[val] * POINTS[val]
+            
             if (val.includes('TeleDockedState')) {
                 if (entry[val] == 'Docked') {
+                    entry['TELE_CHARGING_STATION_POINTS'] += POINTS.TELE_DOCK
                     entry['TELE_POINTS'] += POINTS.TELE_DOCK
                     entry['TOTAL_POINTS'] += POINTS.TELE_DOCK
                     tele += POINTS.TELE_DOCK
@@ -200,6 +218,7 @@ function per_team_helper(data, fields, just_last = false) {
                     charge += POINTS.TELE_DOCK
                 }
                 else if (entry[val] == 'Engaged') {
+                    entry['TELE_CHARGING_STATION_POINTS'] += POINTS.TELE_ENGAGE
                     entry['TELE_POINTS'] += POINTS.TELE_ENGAGE
                     entry['TOTAL_POINTS'] += POINTS.TELE_ENGAGE
                     tele += POINTS.TELE_ENGAGE
@@ -207,6 +226,7 @@ function per_team_helper(data, fields, just_last = false) {
                     charge += POINTS.TELE_ENGAGE
                 }
                 else if (entry[val] == 'Parked') {
+                    entry['TELE_CHARGING_STATION_POINTS'] += POINTS.TELE_PARK
                     entry['TELE_POINTS'] += POINTS.TELE_PARK
                     entry['TOTAL_POINTS'] += POINTS.TELE_PARK
                     tele += POINTS.TELE_PARK
@@ -218,6 +238,26 @@ function per_team_helper(data, fields, just_last = false) {
             }
 
         }
+        // entry['GAME_PIECE_POINTS'] = parseFloat(entry['GAME_PIECE_POINTS'].toFixed(2));
+        // entry['HIGH_PIECE_POINTS'] = parseFloat(entry['HIGH_PIECE_POINTS'].toFixed(2));
+        // entry['LOW_PIECE_POINTS'] = parseFloat(entry['LOW_PIECE_POINTS'].toFixed(2));
+        // entry['MID_PIECE_POINTS'] = parseFloat(entry['MID_PIECE_POINTS'].toFixed(2));
+        // entry['AUTO_HIGH_PIECE_POINTS'] = parseFloat(entry['AUTO_HIGH_POINTS'].toFixed(2));
+        // entry['AUTO_LOW_PIECE_POINTS'] = parseFloat(entry['AUTO_LOW_PIECE_POINTS'].toFixed(2));
+        // entry['AUTO_MID_PIECE_POINTS'] = parseFloat(entry['AUTO_MID_PIECE_POINTS'].toFixed(2));
+        // entry['CONE_PIECE_POINTS'] = parseFloat(entry['CONE_PIECE_POINTS'].toFixed(2));
+        // entry['CUBE_PIECE_POINTS'] = parseFloat(entry['CUBE_PIECE_POINTS'].toFixed(2));
+        // entry['TOTAL_CHARGING_STATION_POINTS'] = parseFloat(entry['TOTAL_CHARGING_STATION_POINTS'].toFixed(2));
+        // entry['AUTO_CHARGING_STATION_POINTS'] = parseFloat(entry['AUTO_CHARGING_STATION_POINTS'].toFixed(2));
+        // entry['TELE_CHARGING_STATION_POINTS'] = parseFloat(entry['TELE_CHARGING_STATION_POINTS'].toFixed(2));
+        // entry['TOTAL_POINTS'] = parseFloat(entry['TOTAL_POINTS'].toFixed(2));
+        // entry['AUTO_POINTS'] = parseFloat(entry['AUTO_POINTS'].toFixed(2));
+        // entry['CONES_INTAKED'] = parseFloat(entry['CONES_INTAKED'].toFixed(2));
+        // entry['CUBES_INTAKED'] = parseFloat(entry['CUBES_INTAKED'].toFixed(2));
+        // entry['TELE_POINTS'] =  parseFloat(entry['TELE_POINTS'].toFixed(2));
+        // entry['TELE_HIGH_PIECE_POINTS'] =  parseFloat(entry['TELE_HIGH_PIECE_POINTS'].toFixed(2));
+        // entry['TELE_MID_PIECE_POINTS'] =  parseFloat(entry['TELE_MID_PIECE_POINTS'].toFixed(2));
+        // entry['TELE_LOW_PIECE_POINTS'] =  parseFloat(entry['TELE_LOW_POINTS'].toFixed(2));
         // data[data.length - 1][val + " PPG"] = tmp / Math.max(1, data.length - 1)
     }
     // let tmp2 = 0
@@ -231,28 +271,28 @@ function per_team_helper(data, fields, just_last = false) {
     //     }
     // }
     pts = auto + tele
-    data[data.length - 1]["CHARGING STATION PPG"] = (charge / Math.max(1, data.length - 1)).toFixed(2);
-    data[data.length - 1]["MOBILITY PPG"] = (mobility / Math.max(1, data.length - 1)).toFixed(2);
-    data[data.length - 1]["TELE CHARGING STATION PPG"] = (charge - autocharge / Math.max(1, data.length - 1)).toFixed(2);
-    data[data.length - 1]["CUBES INTAKED PG"] = (cubeintaked / Math.max(1, data.length - 1)).toFixed(2);
-    data[data.length - 1]["CONES INTAKED PG"] = (coneintaked / Math.max(1, data.length - 1)).toFixed(2);
-    data[data.length - 1]["HIGH AUTON PPG"] = (autohigh / Math.max(1, data.length - 1)).toFixed(2);
-    data[data.length - 1]["MID AUTON PPG"] = (automid / Math.max(1, data.length - 1)).toFixed(2);
-    data[data.length - 1]["LOW AUTON PPG"] = (autolow / Math.max(1, data.length - 1)).toFixed(2);
-    data[data.length - 1]["HIGH TELE PPG"] = (telehigh / Math.max(1, data.length - 1)).toFixed(2);
-    data[data.length - 1]["MID TELE PPG"] = (telemid / Math.max(1, data.length - 1)).toFixed(2);
-    data[data.length - 1]["LOW TELE PPG"] = (telelow / Math.max(1, data.length - 1)).toFixed(2);
-    data[data.length - 1]["CONE PPG"] = (cone / Math.max(1, data.length - 1)).toFixed(2);
-    data[data.length - 1]["CUBE PPG"] = (cube / Math.max(1, data.length - 1)).toFixed(2);
+    data[data.length - 1]["CHARGING STATION PPG"] = parseFloat((charge / Math.max(1, data.length - 1)).toFixed(2));
+    data[data.length - 1]["MOBILITY PPG"] = parseFloat((mobility / Math.max(1, data.length - 1)).toFixed(2));
+    data[data.length - 1]["TELE CHARGING STATION PPG"] = parseFloat((charge - autocharge / Math.max(1, data.length - 1)).toFixed(2));
+    data[data.length - 1]["CUBES INTAKED PG"] = parseFloat((cubeintaked / Math.max(1, data.length - 1)).toFixed(2));
+    data[data.length - 1]["CONES INTAKED PG"] = parseFloat((coneintaked / Math.max(1, data.length - 1)).toFixed(2));
+    data[data.length - 1]["HIGH AUTON PPG"] = parseFloat((autohigh / Math.max(1, data.length - 1)).toFixed(2));
+    data[data.length - 1]["MID AUTON PPG"] = parseFloat((automid / Math.max(1, data.length - 1)).toFixed(2));
+    data[data.length - 1]["LOW AUTON PPG"] = parseFloat((autolow / Math.max(1, data.length - 1)).toFixed(2));
+    data[data.length - 1]["HIGH TELE PPG"] = parseFloat((telehigh / Math.max(1, data.length - 1)).toFixed(2));
+    data[data.length - 1]["MID TELE PPG"] = parseFloat((telemid / Math.max(1, data.length - 1)).toFixed(2));
+    data[data.length - 1]["LOW TELE PPG"] = parseFloat((telelow / Math.max(1, data.length - 1)).toFixed(2));
+    data[data.length - 1]["CONE PPG"] = parseFloat((cone / Math.max(1, data.length - 1)).toFixed(2));
+    data[data.length - 1]["CUBE PPG"] = parseFloat((cube / Math.max(1, data.length - 1)).toFixed(2));
 
 
     // pts += tmp2;
     pts /= Math.max(1, data.length - 1)
     auto /= Math.max(1, data.length - 1)
-    data[data.length - 1]["GAME PIECE PPG"] = (pts - data[data.length - 1]["CHARGING STATION PPG"] - data[data.length - 1]["MOBILITY PPG"]).toFixed(2);
-    data[data.length - 1]["AUTO PPG"] = auto.toFixed(2);
-    data[data.length - 1]["TELE PPG"] = tele.toFixed(2);
-    data[data.length - 1]["TOTAL PPG"] = pts.toFixed(2);
+    data[data.length - 1]["GAME PIECE PPG"] = parseFloat((pts - data[data.length - 1]["CHARGING STATION PPG"] - data[data.length - 1]["MOBILITY PPG"]).toFixed(2));
+    data[data.length - 1]["AUTO PPG"] = parseFloat(auto.toFixed(2));
+    data[data.length - 1]["TELE PPG"] = parseFloat(tele.toFixed(2));
+    data[data.length - 1]["TOTAL PPG"] = parseFloat(pts.toFixed(2));
 
     if (just_last) return data[data.length - 1]
     return data
@@ -352,7 +392,6 @@ app.get('/from_comp/:comp/all_teams_arr', function (req, res) {
 
     })
 })
-console.log((1==1)*5)
 
 app.get('/team_fields', function (req, res) {
     const ret = [
