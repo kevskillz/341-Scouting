@@ -45,17 +45,17 @@ class _ScoringTable extends State<ScoringTable> {
   Icon getIcon(int row, int col) {
     if (TABLE_AUTO[row][col] != "empty") {
       return TABLE_AUTO[row][col] == "triangle"
-          ? const Icon(CustomIcons.traffic_cone, size: 100)
-          : const Icon(CustomIcons.cube, size: 100);
+          ? const Icon(CustomIcons.traffic_cone, size: 60)
+          : const Icon(CustomIcons.cube, size: 60);
     } else if (TABLE_TELEOP[row][col] != "empty") {
       return TABLE_TELEOP[row][col] == "triangle"
-          ? const Icon(CustomIcons.traffic_cone, size: 100)
-          : const Icon(CustomIcons.cube, size: 100);
+          ? const Icon(CustomIcons.traffic_cone, size: 60)
+          : const Icon(CustomIcons.cube, size: 60);
     }
     if ([0, 2, 3, 5, 6, 8].contains(col)) {
       if (row != 2) {
         return const Icon(CustomIcons.traffic_cone,
-            color: Colors.grey, size: 100);
+            color: Colors.grey, size: 60);
       }
       else{
       return const Icon(
@@ -65,7 +65,7 @@ class _ScoringTable extends State<ScoringTable> {
       }
     } else if ([1, 4, 7].contains(col)) {
       if (row != 2) {
-        return const Icon(CustomIcons.cube, color: Colors.grey, size: 100);
+        return const Icon(CustomIcons.cube, color: Colors.grey, size: 60);
       }
       else{
       return const Icon(
@@ -91,7 +91,7 @@ class _ScoringTable extends State<ScoringTable> {
           children: List.generate(9, (col) {
             return Container(
                 color: getColor(row, col),
-                height: 125,
+                height: 80,
                 child: TableRowInkWell(
                   onTap: () {
                     setState(() {

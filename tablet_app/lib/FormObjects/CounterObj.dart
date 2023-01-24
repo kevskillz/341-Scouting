@@ -49,7 +49,7 @@ class CounterObj extends StatelessWidget {
                 numberFieldDecoration: InputDecoration(
                   border: InputBorder.none,
                 ),
-                style: TextStyle(fontSize: 40),
+                style: TextStyle(fontSize: 30),
                 widgetContainerDecoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     border: Border.all(
@@ -69,8 +69,8 @@ class CounterObj extends StatelessWidget {
                     topLeft: Radius.circular(10),
                   ),
                 ),
-                incIconSize: 100,
-                decIconSize: 100,
+                incIconSize: 50,
+                decIconSize: 50,
                 incIcon: Icons.plus_one,
                 decIcon: Icons.exposure_neg_1,
                               controller: edit,

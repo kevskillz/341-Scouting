@@ -1,13 +1,17 @@
-//test
-var ScoutName = 'Jimmy';
-var ScoutScore = 0;
-var BET_COLOR = 'red';
+const ScoutName = ['Dathan', 'Kevin', 'Matt'];
+const ScoutScore = [0, 0, 0];
+const BET_COLOR = ['blue', 'blue', 'blue'];
+const OVER_UNDER = [1, 1, 1];
+const BET_AMOUNT = [25, 75, 50];
 var WinnerColor = 'blue';
-var BET_AMOUNT = 50;
-var ScoutScore = 0;
-var OVER_UNDER = 1;
-var MATCH_OUTCOME = 51; //not sure amount how we are determining this but innitially making it so Jimmy won if score over 50
-//matt correct variable names and also the website isn't propperly getting the data from match_fields
+var MATCH_OUTCOME = 51;
+const leaderboard = [];
+
+for(let i = 0; i < ScoutName.length; i++){
+            let scoutmodel = new Scout(ScoutName[i], BET_COLOR[i], WinnerColor,BET_AMOUNT[i], ScoutScore[i], OVER_UNDER[i], MATCH_OUTCOME);
+      leaderboard[i] = scoutmodel;
+}
+
 
 function Scout(ScoutName, BET_COLOR, WinnerColor,BET_AMOUNT, ScoutScore, OVER_UNDER, MATCH_OUTCOME) {
 
@@ -22,9 +26,8 @@ function Scout(ScoutName, BET_COLOR, WinnerColor,BET_AMOUNT, ScoutScore, OVER_UN
   //defining parameters of object
  
   this.ScoutScore = updateScore(ScoutScore, BET_COLOR, BET_AMOUNT, WinnerColor, OVER_UNDER, MATCH_OUTCOME);
- 
+ }
                   //meant to update score on leaderboard
-}
 
 function updateScore(ScoutScore, BET_COLOR, BET_AMOUNT, WinnerColor, OVER_UNDER, MATCH_OUTCOME) {
       if(OVER_UNDER == 0 && MATCH_OUTCOME <= 50 && WinnerColor === BET_COLOR){
@@ -55,8 +58,7 @@ function updateScore(ScoutScore, BET_COLOR, BET_AMOUNT, WinnerColor, OVER_UNDER,
  }
 }
 
-
-let Scout01 = new Scout(ScoutName, BET_COLOR, WinnerColor,BET_AMOUNT, ScoutScore, OVER_UNDER, MATCH_OUTCOME)
-console.log(Scout01);
-
-
+leaderboard.sort((a, b) => (a.ScoutScore < b.ScoutScore) ? 1 : -1);
+for(let k = 0; k< leaderboard.length; k++){
+console.log(leaderboard[k].ScoutName + " " + leaderboard[k].ScoutScore);
+}
