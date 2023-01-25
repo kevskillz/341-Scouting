@@ -1,11 +1,21 @@
-const ScoutName = ['Dathan', 'Kevin', 'Matt'];
-const ScoutScore = [0, 0, 0];
-const BET_COLOR = ['blue', 'blue', 'blue'];
-const OVER_UNDER = [1, 1, 1];
-const BET_AMOUNT = [25, 75, 50];
-var WinnerColor = 'blue';
-var MATCH_OUTCOME = 51;
+var WinnerColor = 'r';
+const ScoutScore = [0, 0];
 const leaderboard = [];
+
+$.ajax({
+  type: 'GET',
+  url: `${ROOT_URL}match_fields`,
+  success: function (fields) {
+
+      $.ajax({
+          type: 'GET',
+          url: `${ROOT_URL}from_comp/${localStorage.getItem('COMP')}`,
+          success: function (response) {
+          }
+        })
+      }
+    })
+      
 
 for(let i = 0; i < ScoutName.length; i++){
             let scoutmodel = new Scout(ScoutName[i], BET_COLOR[i], WinnerColor,BET_AMOUNT[i], ScoutScore[i], OVER_UNDER[i], MATCH_OUTCOME);

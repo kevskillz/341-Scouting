@@ -64,7 +64,33 @@ function per_team_helper(data, fields, just_last = false) {
     let automid = 0.0
     let autolow = 0.0
     let mobility = 0.0
-    
+    // let s1 = 0.0
+    // let s2 = 0.0
+    // let s3 = 0.0
+    // let s4 = 0.0
+    // let s5 = 0.0
+    // let s6 = 0.0
+    // let s7 = 0.0
+    // let s8 = 0.0
+    // let s9 = 0.0
+    // let s10 = 0.0
+    // let s11 = 0.0
+    // let s12 = 0.0
+    // let s13 = 0.0
+    // let s14 = 0.0
+    // let s15 = 0.0
+    // let s16 = 0.0
+    // let s17 = 0.0
+    // let s18 = 0.0
+    // let s19 = 0.0
+    // let s20 = 0.0
+    // let s21 = 0.0
+    // let s22 = 0.0
+    // let s23 = 0.0
+    // let s24 = 0.0
+    // let s25 = 0.0
+    // let s26 = 0.0
+    // let s27 = 0.0    
     
     for (let val of fields) {
         val = val.name
@@ -106,6 +132,9 @@ function per_team_helper(data, fields, just_last = false) {
                 // auto += entry[val] * POINTS[val]
             }
             if (val.includes('Auto') && (val.charAt(val.length - 1) - '0') <= 9) {
+                // if("s" + val.substring(4) === s1){
+                //     s1++
+                // }
                 entry['AUTO_POINTS'] += (entry[val] != 0) * POINTS.AUTO_HIGH
                 entry['AUTO_HIGH_PIECE_POINTS'] += (entry[val] != 0) * POINTS.AUTO_HIGH
                 entry['GAME_PIECE_POINTS'] += (entry[val] != 0) * POINTS.AUTO_HIGH
@@ -157,6 +186,9 @@ function per_team_helper(data, fields, just_last = false) {
                 }
             }
             else if (val.includes('Tele') && (val.charAt(val.length - 1) - '0') <= 9) {
+                // if("s" + val.substring(4) === s1){
+                //     s1++
+                // }
                 entry['TELE_POINTS'] += (entry[val] != 0) * POINTS.TELE_HIGH
                 entry['TELE_HIGH_PIECE_POINTS'] += (entry[val] != 0) * POINTS.TELE_HIGH
                 entry['TOTAL_POINTS'] += (entry[val] != 0) * POINTS.TELE_HIGH
@@ -233,6 +265,8 @@ function per_team_helper(data, fields, just_last = false) {
                     telecharge += POINTS.TELE_PARK
                     charge += POINTS.TELE_PARK
                 }
+
+
                 // entry['AUTO_POINTS'] += entry[val] * POINTS[val]
                 // auto += entry[val] * POINTS[val]
             }
