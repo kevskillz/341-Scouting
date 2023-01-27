@@ -48,85 +48,85 @@ function process_num(num) {
                     let s26 = 0.0
                     let s27 = 0.0   
                     for(let i = 0; i < matches; i++){
-                        if(response[0]['Auto1'] == 1 || response[0]['Auto1'] == 2|| response[0]['tele1'] == 1 || response[0]['tele1'] == 2){
+                        if(response[i]['Auto1'] == 1 || response[i]['Auto1'] == 2|| response[i]['Tele1'] == 1 || response[i]['Tele1'] == 2){
                             s1++;
                         }
-                        else if(response[0]['Auto2'] == 1 || response[0]['Auto2'] == 2|| response[0]['tele2'] == 1 || response[0]['tele2'] == 2){
+                        if(response[i]['Auto2'] == 1 || response[i]['Auto2'] == 2|| response[i]['Tele2'] == 1 || response[i]['Tele2'] == 2){
                             s2++;
                         }
-                        else if(response[0]['Auto3'] == 1 || response[0]['Auto3'] == 2|| response[0]['tele3'] == 1 || response[0]['tele3'] == 2){
+                        if(response[i]['Auto3'] == 1 || response[i]['Auto3'] == 2|| response[i]['Tele3'] == 1 || response[i]['Tele3'] == 2){
                             s3++;
                         }
-                        else if(response[0]['Auto4'] == 1 || response[0]['Auto4'] == 2|| response[0]['tele4'] == 1 || response[0]['tele4'] == 2){
+                        if(response[i]['Auto4'] == 1 || response[i]['Auto4'] == 2|| response[i]['Tele4'] == 1 || response[i]['Tele4'] == 2){
                             s4++;
                         }
-                        else if(response[0]['Auto5'] == 1 || response[0]['Auto5'] == 2|| response[0]['tele5'] == 1 || response[0]['tele5'] == 2){
+                        if(response[i]['Auto5'] == 1 || response[i]['Auto5'] == 2|| response[i]['Tele5'] == 1 || response[i]['Tele5'] == 2){
                             s5++;
                         }
-                        else if(response[0]['Auto6'] == 1 || response[0]['Auto6'] == 2|| response[0]['tele6'] == 1 || response[0]['tele6'] == 2){
+                        if(response[i]['Auto6'] == 1 || response[i]['Auto6'] == 2|| response[i]['Tele6'] == 1 || response[i]['Tele6'] == 2){
                             s6++;
                         }
-                        else if(response[0]['Auto7'] == 1 || response[0]['Auto7'] == 2|| response[0]['tele7'] == 1 || response[0]['tele7'] == 2){
+                        if(response[i]['Auto7'] == 1 || response[i]['Auto7'] == 2|| response[i]['Tele7'] == 1 || response[i]['Tele7'] == 2){
                             s7++;
                         }
-                        else if(response[0]['Auto8'] == 1 || response[0]['Auto8'] == 2|| response[0]['tele8'] == 1 || response[0]['tele8'] == 2){
+                        if(response[i]['Auto8'] == 1 || response[i]['Auto8'] == 2|| response[i]['Tele8'] == 1 || response[i]['Tele8'] == 2){
                             s8++;
                         }
-                        else if(response[0]['Auto9'] == 1 || response[0]['Auto9'] == 2|| response[0]['tele9'] == 1 || response[0]['tele9'] == 2){
+                         if(response[i]['Auto9'] == 1 || response[i]['Auto9'] == 2|| response[i]['Tele9'] == 1 || response[i]['Tele9'] == 2){
                             s9++;
                         }
-                        else if(response[0]['Auto10'] == 1 || response[0]['Auto10'] == 2|| response[0]['tele10'] == 1 || response[0]['tele10'] == 2){
-                            s10++;
+                         if(response[i]['Auto1i'] == 1 || response[i]['Auto1i'] == 2|| response[i]['Tele1i'] == 1 || response[i]['Tele1i'] == 2){
+                            s1i++;
                         }
-                        else if(response[0]['Auto11'] == 1 || response[0]['Auto11'] == 2|| response[0]['tele11'] == 1 || response[0]['tele11'] == 2){
+                         if(response[i]['Auto11'] == 1 || response[i]['Auto11'] == 2|| response[i]['Tele11'] == 1 || response[i]['Tele11'] == 2){
                             s11++;
                         }
-                        else if(response[0]['Auto12'] == 1 || response[0]['Auto12'] == 2|| response[0]['tele12'] == 1 || response[0]['tele12'] == 2){
+                         if(response[i]['Auto12'] == 1 || response[i]['Auto12'] == 2|| response[i]['Tele12'] == 1 || response[i]['Tele12'] == 2){
                             s12++;
                         }
-                        else if(response[0]['Auto13'] == 1 || response[0]['Auto13'] == 2|| response[0]['tele13'] == 1 || response[0]['tele13'] == 2){
+                         if(response[i]['Auto13'] == 1 || response[i]['Auto13'] == 2|| response[i]['Tele13'] == 1 || response[i]['Tele13'] == 2){
                             s13++;
                         }
-                        else if(response[0]['Auto14'] == 1 || response[0]['Auto14'] == 2|| response[0]['tele14'] == 1 || response[0]['tele14'] == 2){
+                         if(response[i]['Auto14'] == 1 || response[i]['Auto14'] == 2|| response[i]['Tele14'] == 1 || response[i]['Tele14'] == 2){
                             s14++;
                         }
-                        else if(response[0]['Auto15'] == 1 || response[0]['Auto15'] == 2|| response[0]['tele15'] == 1 || response[0]['tele15'] == 2){
+                         if(response[i]['Auto15'] == 1 || response[i]['Auto15'] == 2|| response[i]['Tele15'] == 1 || response[i]['Tele15'] == 2){
                             s15++;
                         }
-                        else if(response[0]['Auto16'] == 1 || response[0]['Auto16'] == 2|| response[0]['tele16'] == 1 || response[0]['tele16'] == 2){
+                         if(response[i]['Auto16'] == 1 || response[i]['Auto16'] == 2|| response[i]['Tele16'] == 1 || response[i]['Tele16'] == 2){
                             s16++;
                         }
-                        else if(response[0]['Auto17'] == 1 || response[0]['Auto17'] == 2|| response[0]['tele17'] == 1 || response[0]['tele17'] == 2){
+                         if(response[i]['Auto17'] == 1 || response[i]['Auto17'] == 2|| response[i]['Tele17'] == 1 || response[i]['Tele17'] == 2){
                             s17++;
                         }
-                        else if(response[0]['Auto18'] == 1 || response[0]['Auto18'] == 2|| response[0]['tele18'] == 1 || response[0]['tele18'] == 2){
+                         if(response[i]['Auto18'] == 1 || response[i]['Auto18'] == 2|| response[i]['Tele18'] == 1 || response[i]['Tele18'] == 2){
                             s18++;
                         }
-                        else if(response[0]['Auto19'] == 1 || response[0]['Auto19'] == 2|| response[0]['tele19'] == 1 || response[0]['tele19'] == 2){
+                         if(response[i]['Auto19'] == 1 || response[i]['Auto19'] == 2|| response[i]['Tele19'] == 1 || response[i]['Tele19'] == 2){
                             s19++;
                         }
-                        else if(response[0]['Auto20'] == 1 || response[0]['Auto20'] == 2|| response[0]['tele20'] == 1 || response[0]['tele20'] == 2){
-                            s20++;
+                         if(response[i]['Auto2i'] == 1 || response[i]['Auto2i'] == 2|| response[i]['Tele2i'] == 1 || response[i]['Tele2i'] == 2){
+                            s2i++;
                         }
-                        else if(response[0]['Auto21'] == 1 || response[0]['Auto21'] == 2|| response[0]['tele21'] == 1 || response[0]['tele21'] == 2){
+                         if(response[i]['Auto21'] == 1 || response[i]['Auto21'] == 2|| response[i]['Tele21'] == 1 || response[i]['Tele21'] == 2){
                             s21++;
                         }
-                        else if(response[0]['Auto22'] == 1 || response[0]['Auto22'] == 2|| response[0]['tele22'] == 1 || response[0]['tele22'] == 2){
+                         if(response[i]['Auto22'] == 1 || response[i]['Auto22'] == 2|| response[i]['Tele22'] == 1 || response[i]['Tele22'] == 2){
                             s22++;
                         }
-                        else if(response[0]['Auto23'] == 1 || response[0]['Auto23'] == 2|| response[0]['tele23'] == 1 || response[0]['tele23'] == 2){
+                         if(response[i]['Auto23'] == 1 || response[i]['Auto23'] == 2|| response[i]['Tele23'] == 1 || response[i]['Tele23'] == 2){
                             s23++;
                         }
-                        else if(response[0]['Auto24'] == 1 || response[0]['Auto24'] == 2|| response[0]['tele24'] == 1 || response[0]['tele24'] == 2){
+                         if(response[i]['Auto24'] == 1 || response[i]['Auto24'] == 2|| response[i]['Tele24'] == 1 || response[i]['Tele24'] == 2){
                             s24++;
                         }
-                        else if(response[0]['Auto25'] == 1 || response[0]['Auto25'] == 2|| response[0]['tele25'] == 1 || response[0]['tele25'] == 2){
+                         if(response[i]['Auto25'] == 1 || response[i]['Auto25'] == 2|| response[i]['Tele25'] == 1 || response[i]['Tele25'] == 2){
                             s25++;
                         }
-                        else if(response[0]['Auto26'] == 1 || response[0]['Auto26'] == 2|| response[0]['tele26'] == 1 || response[0]['tele26'] == 2){
+                         if(response[i]['Auto26'] == 1 || response[i]['Auto26'] == 2|| response[i]['Tele26'] == 1 || response[i]['Tele26'] == 2){
                             s26++;
                         }
-                        else if(response[0]['Auto27'] == 1 || response[0]['Auto27'] == 2|| response[0]['tele27'] == 1 || response[0]['tele27'] == 2){
+                         if(response[i]['Auto27'] == 1 || response[i]['Auto27'] == 2|| response[i]['Tele27'] == 1 || response[i]['Tele27'] == 2){
                             s27++;
                         }
                     }
@@ -158,46 +158,6 @@ function process_num(num) {
                     s26 /= matches;
                     s27 /= matches;
                     
-
-                    //     var row = document.getElementById('txtrow').value;
-                    //     var col = document.getElementById('txtcolumn').value;
-                    //     var divTable = document.getElementById('divTable');
-                    //     var str;
-                    //     var i, j;
-                    //     str = '<table border="1" width="100%">';
-                    
-                    //     for(i = 0; i < row; i++)
-                    //     {
-                    //         str += '<tr>';
-                            
-                    //         str += '<td style="background-color:'+ rgb(255 * s1, 0, 0) +';");>&nbsp;</td>';
-                    //         str += '<td style="background-color:'+ rgb(255 * s2, 0, 0) +';");>&nbsp;</td>';
-                    //         str += '<td style="background-color:'+ rgb(255 * s3, 0, 0) +';");>&nbsp;</td>';
-                    //         str += '<td style="background-color:'+ rgb(255 * s4, 0, 0) +';");>&nbsp;</td>';
-                    //         str += '<td style="background-color:'+ rgb(255 * s5, 0, 0) +';");>&nbsp;</td>';
-                    //         str += '<td style="background-color:'+ rgb(255 * s6, 0, 0) +';");>&nbsp;</td>';
-                    //         str += '<td style="background-color:'+ rgb(255 * s7, 0, 0) +';");>&nbsp;</td>';
-                    //         str += '<td style="background-color:'+ rgb(255 * s8, 0, 0) +';");>&nbsp;</td>';
-                    //         str += '<td style="background-color:'+ rgb(255 * s9, 0, 0) +';");>&nbsp;</td>';
-                    //         str += '<td style="background-color:'+ rgb(255 * s10, 0, 0) +';");>&nbsp;</td>';
-                    //         str += '<td style="background-color:'+ rgb(255 * s11, 0, 0) +';");>&nbsp;</td>';
-                    //         str += '<td style="background-color:'+ rgb(255 * s12, 0, 0) +';");>&nbsp;</td>';
-                    //         str += '<td style="background-color:'+ rgb(255 * s13, 0, 0) +';");>&nbsp;</td>';
-                    //         str += '<td style="background-color:'+ rgb(255 * s14, 0, 0) +';");>&nbsp;</td>';
-                    //         str += '<td style="background-color:'+ rgb(255 * s15, 0, 0) +';");>&nbsp;</td>';
-                    //         str += '<td style="background-color:'+ rgb(255 * s16, 0, 0) +';");>&nbsp;</td>';
-                    //         str += '<td style="background-color:'+ rgb(255 * s17, 0, 0) +';");>&nbsp;</td>';
-                    //         str += '<td style="background-color:'+ rgb(255 * s18, 0, 0) +';");>&nbsp;</td>';
-                    //         str += '<td style="background-color:'+ rgb(255 * s19, 0, 0) +';");>&nbsp;</td>';
-                    //         str += '<td style="background-color:'+ rgb(255 * s20, 0, 0) +';");>&nbsp;</td>';
-                    //         str += '<td style="background-color:'+ rgb(255 * s21, 0, 0) +';");>&nbsp;</td>';
-                    //         str += '<td style="background-color:'+ rgb(255 * s22, 0, 0) +';");>&nbsp;</td>';
-                    //         str += '<td style="background-color:'+ rgb(255 * s23, 0, 0) +';");>&nbsp;</td>';
-                    //         str += '<td style="background-color:'+ rgb(255 * s24, 0, 0) +';");>&nbsp;</td>';
-                    //         str += '<td style="background-color:'+ rgb(255 * s25, 0, 0) +';");>&nbsp;</td>';
-                    //         str += '<td style="background-color:'+ rgb(255 * s26, 0, 0) +';");>&nbsp;</td>';
-                    //         str += '<td style="background-color:'+ rgb(255 * s27, 0, 0) +';");>&nbsp;</td>';
-
                             
                     //         str += '</tr>';
                     //     }
@@ -208,6 +168,11 @@ function process_num(num) {
                     
                     // createTable(response, fields, spec, "match_table", [{ column: "MatchNumber", dir: "asc" }],150)
                     
+                    // var mySpreadsheet = 'https://docs.google.com/spreadsheets/d/17wJLCLz0G-vl5esqIfKTuwK8kNjDsMTxZEZ1IOZ06IA';
+
+                    // $('#statistics').sheetrock({
+                    //     url: mySpreadsheet
+                    //   });
 
                     /**
                      * REVERSE ORDER OF DIV INIT
@@ -221,6 +186,7 @@ function process_num(num) {
                     document.getElementById('auto_graph').innerHTML = '';
                     document.getElementById('spider').innerHTML = '';
                     document.getElementById('heatMap').innerHTML = '';
+                    // document.getElementById('statistics').innerHTML = '';
                     
                    
                     
@@ -238,9 +204,9 @@ function process_num(num) {
 
                     createSpider([last],['TELE CHARGING STATION PPG','AUTO PPG','GAME PIECE PPG'],'spider');
 
-                    // createHeatMap(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23, s24, s25, s26, s27);
+                    createHeatMap(heatMap, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23, s24, s25, s26, s27);
                    
-                    createHeatMap(heatMap, 0.001, 0.02, 0.03, 0.04, 0.05, 0.06, 0.000007, 0.08, 0.09, 0.1, 0.1, 0.2, 0.3, 0.5, 0.6, 0.7, 0.7, 0.8, 0.8, 0.10, 0.11, 0.11, 0.11, 0.11, 0.11, 0.11, 0.23,)
+                    // createHeatMap(heatMap, 0.001, 0.02, 0.03, 0.04, 0.05, 0.06, 0.000007, 0.08, 0.09, 0.1, 0.1, 0.2, 0.3, 0.5, 0.6, 0.7, 0.7, 0.8, 0.8, 0.10, 0.11, 0.11, 0.11, 0.11, 0.1188, 0.11, 0.23);
 
 
                     console.log(response)

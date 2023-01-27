@@ -1,5 +1,6 @@
-var WinnerColor = 'r';
-const ScoutScore = [0, 0];
+var WinnerColor = 'r'; // will get from tba later
+//ScoutScore is supposed to be the amount of money the said scout has
+
 const leaderboard = [];
 
 $.ajax({
@@ -19,7 +20,7 @@ $.ajax({
 
 for(let i = 0; i < ScoutName.length; i++){
             let scoutmodel = new Scout(ScoutName[i], BET_COLOR[i], WinnerColor,BET_AMOUNT[i], ScoutScore[i], OVER_UNDER[i], MATCH_OUTCOME);
-      leaderboard[i] = scoutmodel;
+      leaderboard[i] = scoutmodel;kk  
 }
 
 
@@ -71,4 +72,7 @@ function updateScore(ScoutScore, BET_COLOR, BET_AMOUNT, WinnerColor, OVER_UNDER,
 leaderboard.sort((a, b) => (a.ScoutScore < b.ScoutScore) ? 1 : -1);
 for(let k = 0; k< leaderboard.length; k++){
 console.log(leaderboard[k].ScoutName + " " + leaderboard[k].ScoutScore);
+
+
+
 }

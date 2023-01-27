@@ -5,7 +5,7 @@ $(document).mousemove(function (e) {
 }).mouseover(); // call the handler immediately
 
 
-const defaultComp = 'Ramp Riot'
+const defaultComp = 'Hatboro'
 const ROOT_URL = 'http://127.0.0.1:3030/'
 
 
@@ -306,67 +306,37 @@ function createSpider(data, fields, div_id, width=900) {
 
 }
 
-function createHeatMap(div_id, ss1, ss2, ss3, ss4, ss5, ss6, ss7, ss8, ss9, ss10, ss11, ss12, ss13, ss14, ss15, ss16, ss17, ss18, ss19, ss20, ss21, ss22, ss23, ss24, ss26, ss27){
-    // anychart.onDocumentReady(function () {       
-    //     var data = [
-    //       { x: "1", y: "1", heat: ss1 },
-    //       { x: "2", y: "1", heat: ss2 },
-    //       { x: "3", y: "1", heat: ss3 },
-    //       { x: "4", y: "1", heat: ss4 },
-    //       { x: "5", y: "1", heat: ss5 },
-    //       { x: "6", y: "1", heat: ss6 },
-    //       { x: "7", y: "1", heat: ss7 },
-    //       { x: "8", y: "1", heat: ss8 },
-    //       { x: "9", y: "1", heat: ss9 },
-    //       { x: "1", y: "2", heat: ss10 },
-    //       { x: "2", y: "2", heat: ss11 },
-    //       { x: "3", y: "2", heat: ss12 },
-    //       { x: "4", y: "2", heat: ss13 },
-    //       { x: "5", y: "2", heat: ss14 },
-    //       { x: "6", y: "2", heat: ss15 },
-    //       { x: "7", y: "2", heat: ss16 },
-    //       { x: "8", y: "2", heat: ss17 },
-    //       { x: "9", y: "2", heat: ss18 },
-    //       { x: "1", y: "3", heat: ss19 },
-    //       { x: "2", y: "3", heat: ss20 },
-    //       { x: "3", y: "3", heat: ss21 },
-    //       { x: "4", y: "3", heat: ss22 },
-    //       { x: "5", y: "3", heat: ss23 },
-    //       { x: "6", y: "3", heat: ss24 },
-    //       { x: "7", y: "3", heat: ss25 },
-    //       { x: "8", y: "3", heat: ss26 },
-    //       { x: "9", y: "3", heat: ss27 },
-    //     ];        
-    var data = [
-        {
-          z: [[1, null, 30, 50, 1], [20, 1, 60, 80, 30], [30, 60, 1, -10, 20]],
-          x: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-          y: ['Morning', 'Afternoon', 'Evening'],
-          type: 'heatmap',
-          hoverongaps: false
-        }
+function createHeatMap(div_id, ss1, ss2, ss3, ss4, ss5, ss6, ss7, ss8, ss9, ss10, ss11, ss12, ss13, ss14, ss15, ss16, ss17, ss18, ss19, ss20, ss21, ss22, ss23, ss24, ss25, ss26, ss27){
+    
+    var xValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+    var yValues = ['1', '2', '3'];
+    
+    var zValues = [
+       [ss19, ss20, ss21, ss22, ss23, ss24, ss25, ss26, ss27],
+        [ss10, ss11, ss12, ss13, ss14, ss15, ss16, ss17, ss18],
+      [ss1, ss2, ss3, ss4, ss5, ss6, ss7, ss8, ss9],
+    ];
+
+    var colorscaleValue = [
+        [0, '#FFE6E6'],
+        [1, '#FF0000']
       ];
-      
+
+    var data = [{
+        x: xValues,
+        y: yValues,
+        z: zValues,
+        type: 'heatmap',
+        colorscale: colorscaleValue,
+        showscale: false
+      }];
+
+      console.log(ss7);
+      console.log(ss25);
+      console.log(ss3);
+
       Plotly.newPlot(div_id, data);
-        // // create the chart and set the data
-        // chart = anychart.heatMap(data);
-        
-        // // set the chart title
-        // chart.title("Scoring Heat Map");
-        
-        // // create and configure the color scale.
-        // var customColorScale = anychart.scales.linearColor();
-        // customColorScale.colors(["#FDFDFD", "#FF2D00"]);
-        
-        // // set the color scale as the color scale of the chart
-        // chart.colorScale(customColorScale);
-        
-        // // set the container id
-        // chart.container("heatMap");
-        
-        // // initiate drawing the chart
-        // chart.draw();
-        
       };
 
 
