@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">]
-  <!-- Load jQuery and Sheetrock from Unpkg -->
+<!-- Load jQuery and Sheetrock from Unpkg -->
 
 
 <head>
-  
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
- 
+
   <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+  <!-- <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+  <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script> -->
   <link rel="stylesheet" href="css/styles-merged.css">
   <link rel="stylesheet" href="css/style.min.css">
   <link rel="stylesheet" href="css/custom.css">
@@ -17,7 +19,7 @@
       <script src="js/vendor/html5shiv.min.js"></script>
       <script src="js/vendor/respond.min.js"></script>
     <![endif]-->
->
+  >
 
 </head>
 
@@ -30,7 +32,7 @@
   <header role="banner" class="probootstrap-header">
     <div class="container">
       <a href="index.html" class="probootstrap-logo">Team 341 Scouting App<span>.</span></a>
-      <a><span  id="comp"></span></a>
+      <a><span id="comp"></span></a>
 
 
       <a href="#" class="probootstrap-burger-menu visible-xs"><i>Menu</i></a>
@@ -40,7 +42,7 @@
         <ul class="probootstrap-main-nav">
           <li><a href="#">Comp Chooser</a>
             <ul>
-<li><a onclick="chooseComp(this)">Ramp Riot</a></li>
+              <li><a onclick="chooseComp(this)">Ramp Riot</a></li>
               <li><a onclick="chooseComp(this)">HAVOC</a></li>
               <li><a onclick="chooseComp(this)">Hatboro</a></li>
             </ul>
@@ -50,6 +52,7 @@
           <li><a href="rawData.html">Raw Data</a></li>
           <li><a href="matchPredict.html">Match Predictor</a></li>
           <li><a href="casino.html">Casino</a></li>
+          <li><a href="notes.html">Notes</a></li>
         </ul>
 
       </nav>
@@ -77,14 +80,15 @@
         </div>
       </div>
     </div>
+    <!-- <img src=”https://live.staticflickr.com/65535/52654677925_85ace5d639_b.jpg”> -->
+    <!-- <a data-flickr-embed="true" href="https://www.flickr.com/gp/team341/e4b8P677Sv" title="341"><img src="https://live.staticflickr.com/65535/52654677925_85ace5d639_b.jpg" width="1024" height="768" alt="341"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script> -->
+    <strong id="pitTitle"></strong>
 
-  <strong id="pitTitle"></strong>
+    <!-- <iframe width="402" height="346" frameborder="0" scrolling="no" src="https://onedrive.live.com/embed?resid=C7CD513DA20B3057%21979&authkey=%21ALVwfONtv6I5N78&em=2&AllowTyping=True&wdHideHeaders=True&wdInConfigurator=True&wdInConfigurator=True&edesNext=true&edrtees6=false&resen=false&ed1JS=false"></iframe> -->
 
-  <!-- <iframe width="402" height="346" frameborder="0" scrolling="no" src="https://onedrive.live.com/embed?resid=C7CD513DA20B3057%21979&authkey=%21ALVwfONtv6I5N78&em=2&AllowTyping=True&wdHideHeaders=True&wdInConfigurator=True&wdInConfigurator=True&edesNext=true&edrtees6=false&resen=false&ed1JS=false"></iframe> -->
-
-  <div id="pit_table"></div>
-  <div id="pit_table1"></div>
-  <div id="pit_table2"></div>
+    <div id="pit_table"></div>
+    <div id="pit_table1"></div>
+    <div id="pit_table2"></div>
 
     <!-- <div>
       <select id="filter-field">
@@ -111,31 +115,38 @@
     </div> -->
   </body>
   <!-- <div id="match_table"></div> -->
-  
-  
+
+
 
   <html>
-<head>
-</head>
-<body>
+
+  <head>
+  </head>
+
+  <body>
 
 
-  <!DOCTYPE html>
-  <html>
+    <!DOCTYPE html>
+    <html>
+
     <head>
       <title>Search By Team</title>
       <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-core.min.js"></script>
       <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-heatmap.min.js"></script>
 
-  
-</body>
-</html>
-<!-- <script src="https://unpkg.com/handlebars@4.5.0/dist/handlebars.min.js"></script> -->
-<script src="https://unpkg.com/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-<script src="https://unpkg.com/sheetrock@1.2.0/dist/sheetrock.min.js"></script> 
+      <!-- <a href="https://imgbox.com/r5DvT40P" target="_blank"><img src="https://thumbs2.imgbox.com/ea/95/r5DvT40P_t.jpg" alt="image host"/></a> <a href="https://imgbox.com/EYq0wg9g" target="_blank"><img src="https://thumbs2.imgbox.com/8b/be/EYq0wg9g_t.jpg" alt="image host"/></a> -->
+    </body>
 
-<script src="lib.js"></script>
-<script src="search_by_team.js"></script>
+  </html>
+  <!-- <script src="https://unpkg.com/handlebars@4.5.0/dist/handlebars.min.js"></script> -->
+  <script src="https://unpkg.com/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://unpkg.com/sheetrock@1.2.0/dist/sheetrock.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@7/dist/polyfill.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.js"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dropbox.js/10.34.0/Dropbox-sdk.min.js" integrity="sha512-PTKs+sPreCz6TLyLj9CYx3LxxPZmY5k1k5Yb5Y5mUQzngf/XUxNdtyWwYjcPcOZJm4wSYiicZr0kotLmDIRFmQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+  <script src="lib.js"></script>
+  <script src="search_by_team.js"></script>
 
 
   <table id="statistics" class="table table-condensed table-striped" hidden="hidden"></table>
@@ -178,10 +189,55 @@
     <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
   </div>
 
+  <!-- <script type="text/javascript">
+    const CLIENT_ID = '485503149559-91dhdgnthntr7s77o7nrqef6p379mae0.apps.googleusercontent.com';
+      const API_KEY = 'AIzaSyAwZO1xi3trI9aP4CFv9_XwLqhjyEffS7E';
+
+      // Discovery doc URL for APIs used by the quickstart
+      const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/drive/v3/rest';
+
+      // Authorization scopes required by the API; multiple scopes can be
+      // included, separated by spaces.
+      const SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly';
+
+    function gapiLoaded() {
+
+      gapi.load('client', initializeGapiClient);
+    }
+
+    /**
+    * Callback after the API client is loaded. Loads the
+    * discovery doc to initialize the API.
+    */
+    async function initializeGapiClient() {
+      await gapi.client.init({
+        apiKey: API_KEY,
+        discoveryDocs: [DISCOVERY_DOC],
+      });
+      gapiInited = true;
+      maybeEnableButtons();
+    }
+
+    /**
+    * Callback after Google Identity Services are loaded.
+    */
+    function gisLoaded() {
+      tokenClient = google.accounts.oauth2.initTokenClient({
+        client_id: CLIENT_ID,
+        scope: SCOPES,
+        callback: '', // defined later
+      });
+      gisInited = true;
+      maybeEnableButtons();
+    }
+  </script>
+ -->
 
   <script src="js/scripts.min.js"></script>
   <script src="js/main.min.js"></script>
   <script src="js/custom.js"></script>
+  <!-- <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script> -->
+  <!-- <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script> -->
 </body>
 
 </html>

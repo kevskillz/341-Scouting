@@ -7,7 +7,7 @@ $(document).mousemove(function (e) {
 
 const defaultComp = 'Hatboro'
 const ROOT_URL = 'http://127.0.0.1:3030/'
-
+const COMP_ID = 'nytr'
 
 const TableSpec = {
     NORMAL: 0,
@@ -38,7 +38,7 @@ if (localStorage.getItem("COMP")===null) {
 
 }
 else {
-    document.getElementById("comp").innerText=localStorage.getItem("COMP") +" Chosen"
+    document.getElementById("comp").innerText=localStorage.getItem("COMP") +" Chosen";
 
 }
 

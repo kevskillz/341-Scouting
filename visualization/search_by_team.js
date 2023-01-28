@@ -1,8 +1,11 @@
 var googleResponse;
+
+
+
 function process_num(num) {
 
 
-   
+
     $.ajax({
         type: 'GET',
         url: `${ROOT_URL}match_fields`,
@@ -14,7 +17,7 @@ function process_num(num) {
                 success: function (response) {
 
                     let name = response[0]['TeamName'];
-                    
+
 
                     console.log(response)
                     // let spec = new Array(fields.length).fill(TableSpec.NORMAL)
@@ -238,19 +241,19 @@ function process_num(num) {
                         row = row.c;
                         if (row[teamIndex].v == num) {
                             let val = {}
-                
+
                             for (let person of people) {
                                 console.log(person.Name);
                                 console.log(row[person.Index]);
                                 let _name = person.Name
-                                val[_name] = row[person.Index]==null?'':row[person.Index].v;
+                                val[_name] = row[person.Index] == null ? '' : row[person.Index].v;
                             }
                             // 
                             createTable([val], fields, [], "test", null, null, false)
                             break;
                         }
                     }
-                
+
                     // document.getElementById('noteTitle').innerHTML = name + ' Notes';
 
 
@@ -358,6 +361,13 @@ function process_num(num) {
                     //     createTable(r3, fields, spec, "pit_table2", null, null, false);
 
 
+                    // const albumId = '72177720305592723/with/52654677925';
+                    // const apiKey = 'bfbb2a323532755e723a76ac42107400';
+                    // fetch(`https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=${apiKey}&photoset_id=${albumId}&format=json&nojsoncallback=1`) 
+                    // .then(response => response.json()) 
+                    // .then(data => { console.log(data.photoset.photo.map(photo => photo.title));
+                // });
+
                 },
                 error: function (xhr, status, err) {
                     console.log(xhr.responseText);
@@ -400,3 +410,10 @@ jQuery(document).ready(function ($) {
     //     url: mySpreadsheet
     // });
 });
+
+
+/**
+ * Callback after api.js is loaded.
+ */
+
+

@@ -427,6 +427,22 @@ app.get('/from_comp/:comp/all_teams_arr', function (req, res) {
     })
 })
 
+app.get('/casino_data', function (req, res) {
+
+    lib.query().then((conn) => {
+
+        conn.query(`SELECT * FROM Casino_Data`, function (err, result, fields) {
+            if (err) { console.log(err); return; }
+            
+            res.send(result)
+        });
+    }).catch((msg) => {
+        console.log(msg)
+        res.send(msg)
+
+    })
+})
+
 app.get('/team_fields', function (req, res) {
     const ret = [
         { Field: 'HIGH AUTON PPG' },
@@ -667,6 +683,31 @@ app.get('/add_match/:sepBig/:sepSmall/:data', function (req, res) {
         res.send(msg)
     })
 })
+function getCasinoData(sepBig, sepSmall, data) {
+    let final = [];
+    for (let el of data.split(sepBig)) {
+        let arr = el.split(sepSmall);
+        let name = arr[1]
+        let score = arr[0]
+        let matchesAccount = arr[2]
+        final.push(`(${score},'${name}','${matchesAccount}')`);
+    }
+    return final.join(',');
+}
+// name,score|name,score|
+app.get('/add_casino/:sepBig/:sepSmall/:data', function (req, res) {
+    lib.query().then((conn) => {
+            conn.query(`REPLACE INTO Casino_Data VALUES ${getCasinoData(req.params.sepBig, req.params.sepSmall, req.params.data)}`, function (err, result, fields) {
+                if (err) { console.log(err); return; }
+                res.send(result)
+            });
+
+    }).catch((msg) => {
+        console.log(msg)
+        res.send(msg)
+    })
+})
+
 
 
 
