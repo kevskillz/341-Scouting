@@ -91,3 +91,21 @@ body {
   .axis:hover {
     opacity: 1;
   }
+  #chart{
+    position:absolute;
+    width:500px;
+    height:500px;
+    top:0;
+    left:0;
+}
+#question{
+    position: absolute;
+    width:400px;
+    height:500px;
+    top:0;
+    left:520px;
+}
+#question h2{
+    font-size: 50px;
+    font-weight: bold;
+    font-family: "Helvetica Neue", }
