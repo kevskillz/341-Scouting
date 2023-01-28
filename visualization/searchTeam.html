@@ -2,7 +2,9 @@
 <html lang="en">]
   <!-- Load jQuery and Sheetrock from Unpkg -->
 
+
 <head>
+  
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
  
@@ -15,9 +17,8 @@
       <script src="js/vendor/html5shiv.min.js"></script>
       <script src="js/vendor/respond.min.js"></script>
     <![endif]-->
-    <!-- <script src="https://unpkg.com/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-<script src="https://unpkg.com/sheetrock@1.2.0/dist/sheetrock.min.js"></script>
-<script src="https://unpkg.com/handlebars@4.5.0/dist/handlebars.min.js"></script> -->
+>
+
 </head>
 
 <body>
@@ -111,7 +112,7 @@
   </body>
   <!-- <div id="match_table"></div> -->
   
-  <strong id="dataTitle"></strong>
+  
 
   <html>
 <head>
@@ -122,16 +123,25 @@
   <!DOCTYPE html>
   <html>
     <head>
-      <title>Basic JavaScript Heat Map Chart</title>
+      <title>Search By Team</title>
       <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-core.min.js"></script>
       <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-heatmap.min.js"></script>
 
   
 </body>
 </html>
+<!-- <script src="https://unpkg.com/handlebars@4.5.0/dist/handlebars.min.js"></script> -->
+<script src="https://unpkg.com/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+<script src="https://unpkg.com/sheetrock@1.2.0/dist/sheetrock.min.js"></script> 
 
-  <!-- <table id="statistics" class="table table-condensed table-striped"></table> -->
+<script src="lib.js"></script>
+<script src="search_by_team.js"></script>
 
+
+  <table id="statistics" class="table table-condensed table-striped" hidden="hidden"></table>
+  <strong id="noteTitle"></strong>
+  <div id="test"></div>
+  <strong id="dataTitle"></strong>
   <div id="heatMap"></div>
   <div id="spider"></div>
   <div id="auto_graph"></div>
@@ -154,8 +164,6 @@
   <script src='https://cdn.plot.ly/plotly-2.16.1.min.js'></script>
   <link rel="stylesheet" href="style.css">
 
-  <script src="lib.js"></script>
-  <script src="search_by_team.js"></script>
 
 
 
