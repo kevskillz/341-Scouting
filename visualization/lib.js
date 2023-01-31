@@ -339,7 +339,56 @@ function createHeatMap(div_id, ss1, ss2, ss3, ss4, ss5, ss6, ss7, ss8, ss9, ss10
       Plotly.newPlot(div_id, data);
       };
 
+      function createTotalPPGStackedBarChart(data, div_id, w = 690, h = 600) {
 
+        var teams = [];
+        var cones = [];
+        var cubes = [];
+        var autos = [];
+        var telec = [];
+        
+        for(let i = 0; i < data.length; i++){
+            teams.push("Team " + data[i]["TeamName"].toString());
+            cones.push(data[i]["CONE PPG"]);
+            cubes.push(data[i]["CUBE PPG"]);
+            autos.push(data[i]["AUTO PPG"]);
+            telec.push(data[i]["TELE CHARGING STATION PPG"]);
+        }
+        var trace1 = {
+            x: teams,
+            y: autos,
+            name: 'Auto Points',
+            type: 'bar'
+          };
+          
+          var trace2 = {
+            x: teams,
+            y: cubes,
+            name: 'Cubes Points',
+            type: 'bar'
+          };
+    
+          var trace3 = {
+            x: teams,
+            y: cones,
+            name: 'Cones Points',
+            type: 'bar'
+          };
+    
+          var trace4 = {
+            x: teams,
+            y: telec,
+            name: 'Tele Charging Station Points',
+            type: 'bar'
+          };
+          
+          var data = [trace1, trace2, trace3, trace4];
+          
+          var layout = {barmode: 'stack'};
+          
+          Plotly.newPlot(div_id, data, layout);
+    }
+    
 
 function createTable(data, fields, spec, id, initialSort, height = 500, haveFilter = true) {
     temp = []

@@ -41,7 +41,8 @@ $.ajax({
 
                 spec = new Array(response.length).fill(TableSpec.NORMAL)
                 createTable(response, fields, spec, 'table')
-                createBarChart(response, 'TeamName', 'TOTAL PPG', 'bar_chart')
+                // createBarChart(response, 'TeamName', 'TOTAL PPG', 'bar_chart')
+                createTotalPPGStackedBarChart(response, 'bar_chart');
 
             },
             error: function (xhr, status, err) {
