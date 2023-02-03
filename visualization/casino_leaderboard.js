@@ -67,7 +67,7 @@ $.ajax({
 
     $.ajax({
       type: 'GET',
-      url: `${ROOT_URL}from_comp/${localStorage.getItem('COMP')}`,
+      url: `${ROOT_URL}all`,
       success: function (response) {
         $.ajax({
           type: 'GET',

@@ -337,6 +337,22 @@ app.use((req, res, next) => {
     next();
 });
 
+app.get('/all', function (req, res) {
+
+    lib.query().then((conn) => {
+
+        conn.query(`SELECT * FROM MATCH_DATA`, function (err, result, fields) {
+            if (err) { console.log(err); return; }
+            res.send(result)
+        });
+    }).catch((msg) => {
+        console.log(msg)
+        res.send(msg)
+
+    })
+})
+
+
 app.get('/from_comp/:comp/team/:team', function (req, res) {
 
     lib.query().then((conn) => {
@@ -351,6 +367,7 @@ app.get('/from_comp/:comp/team/:team', function (req, res) {
 
     })
 })
+
 
 
 app.get('/from_comp/:comp/team/:team', function (req, res) {
