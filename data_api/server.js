@@ -97,7 +97,8 @@ function per_team_helper(data, fields, just_last = false) {
         for (let entry in data) {
             if (entry == data.length - 1) break
             entry = data[entry]
-            console.log(entry)
+            // console.log(entry)
+            // console.log(data.length)
             if (val.includes('ConesIntaked')) {
                 entry['CONES_INTAKED'] += entry[val]
                 coneintaked++
@@ -131,7 +132,7 @@ function per_team_helper(data, fields, just_last = false) {
                 // entry['AUTO_POINTS'] += entry[val] * POINTS[val]
                 // auto += entry[val] * POINTS[val]
             }
-            if (val.includes('Auto') && (val.charAt(val.length - 1) - '0') <= 9) {
+            if (val.includes('Auto') &&  (val.charAt(val.length - 1) - '0') <= 9 && !(val.charAt(val.length-2)>='0' && val.charAt(val.length-2)<='9')) {
                 // if("s" + val.substring(4) === s1){
                 //     s1++
                 // }
@@ -151,7 +152,7 @@ function per_team_helper(data, fields, just_last = false) {
                     entry['CUBE_PIECE_POINTS'] += POINTS.AUTO_HIGH
                 }
             }
-            else if (val.includes('Auto') && (val.charAt(val.length - 1) - '0') <= 18) {
+            else if (val.includes('Auto') && ((val.charAt(val.length - 2) - '0')*10+(val.charAt(val.length - 1) - '0')) <= 18) {
                 entry['AUTO_POINTS'] += (entry[val] != 0) * POINTS.AUTO_MID
                 entry['AUTO_MID_PIECE_POINTS'] += (entry[val] != 0) * POINTS.AUTO_MID
                 entry['GAME_PIECE_POINTS'] += (entry[val] != 0) * POINTS.AUTO_MID
@@ -168,7 +169,7 @@ function per_team_helper(data, fields, just_last = false) {
                     entry['CUBE_PIECE_POINTS'] += POINTS.AUTO_MID
                 }
             }
-            else if (val.includes('Auto') && (val.charAt(val.length - 1) - '0') <= 27) {
+            else if (val.includes('Auto') && ((val.charAt(val.length - 2) - '0')*10+(val.charAt(val.length - 1) - '0')) <= 27) {
                 entry['AUTO_POINTS'] += (entry[val] != 0) * POINTS.AUTO_LOW
                 entry['AUTO_LOW_PIECE_POINTS'] += (entry[val] != 0) * POINTS.AUTO_LOW
                 entry['GAME_PIECE_POINTS'] += (entry[val] != 0) * POINTS.AUTO_LOW
@@ -185,7 +186,7 @@ function per_team_helper(data, fields, just_last = false) {
                     entry['CUBE_PIECE_POINTS'] += POINTS.AUTO_LOW
                 }
             }
-            else if (val.includes('Tele') && (val.charAt(val.length - 1) - '0') <= 9) {
+            else if (val.includes('Tele') && (val.charAt(val.length - 1) - '0') <= 9 && !(val.charAt(val.length-2)>='0' && val.charAt(val.length-2)<='9')) {
                 // if("s" + val.substring(4) === s1){
                 //     s1++
                 // }
@@ -195,6 +196,7 @@ function per_team_helper(data, fields, just_last = false) {
                 entry['GAME_PIECE_POINTS'] += (entry[val] != 0) * POINTS.TELE_HIGH
                 entry['HIGH_PIECE_POINTS'] += (entry[val] != 0) * POINTS.TELE_HIGH
                 tele += (entry[val] != 0) * POINTS.TELE_HIGH
+                // console.log("high" + entry[val])
                 telehigh += (entry[val] != 0) * POINTS.TELE_HIGH
                 if (entry[val] == 1) {
                     cone += POINTS.TELE_HIGH
@@ -205,13 +207,14 @@ function per_team_helper(data, fields, just_last = false) {
                     entry['CUBE_PIECE_POINTS'] += POINTS.TELE_HIGH
                 }
             }
-            else if (val.includes('Tele') && (val.charAt(val.length - 1) - '0') <= 18) {
+            else if (val.includes('Tele') && ((val.charAt(val.length - 2) - '0')*10+(val.charAt(val.length - 1) - '0')) <= 18) {
                 entry['TELE_POINTS'] += (entry[val] != 0) * POINTS.TELE_MID
                 entry['TELE_MID_PIECE_POINTS'] += (entry[val] != 0) * POINTS.TELE_MID
                 entry['TOTAL_POINTS'] += (entry[val] != 0) * POINTS.TELE_MID
                 entry['GAME_PIECE_POINTS'] += (entry[val] != 0) * POINTS.TELE_MID
                 entry['MID_PIECE_POINTS'] += (entry[val] != 0) * POINTS.TELE_MID
                 tele += (entry[val] != 0) * POINTS.TELE_MID
+                // console.log("mid: " + entry[val])
                 telemid += (entry[val] != 0) * POINTS.TELE_MID 
                 if (entry[val] == 1) {
                     cone += POINTS.TELE_MID
@@ -222,7 +225,7 @@ function per_team_helper(data, fields, just_last = false) {
                     entry['CUBE_PIECE_POINTS'] += POINTS.TELE_MID
                 }
             }
-            else if (val.includes('Tele') && (val.charAt(val.length - 1) - '0') <= 27) {
+            else if (val.includes('Tele') && ((val.charAt(val.length - 2) - '0')*10+(val.charAt(val.length - 1) - '0')) <= 27) {
                 entry['TELE_POINTS'] += (entry[val] != 0) * POINTS.TELE_LOW
                 entry['TELE_LOW_PIECE_POINTS'] += (entry[val] != 0) * POINTS.TELE_LOW
                 entry['TOTAL_POINTS'] += (entry[val] != 0) * POINTS.TELE_LOW
@@ -304,10 +307,11 @@ function per_team_helper(data, fields, just_last = false) {
     //         data[entry]['TOTAL_POINTS'] += POINTS[key]
     //     }
     // }
+    // console.log(Math.max(1, data.length - 1))
     pts = auto + tele
     data[data.length - 1]["CHARGING STATION PPG"] = parseFloat((charge / Math.max(1, data.length - 1)).toFixed(2));
     data[data.length - 1]["MOBILITY PPG"] = parseFloat((mobility / Math.max(1, data.length - 1)).toFixed(2));
-    data[data.length - 1]["TELE CHARGING STATION PPG"] = parseFloat((charge - autocharge / Math.max(1, data.length - 1)).toFixed(2));
+    data[data.length - 1]["TELE CHARGING STATION PPG"] = parseFloat((telecharge / Math.max(1, data.length - 1)).toFixed(2));
     data[data.length - 1]["CUBES INTAKED PG"] = parseFloat((cubeintaked / Math.max(1, data.length - 1)).toFixed(2));
     data[data.length - 1]["CONES INTAKED PG"] = parseFloat((coneintaked / Math.max(1, data.length - 1)).toFixed(2));
     data[data.length - 1]["HIGH AUTON PPG"] = parseFloat((autohigh / Math.max(1, data.length - 1)).toFixed(2));
@@ -346,7 +350,7 @@ app.get('/all', function (req, res) {
             res.send(result)
         });
     }).catch((msg) => {
-        console.log(msg)
+        // console.log(msg)
         res.send(msg)
 
     })
@@ -362,7 +366,7 @@ app.get('/from_comp/:comp/team/:team', function (req, res) {
             res.send(per_team_helper(result, fields))
         });
     }).catch((msg) => {
-        console.log(msg)
+        // console.log(msg)
         res.send(msg)
 
     })
@@ -379,7 +383,7 @@ app.get('/from_comp/:comp/team/:team', function (req, res) {
             res.send(per_team_helper(result, fields))
         });
     }).catch((msg) => {
-        console.log(msg)
+        // console.log(msg)
         res.send(msg)
 
     })
@@ -400,7 +404,7 @@ app.get('/from_comp/:comp/all_teams', function (req, res) {
             res.send(resp)
         });
     }).catch((msg) => {
-        console.log(msg)
+        // console.log(msg)
         res.send(msg)
 
     })
@@ -415,7 +419,7 @@ app.get('/from_comp/:comp/pit/:team', function (req, res) {
             res.send(result)
         });
     }).catch((msg) => {
-        console.log(msg)
+        // console.log(msg)
         res.send(msg)
 
     })
@@ -438,7 +442,7 @@ app.get('/from_comp/:comp/all_teams_arr', function (req, res) {
             res.send(resp)
         });
     }).catch((msg) => {
-        console.log(msg)
+        // console.log(msg)
         res.send(msg)
 
     })
@@ -454,7 +458,7 @@ app.get('/casino_data', function (req, res) {
             res.send(result)
         });
     }).catch((msg) => {
-        console.log(msg)
+        // console.log(msg)
         res.send(msg)
 
     })
@@ -501,13 +505,13 @@ app.get('/from_comp/:comp/match_predict/:match', function (req, res) {
 
                     vis[tm.TeamColor] = {}
                     Object.assign(vis[tm.TeamColor], vis[tm.TeamName]);
-                    console.log(tm.TeamColor, vis[tm.TeamColor])
+                    // console.log(tm.TeamColor, vis[tm.TeamColor])
                     counts[tm.TeamColor] = 1;
                 }
                 else {
                     counts[tm.TeamColor]++;
                     for (let key in vis[tm.TeamColor]) {
-                        console.log(key, vis[tm.TeamColor][key])
+                        // console.log(key, vis[tm.TeamColor][key])
                         vis[tm.TeamColor][key] += vis[tm.TeamName][key]
                     }
 
@@ -527,7 +531,7 @@ app.get('/from_comp/:comp/match_predict/:match', function (req, res) {
 
         });
     }).catch((msg) => {
-        console.log(msg)
+        // console.log(msg)
         res.send(msg)
 
     })
@@ -560,11 +564,11 @@ app.get('/from_comp/:comp/match_predict_custom/:teams', function (req, res) {
 
                     vis[tm.TeamColor] = {}
                     Object.assign(vis[tm.TeamColor], vis[tm.TeamName]);
-                    console.log(tm.TeamColor, vis[tm.TeamColor])
+                    // console.log(tm.TeamColor, vis[tm.TeamColor])
                 }
                 else {
                     for (let key in vis[tm.TeamColor]) {
-                        console.log(key, vis[tm.TeamColor][key])
+                        // console.log(key, vis[tm.TeamColor][key])
                         vis[tm.TeamColor][key] += vis[tm.TeamName][key]
                     }
 
@@ -578,7 +582,7 @@ app.get('/from_comp/:comp/match_predict_custom/:teams', function (req, res) {
 
         });
     }).catch((msg) => {
-        console.log(msg)
+        // console.log(msg)
         res.send(msg)
 
     })
@@ -592,7 +596,7 @@ app.get('/from_comp/:comp', function (req, res) {
             res.send(result)
         });
     }).catch((msg) => {
-        console.log(msg)
+        // console.log(msg)
         res.send(msg)
 
     })
@@ -606,7 +610,7 @@ app.get('/match_fields', function (req, res) {
             res.send(result)
         });
     }).catch((msg) => {
-        console.log(msg)
+        // console.log(msg)
         res.send(msg)
     })
 })
@@ -614,23 +618,22 @@ app.get('/match_fields', function (req, res) {
 app.get('/pit_fields', function (req, res) {
     lib.query().then((conn) => {
         conn.query(`DESCRIBE PIT_DATA`, function (err, result, fields) {
-            console.log(fields);
+            // console.log(fields);
             if (err) { console.log(err); return; }
             res.send(result)
         });
     }).catch((msg) => {
-        console.log(msg)
+        // console.log(msg)
         res.send(msg)
     })
 })
 
 function processData(sepBig, sepSmall, fieldsArr, data) {
     let final = [];
+    
+    // console.log(fieldsArr.length)
     for (let el of data.split(sepBig)) {
         let arr = el.split(sepSmall);
-        for(let i = 0; i < arr.length; i++){
-            console.log(arr[i]);
-        }
         if (arr.length != fieldsArr.length) {
             return;
         }
@@ -659,7 +662,7 @@ app.get('/add_pit/:sepBig/:sepSmall/:data', function (req, res) {
         });
 
     }).catch((msg) => {
-        console.log(msg)
+        // console.log(msg)
         res.send(msg)
     })
 })
@@ -688,7 +691,7 @@ app.get('/add_match/:sepBig/:sepSmall/:data', function (req, res) {
     lib.query().then((conn) => {
         conn.query(`DESCRIBE MATCH_DATA`, function (err, result, fields) {
             if (err) { console.log(err); return; }
-            console.log(getProcessedData(req.params.sepBig, req.params.sepSmall, result, req.params.data))
+            // console.log(processData(req.params.sepBig, req.params.sepSmall, result, req.params.data))
             conn.query(`INSERT IGNORE INTO MATCH_DATA VALUES ${processData(req.params.sepBig, req.params.sepSmall, result, req.params.data)}`, function (err, result, fields) {
                 if (err) { console.log(err); return; }
                 res.send(result)
@@ -696,7 +699,7 @@ app.get('/add_match/:sepBig/:sepSmall/:data', function (req, res) {
         });
 
     }).catch((msg) => {
-        console.log(msg)
+        // console.log(msg)
         res.send(msg)
     })
 })
@@ -720,7 +723,7 @@ app.get('/add_casino/:sepBig/:sepSmall/:data', function (req, res) {
             });
 
     }).catch((msg) => {
-        console.log(msg)
+        // console.log(msg)
         res.send(msg)
     })
 })

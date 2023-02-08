@@ -183,29 +183,31 @@ function process_num(num) {
                      */
 
                     document.getElementById('noteTitle').innerHTML = name + ' Notes';
-                    document.getElementById('game_piece_graph').innerHTML = '';
-                    document.getElementById('point_graph').innerHTML = '';
                     document.getElementById('cone_piece_graph').innerHTML = '';
                     document.getElementById('cube_piece_graph').innerHTML = '';
                     document.getElementById('tele_charge_point_graph').innerHTML = '';
-                    document.getElementById('auto_graph').innerHTML = '';
+                    document.getElementById('game_piece_graph').innerHTML = '';
+                    document.getElementById('auto_graph').innerHTML = '';                   
+                    document.getElementById('point_graph').innerHTML = '';
                     document.getElementById('spider').innerHTML = '';
                     document.getElementById('heatMap').innerHTML = '';
                     document.getElementById('test').innerHTML = '';
 
 
 
-                    createLineGraph(response, 'MatchNumber', 'GAME_PIECE_POINTS', 'game_piece_graph');
-
-                    createLineGraph(response, 'MatchNumber', 'TOTAL_POINTS', 'point_graph');
-
+                
+                    console.log(response[0]["TELE_CHARGING_STATION_POINTS"]);
                     createLineGraph(response, 'MatchNumber', 'CONE_PIECE_POINTS', 'cone_piece_graph');
 
                     createLineGraph(response, 'MatchNumber', 'CUBE_PIECE_POINTS', 'cube_piece_graph');
 
                     createLineGraph(response, 'MatchNumber', 'TELE_CHARGING_STATION_POINTS', 'tele_charge_point_graph');
 
+                    createLineGraph(response, 'MatchNumber', 'GAME_PIECE_POINTS', 'game_piece_graph');
+
                     createLineGraph(response, 'MatchNumber', 'AUTO_POINTS', 'auto_graph');
+
+                    createLineGraph(response, 'MatchNumber', 'TOTAL_POINTS', 'point_graph');
 
                     createSpider([last], ['TELE CHARGING STATION PPG', 'AUTO PPG', 'GAME PIECE PPG'], 'spider');
 
@@ -346,7 +348,23 @@ function process_num(num) {
                     newPit[0]['RobotLength'] = response[0]['RobotLength'] + ' inches';
                     newPit[0]['StationRobotWidth'] = response[0]['StationRobotWidth'] + ' inches';
 
-                    createTable(newPit, fields, spec, "pit_table", null, null, false)
+                    let pitDatas = "<span style=\"margin-left:10em\">Scout Name: " + newPit[0]["ScoutName"]
+                    +"<br><span style=\"margin-left:10em\">Drivebase: " + newPit[0]["Drivetrain"] + "<br><span style=\"margin-left:10em\">Robot Vision: " + newPit[0]["RobotVision"] + "<br><span style=\"margin-left:10em\">Length: " + newPit[0]["RobotLength"] + "<br><span style=\"margin-left:10em\">Width: " + newPit[0]["RobotWidth"] + "<br><span style=\"margin-left:10em\">Station Width: " + newPit[0]["StationRobotWidth"] 
+                    + "<br><span style=\"margin-left:10em\">Mobility Points: " + newPit[0]["AutoMobility"] + "<br><span style=\"margin-left:10em\">Auto Piece Potential: " + newPit[0]["AutoPiecesScored"] + "<br><span style=\"margin-left:10em\">Auto Charging Station: " + newPit[0]["AutoStationDrive"];
+                    
+                    // let pitDatas = "Scout Name: " + newPit[0]["ScoutName"]
+                    // + "<span style=\"margin-left:30em\">Drivebase: " + newPit[0]["Drivetrain"] + "<br>Robot Vision: " + newPit[0]["RobotVision"] + "<span style=\"margin-left:30em\">Length: " + newPit[0]["RobotLength"] + "<br>Width: " + newPit[0]["RobotWidth"] + "<span style=\"margin-left:30em\">Station Width: " + newPit[0]["StationRobotWidth"] 
+                    // + "<br>Mobility Points: " + newPit[0]["AutoMobility"] + "<span style=\"margin-left:30em\">Auto Piece Potential: " + newPit[0]["AutoPiecesScored"] + "<br>Auto Charging Station: " + newPit[0]["AutoStationDrive"];
+                    // + "<br>Cones From:<br>Ground: " + newPit[0]["ConeGround"] + " Portal: " + newPit[0]["ConePortal"] + " Shelf: " + newPit[0]["ConeShelf"] + " Side Ground: " + newPit[0]["SideConeGround"] + " Side Portal: " + newPit[0]["SideConePortal"] + " Side Shelf: " + newPit[0]["SideConeShelf"]
+                    // + "<br>Cubes From:<br>Ground: " + newPit[0]["CubeGround"] + " Portal: " + newPit[0]["CubePortal"] + " Shelf: " + newPit[0]["CubeShelf"]
+                    // + "<br>Cone Possibilities: " + newPit[0]["TeleConeScoreLevel"]+ "<br>Cube Possibilities: " + newPit[0]["TeleCubeScoreLevel"] + "<br>Endgame Charge: " + newPit[0]["EndStationDrive"] + "<br>Notable Feats: " + newPit[0]["NotableFeat"];
+                    // // createTable(newPit, fields, spec, "pit_table", null, null, false)
+                    let pitDatas2 = "<br><span style=\"margin-left:10em\">Cones From:<br><span style=\"margin-left:10em\">Ground: " + newPit[0]["ConeGround"] + " Portal: " + newPit[0]["ConePortal"] + " Shelf: " + newPit[0]["ConeShelf"] + " Side Ground: " + newPit[0]["SideConeGround"] + " Side Portal: " + newPit[0]["SideConePortal"] + " Side Shelf: " + newPit[0]["SideConeShelf"]
+                    + "<br><span style=\"margin-left:10em\">Cubes From:<br><span style=\"margin-left:10em\">Ground: " + newPit[0]["CubeGround"] + " Portal: " + newPit[0]["CubePortal"] + " Shelf: " + newPit[0]["CubeShelf"]
+                    + "<br><span style=\"margin-left:10em\">Cone Possibilities: " + newPit[0]["TeleConeScoreLevel"]+ "<br><span style=\"margin-left:10em\">Cube Possibilities: " + newPit[0]["TeleCubeScoreLevel"] + "<br><span style=\"margin-left:10em\">Endgame Charge: " + newPit[0]["EndStationDrive"] + "<br><span style=\"margin-left:10em\">Notable Feats: " + newPit[0]["NotableFeat"];
+                    document.getElementById("pit_table").innerHTML = pitDatas;
+                    document.getElementById("pit_table1").innerHTML = pitDatas2;
+
 
                     //    let r1 = newPit.splice(0, 8);
                     //    let r2 = newPit.splice(0, 8);

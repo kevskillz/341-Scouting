@@ -37,11 +37,6 @@ function search(e) {
             success: function (response) {
                 console.log(response)
 
-                document.getElementById('spider').innerHTML = ''
-                document.getElementById('linear').innerHTML = ''
-
-                createSpider([response.B, response.R],['TELE CHARGING STATION PPG','AUTO PPG','GAME PIECE PPG', 'CONE_PIECE_POINTS', 'CUBE_PIECE_POINTS', 'TOTAL PPG'],'spider',900)
-
                 let teamData = []
                 for (let key in response) {
                     if (key!='B'&&key!='R') {
@@ -49,6 +44,39 @@ function search(e) {
                         teamData.push(response[key])
                     }
                 }
+
+                let blueScore = 0;
+                let redScore = 0;
+                for(let i = 0; i < teamData.length; i++){
+                    if(teamData[i]["TeamColor"] == 'B'){
+                        blueScore += teamData[i]["TOTAL PPG"]
+                    }
+                    if(teamData[i]["TeamColor"] == 'R'){
+                        redScore += teamData[i]["TOTAL PPG"]
+                    }
+                }
+                redScore /= (teamData.length / 2);
+                blueScore /= (teamData.length / 2);
+                blueScore.toFixed(2);
+                redScore.toFixed(2);
+
+                if(blueScore > redScore){
+                document.getElementById('prediction').innerHTML = "Blue is predicted to win " + blueScore.toFixed(2) + " to " + redScore.toFixed(2);
+                }
+                else if(redScore > blueScore){
+                    document.getElementById('prediction').innerHTML = "Red is predicted to win " + redScore.toFixed(2) + " to " + blueScore.toFixed(2);
+                }
+                else{
+                    document.getElementById('prediction').innerHTML = "The teams will tie " + redScore.toFixed(2) + " to " + blueScore.toFixed(2);
+                }
+
+                document.getElementById('spider').innerHTML = ''
+                document.getElementById('linear').innerHTML = ''
+
+
+                createSpider([response.B, response.R],['TELE CHARGING STATION PPG','AUTO PPG', 'CUBE PPG', 'CONE PPG'],'spider',900)
+
+              
                 console.log(teamData)
                 createLinearChart(teamData,Object.keys(teamData[0]).slice(0,-2),'linear','TEAM',900)
             },

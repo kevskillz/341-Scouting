@@ -184,7 +184,7 @@ function createLinearChart(data, fields, div_id, hover_field, w = 1000, h = 400)
     // Highlight the specie that is hovered
     var highlight = function (d) {
 
-        selected_specie = d.TEAM_COLOR
+        selected_specie = d.TeamColor
 
         // do something with mouseX and mouseY
         tooltip
@@ -213,7 +213,7 @@ function createLinearChart(data, fields, div_id, hover_field, w = 1000, h = 400)
         tooltip.style("opacity", 0)
         d3.selectAll(".line")
             .transition().duration(200).delay(1000)
-            .style("stroke", function (d) { return (color(d.TEAM_COLOR)) })
+            .style("stroke", function (d) { return (color(d.TeamColor)) })
             .style("opacity", "1")
     }
 
@@ -228,10 +228,10 @@ function createLinearChart(data, fields, div_id, hover_field, w = 1000, h = 400)
         .data(data)
         .enter()
         .append("path")
-        .attr("class", function (d) { return "line " + d.TEAM_COLOR }) // 2 class for each line: 'line' and the group name
+        .attr("class", function (d) { return "line " + d.TeamColor }) // 2 class for each line: 'line' and the group name
         .attr("d", path)
         .style("fill", "none")
-        .style("stroke", function (d) { return (color(d.TEAM_COLOR)) })
+        .style("stroke", function (d) { return (color(d.TeamColor)) })
         .style("opacity", 0.5)
         .style("stroke-width", 5)
         .on("mouseover", highlight)
@@ -290,6 +290,8 @@ function createSpider(data, fields, div_id, width=900) {
     layout = {
         polar: {
             radialaxis: {
+                fixedrange: true,
+                dragmode: false,
                 visible: true,
                 range: [0, findMinMax(newData, 'r') + 1]
             }
@@ -298,10 +300,13 @@ function createSpider(data, fields, div_id, width=900) {
         paper_bgcolor: 'rgba(0,0,0,0)',
         plot_bgcolor: 'rgba(0,0,0,0)',
         width: width,
-        height: width*0.75
+        height: width*0.75,
+        xaxis: {fixedrange: true},
+        yaxis: {fixedrange: true},
+        dragmode: false
     }
 
-    Plotly.newPlot(div_id, newData, layout)
+    Plotly.newPlot(div_id, newData, layout, {staticPlot: true})
 
 
 }
@@ -310,7 +315,7 @@ function createHeatMap(div_id, ss1, ss2, ss3, ss4, ss5, ss6, ss7, ss8, ss9, ss10
     
     var xValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
-    var yValues = ['1', '2', '3'];
+    var yValues = ["‎" + '1', "‎" + '2', "‎" + '3'];
     
     var zValues = [
        [ss19, ss20, ss21, ss22, ss23, ss24, ss25, ss26, ss27],
@@ -329,28 +334,35 @@ function createHeatMap(div_id, ss1, ss2, ss3, ss4, ss5, ss6, ss7, ss8, ss9, ss10
         z: zValues,
         type: 'heatmap',
         colorscale: colorscaleValue,
-        showscale: false
+        showscale: false,
+        xgap :	3,
+        ygap :	3
       }];
 
-      console.log(ss7);
-      console.log(ss25);
-      console.log(ss3);
+      var layout = {
+        xaxis: {fixedrange: true},
+        yaxis: {fixedrange: true},
+        dragmode: false
+      }
 
-      Plotly.newPlot(div_id, data);
+
+      Plotly.newPlot(div_id, data, layout);
       };
 
       function createTotalPPGStackedBarChart(data, div_id, w = 690, h = 600) {
 
         var teams = [];
-        var cones = [];
-        var cubes = [];
+        var low = [];
+        var mid = [];
+        var high = [];
         var autos = [];
         var telec = [];
         
         for(let i = 0; i < data.length; i++){
-            teams.push("Team " + data[i]["TeamName"].toString());
-            cones.push(data[i]["CONE PPG"]);
-            cubes.push(data[i]["CUBE PPG"]);
+            teams.push("‎" + data[i]["TeamName"].toString());
+            low.push(data[i]["LOW TELE PPG"]);
+            mid.push(data[i]["MID TELE PPG"]);
+            high.push(data[i]["HIGH TELE PPG"]);
             autos.push(data[i]["AUTO PPG"]);
             telec.push(data[i]["TELE CHARGING STATION PPG"]);
         }
@@ -363,28 +375,39 @@ function createHeatMap(div_id, ss1, ss2, ss3, ss4, ss5, ss6, ss7, ss8, ss9, ss10
           
           var trace2 = {
             x: teams,
-            y: cubes,
-            name: 'Cubes Points',
+            y: low,
+            name: 'Low Points',
             type: 'bar'
           };
     
           var trace3 = {
             x: teams,
-            y: cones,
-            name: 'Cones Points',
+            y: mid,
+            name: 'Mid Points',
+            type: 'bar'
+          };
+
+          var trace4 = {
+            x: teams,
+            y: high,
+            name: 'High Points',
             type: 'bar'
           };
     
-          var trace4 = {
+          var trace5 = {
             x: teams,
             y: telec,
             name: 'Tele Charging Station Points',
             type: 'bar'
           };
           
-          var data = [trace1, trace2, trace3, trace4];
+          var data = [trace1, trace2, trace3, trace4, trace5];
           
-          var layout = {barmode: 'stack'};
+          var layout = {barmode: 'stack',
+          xaxis: {fixedrange: true},
+          yaxis: {fixedrange: true},
+          dragmode: false
+        };
           
           Plotly.newPlot(div_id, data, layout);
     }
@@ -489,7 +512,7 @@ function createTable(data, fields, spec, id, initialSort, height = 500, haveFilt
 
 }
 
-function createLineGraph(data, x_axis, y_axis, div_id, w = 690, h = 600, dur = 800) {
+function createLineGraph(data, x_axis, y_axis, div_id, w = 625, h = 600, dur = 800) {
     // Create SVG and padding for the chart
     const svg = d3
         .select("#" + div_id)
@@ -779,18 +802,18 @@ function createScatterplot(data, x_axis, y_axis, label, div_id, w = 690, h = 600
     }
 
     // Set the zoom and Pan features: how much you can zoom, on which part, and what to do when there is a zoom
-    var zoom = d3.zoom()
-        .scaleExtent([.5, 20])  // This control how much you can unzoom (x0.5) and zoom (x20)
-        .extent([[0, 0], [width, height]])
-        .on("zoom", updateChart);
+    // var zoom = d3.zoom()
+    //     .scaleExtent([.5, 20])  // This control how much you can unzoom (x0.5) and zoom (x20)
+    //     .extent([[0, 0], [width, height]])
+    //     .on("zoom", updateChart);
 
     // This add an invisible rect on top of the chart area. This rect can recover pointer events: necessary to understand when the user zoom
     SVG.append("rect")
         .attr("width", width)
         .attr("height", height)
         .style("fill", "none")
-        .style("pointer-events", "all")
-        .call(zoom);
+        .style("pointer-events", "all");
+        // .call(zoom);
 
 
     // Create the scatter variable: where both the circles and the brush take place

@@ -17,6 +17,7 @@ int stored = 0;
 int pitCounter = 0;
 const String SEP = 'ｦ';
 List pits = [];
+final String compName = "Hatboro";
 
 void main() {
   String? mtch = _localStorage["MatchData"];
@@ -28,7 +29,7 @@ void main() {
   if (mtch != null) {
     List<String> matches = mtch.split("Ω");
     for (int i = 0; i < matches.length; i++) {
-      all.add(matches[i].split(SEP));
+      all.add(matches[i].substring(compName.length+1));
     }
   }
   if (mtchCnt != null) {
@@ -117,7 +118,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   StreamSubscription? connection;
-  String compName = "Hatboro";
   bool isOnline = false;
   String _platformVersion = 'Unknown';
   String? scannedQRCode;
@@ -156,17 +156,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
     if (response.statusCode != 408) {
       isOnline = true;
+      all.clear();
+
+      _localStorage['MatchData'] = '';
     } else
       isOnline = false;
   }
 
   void pushPit(String data) async {
-    print('http://127.0.0.1:3030/add_pit/' +
-        "Ω" +
-        "/" +
-        SEP +
-        "/" +
-        data);
+    // print('http://127.0.0.1:3030/add_pit/' +
+    //     "Ω" +
+    //     "/" +
+    //     SEP +
+    //     "/" +
+    //     data);
     var url = Uri.parse('http://127.0.0.1:3030/add_pit/' +
         "Ω" +
         "/" +
@@ -257,8 +260,9 @@ class _MyHomePageState extends State<MyHomePage> {
         _localStorage["PitCounter"] = pitCounter.toString();
       }
       String pitInfo = "";
-      for (int l = 0; l < pits.length; l++) {
         pitInfo += compName + SEP;
+
+      for (int l = 0; l < pits.length; l++) {
         pitInfo += pits[l];
         if (l != pits.length - 1) pitInfo += "Ω";
       }
@@ -280,55 +284,65 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void submit() {
-    all.add(arr);
+    print(arr);
+    for (var ele in arr) {
+      if (ele!="") all.add(ele);
+    }
+    print("here"+all.toString() );
     arr = List.filled(8, "");
+    bool good = false;
     for (int i = 0; i < 8; i++) {
       if (names[i].endsWith("✔️")) {
         names[i] = names[i].replaceAll("✔️", "");
+        good=true;
       }
     }
-    stored++;
+    if (good) stored++;
     _localStorage["MatchCounter"] = stored.toString();
     String info = "";
     for (int i = 0; i < all.length; i++) {
-      List art = [];
-      for (int j = 0; j < all[i].length; j++) {
-        if (all[i][j] != "") art.add(all[i][j]);
-      }
-      for (int k = 0; k < art.length; k++) {
-        info += compName + SEP;
-        info += art[k];
-        if (k != art.length - 1) info += "Ω";
-      }
+      // List art = [];
+      // for (int j = 0; j < all[i].length; j++) {
+      //   if (all[i][j] != "") art.add(all[i][j]);
+      // }
+      // print(art);
+      
+      info += compName + SEP + all[i];
+
+      if (i != all.length - 1) info += "Ω";
     }
-    _localStorage["MatchData"] = info;
+    if (_localStorage['MatchData'] == null || _localStorage['MatchData'] == '') _localStorage["MatchData"] = info;
+    else _localStorage['MatchData'] = _localStorage['MatchData']! + "Ω" + info;
     setState(() {});
   }
 
   void sync() {
     submit();
     stored = 0;
+    
     _localStorage["MatchCounter"] = stored.toString();
-    String info = "";
+    // String info = "";
     String pitInfo = "";
-    for (int i = 0; i < all.length; i++) {
-      List art = [];
-      for (int j = 0; j < all[i].length; j++) {
-        if (all[i][j] != "") art.add(all[i][j]);
-      }
-      for (int k = 0; k < art.length; k++) {
-        info += compName + SEP;
-        info += art[k];
-        if (k != art.length - 1) info += "Ω";
-      }
-    }
+    // for (int i = 0; i < all.length; i++) {
+    //   List art = [];
+    //   for (int j = 0; j < all[i].length; j++) {
+    //     if (all[i][j] != "") art.add(all[i][j]);
+    //   }
+    //   info += compName + SEP;
+
+    //   for (int k = 0; k < art.length; k++) {
+    //     info += art[k];
+    //     if (k != art.length - 1) info += "Ω";
+    //   }
+    // }
+
     for (int l = 0; l < pits.length; l++) {
-      pitInfo += compName + SEP;
+       pitInfo += compName + SEP;
       pitInfo += pits[l];
       if (l != pits.length - 1) pitInfo += "Ω";
     }
     pushPit(pitInfo);
-    pushMatch(info);
+    pushMatch(_localStorage["MatchData"].toString());
     pits = [];
     pitCounter = 0;
     _localStorage["PitCounter"] = pitCounter.toString();

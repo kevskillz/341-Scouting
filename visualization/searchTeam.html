@@ -83,12 +83,69 @@
     <!-- <img src=”https://live.staticflickr.com/65535/52654677925_85ace5d639_b.jpg”> -->
     <!-- <a data-flickr-embed="true" href="https://www.flickr.com/gp/team341/e4b8P677Sv" title="341"><img src="https://live.staticflickr.com/65535/52654677925_85ace5d639_b.jpg" width="1024" height="768" alt="341"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script> -->
     <strong id="pitTitle"></strong>
-
+    
     <!-- <iframe width="402" height="346" frameborder="0" scrolling="no" src="https://onedrive.live.com/embed?resid=C7CD513DA20B3057%21979&authkey=%21ALVwfONtv6I5N78&em=2&AllowTyping=True&wdHideHeaders=True&wdInConfigurator=True&wdInConfigurator=True&edesNext=true&edrtees6=false&resen=false&ed1JS=false"></iframe> -->
+   
+    
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased !important;
+    
+    }
+    
+    body {
+        margin: 2%;
+        justify-content: center !important;
+        width: 100% !important;
+    }
+    
+        .box-wrapper {
+          height: 95vh;
+          display: flex;
+          flex-direction: row;
+          text-align: center;
+        }
+    
+        #box1 {
+          padding: 0px;
+        }
+    
+        #box2 {
+          padding: 0px;
+        }
+    
+        #box3 {
+          padding: 0px;
+          flex-grow: 1;
+          display: flex;
+          flex-direction: row;
+        }
+    
+        #box4 {
+          flex-grow: 100;
+        }
+    
+        .middle-column {
+          display: flex;
+          flex-direction: column;
+        }
+    
+        .middle-column div {
+          flex-grow: 1;
+          margin-block-start: 10px;
+        }
+      </style>
+    
 
-    <div id="pit_table"></div>
-    <div id="pit_table1"></div>
-    <div id="pit_table2"></div>
+    <div id="box3">
+      <strong id="pit_table"></strong>
+      <strong id="pit_table1"></strong>
+    </div>
+    
+    <!-- <div id="pit_table2"></div>  -->
 
     <!-- <div>
       <select id="filter-field">
@@ -155,12 +212,19 @@
   <strong id="dataTitle"></strong>
   <div id="heatMap"></div>
   <div id="spider"></div>
+  <div id="box3">
+  <div id="point_graph"></div>
   <div id="auto_graph"></div>
+  </div>
+  <div id="box3">
+  <div id="game_piece_graph"></div>
   <div id="tele_charge_point_graph"></div>
+</div>
+<div id="box3">
   <div id="cube_piece_graph"></div>
   <div id="cone_piece_graph"></div>
-  <div id="point_graph"></div>
-  <div id="game_piece_graph"></div>
+  </div>
+  
 
 
 
