@@ -197,17 +197,18 @@ function process_num(num) {
 
                 
                     console.log(response[0]["TELE_CHARGING_STATION_POINTS"]);
-                    createLineGraph(response, 'MatchNumber', 'CONE_PIECE_POINTS', 'cone_piece_graph');
-
-                    createLineGraph(response, 'MatchNumber', 'CUBE_PIECE_POINTS', 'cube_piece_graph');
-
-                    createLineGraph(response, 'MatchNumber', 'TELE_CHARGING_STATION_POINTS', 'tele_charge_point_graph');
-
-                    createLineGraph(response, 'MatchNumber', 'GAME_PIECE_POINTS', 'game_piece_graph');
-
-                    createLineGraph(response, 'MatchNumber', 'AUTO_POINTS', 'auto_graph');
-
-                    createLineGraph(response, 'MatchNumber', 'TOTAL_POINTS', 'point_graph');
+                    // createLineGraph(response, 'MatchNumber', 'CONE_PIECE_POINTS', 'cone_piece_graph');
+                    createBetterLineGraph(response, "CONE_PIECE_POINTS", 'cone_piece_graph', 'Cone Points');
+                    // createLineGraph(response, 'MatchNumber', 'CUBE_PIECE_POINTS', 'cube_piece_graph');
+                    createBetterLineGraph(response, 'CUBE_PIECE_POINTS', 'cube_piece_graph', 'Cube Points');
+                    // createLineGraph(response, 'MatchNumber', 'TELE_CHARGING_STATION_POINTS', 'tele_charge_point_graph');
+                    createBetterLineGraph(response, 'TELE_CHARGING_STATION_POINTS', 'tele_charge_point_graph', 'Tele Charging Station Points');
+                    // createLineGraph(response, 'MatchNumber', 'GAME_PIECE_POINTS', 'game_piece_graph');
+                    createBetterLineGraph(response, 'GAME_PIECE_POINTS', 'game_piece_graph', 'Game Piece Points');
+                    // createLineGraph(response, 'MatchNumber', 'AUTO_POINTS', 'auto_graph');
+                    createBetterLineGraph(response, 'AUTO_POINTS', 'auto_graph', 'Auto Points');
+                    // createLineGraph(response, 'MatchNumber', 'TOTAL_POINTS', 'point_graph');
+                    createBetterLineGraph(response, 'TOTAL_POINTS', 'point_graph', 'Total Points');
 
                     createSpider([last], ['TELE CHARGING STATION PPG', 'AUTO PPG', 'GAME PIECE PPG'], 'spider');
 
@@ -251,7 +252,7 @@ function process_num(num) {
                                 val[_name] = row[person.Index] == null ? '' : row[person.Index].v;
                             }
                             // 
-                            createTable([val], fields, [], "test", null, null, false)
+                            createTable([val], fields, [], "test", null, null, false, 300)
                             break;
                         }
                     }

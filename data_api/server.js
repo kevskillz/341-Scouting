@@ -107,8 +107,8 @@ function per_team_helper(data, fields, just_last = false) {
                 entry['CUBES_INTAKED'] += entry[val]
                 cubeintaked++
             }
-            if (val.includes('MOBILITY')) {
-                mobility++
+            if (val.includes('Mobility')) {
+                mobility += POINTS.MOBILITY
             }
             if (val.includes('AutoDockedState')) {
                 if (entry[val] == 'Docked') {
@@ -309,6 +309,7 @@ function per_team_helper(data, fields, just_last = false) {
     // }
     // console.log(Math.max(1, data.length - 1))
     pts = auto + tele
+    // console.log(mobility)
     data[data.length - 1]["CHARGING STATION PPG"] = parseFloat((charge / Math.max(1, data.length - 1)).toFixed(2));
     data[data.length - 1]["MOBILITY PPG"] = parseFloat((mobility / Math.max(1, data.length - 1)).toFixed(2));
     data[data.length - 1]["TELE CHARGING STATION PPG"] = parseFloat((telecharge / Math.max(1, data.length - 1)).toFixed(2));

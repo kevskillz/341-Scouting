@@ -24,13 +24,14 @@ $.ajax({
             type: 'GET',
             url: `${ROOT_URL}from_comp/${localStorage.getItem('COMP')}/all_teams_arr`,
             success: function (response) {
-                createScatterplot(response, 'CHARGING STATION PPG', 'GAME PIECE PPG', 'TeamName', 'dataviz_cust_axisZoom')
+                createBetterScatterPlot(response, 'CHARGING STATION PPG', 'GAME PIECE PPG', 'dataviz_cust_axisZoom')
                 
                 createDragDrop(['x-axis-drop', 'y-axis-drop'], fields, 'encasing-1', function (zones) {
                     console.log('creating...', zones)
                     let parent = document.getElementById('dataviz_cust_axisZoom')
                     parent.innerHTML = ''
-                    createScatterplot(response, zones[0], zones[1], 'TeamName', 'dataviz_cust_axisZoom')
+                    // createScatterplot(response, zones[0], zones[1], 'TeamName', 'dataviz_cust_axisZoom')
+                    createBetterScatterPlot(response, zones[0], zones[1], 'dataviz_cust_axisZoom')
                     console.log('done?')
                     console.log(response)
                 });
@@ -40,7 +41,8 @@ $.ajax({
                 });
 
                 spec = new Array(response.length).fill(TableSpec.NORMAL)
-                createTable(response, fields, spec, 'table')
+                spec[0] = TableSpec.NUMSORT;
+                createTable(response, fields, spec, 'table', null, null, false, 100)
                 // createBarChart(response, 'TeamName', 'TOTAL PPG', 'bar_chart')
                 createTotalPPGStackedBarChart(response, 'bar_chart');
 

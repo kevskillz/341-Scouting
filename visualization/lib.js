@@ -406,14 +406,15 @@ function createHeatMap(div_id, ss1, ss2, ss3, ss4, ss5, ss6, ss7, ss8, ss9, ss10
           var layout = {barmode: 'stack',
           xaxis: {fixedrange: true},
           yaxis: {fixedrange: true},
-          dragmode: false
+          dragmode: false,
+          height: 800
         };
           
-          Plotly.newPlot(div_id, data, layout);
+          Plotly.newPlot(div_id, data, layout, {displayModeBar: false});
     }
     
 
-function createTable(data, fields, spec, id, initialSort, height = 500, haveFilter = true) {
+function createTable(data, fields, spec, id, initialSort, height = 500, haveFilter = true, cWidth) {
     temp = []
     let color_store = null;
     for (const dt in fields) {
@@ -427,8 +428,10 @@ function createTable(data, fields, spec, id, initialSort, height = 500, haveFilt
             temp.push({
                 title: fields[dt].Field,
                 field: fields[dt].Field,
+                frozen:true,
                 width: 150,
-                sorter: 'number'
+                sorter: 'number',
+                
             })
         }
         else {
@@ -450,6 +453,10 @@ function createTable(data, fields, spec, id, initialSort, height = 500, haveFilt
     
 
     let table = new Tabulator("#" + id, {
+        columnDefaults:{
+            maxWidth: cWidth, 
+            minWidth:cWidth,
+        },
         height: height, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
         data: data, //assign data to table
         columns: temp,
@@ -464,6 +471,8 @@ function createTable(data, fields, spec, id, initialSort, height = 500, haveFilt
             }
         },
         initialSort: initialSort,
+        resizableRows:false,
+        resizableColumns:false,
     });
 
 
@@ -509,6 +518,40 @@ function createTable(data, fields, spec, id, initialSort, height = 500, haveFilt
 
         table.clearFilter();
     });
+
+}
+
+function createBetterLineGraph(data, param1, div_id, param2){
+   var matches = [];
+   var param = [];
+
+    for(let i = 0; i < data.length; i++){
+        matches.push(data[i]["MatchNumber"]);
+        param.push(data[i][param1]);
+    }
+
+    var trace = {
+        x: matches,
+        y: param,
+        type: 'scatter'
+    }
+
+    var data = [trace];
+
+    var layout = {
+        title: param2,
+        xaxis: {
+          title: 'Matches',
+          fixedrange: true
+        },
+        yaxis: {
+          title: param2,
+          fixedrange: true
+        },
+        dragmode: false
+    }
+
+    Plotly.newPlot(div_id, data, layout, {staticPlot: true});
 
 }
 
@@ -726,6 +769,42 @@ function createBarChart(data, x_axis, y_axis, div_id, w = 690, h = 600) {
 
 }
 
+function createBetterScatterPlot(datas, x, y, div_id){
+    var xAx = [];
+   var yAx = [];
+   var names = [];
+
+    for(let i = 0; i < datas.length; i++){
+        xAx.push(datas[i][x]);
+        yAx.push(datas[i][y]);
+        names.push(datas[i]["TeamName"]);
+    }
+
+    var trace1 = {
+        x: xAx,
+        y: yAx,
+        mode: 'markers+text',
+        type: 'scatter',
+        text: names,
+        textposition: 'top center',
+        textfont: {
+          family:  'Raleway, sans-serif'
+        },
+        marker: { size: 12 }
+      };
+
+      var layout = {
+        width: 800,
+        height: 800,
+        xaxis: {fixedrange: true, title: x},
+        yaxis: {fixedrange: true, title: y},
+        dragmode: false
+      };
+
+      var data = [trace1];
+      
+      Plotly.newPlot(div_id, data, layout, {displayModeBar: false} );
+}
 
 function createScatterplot(data, x_axis, y_axis, label, div_id, w = 690, h = 600) {
     console.log(data)
@@ -770,8 +849,18 @@ function createScatterplot(data, x_axis, y_axis, label, div_id, w = 690, h = 600
         .attr("width", width)
         .attr("height", height)
         .attr("x", 0)
-        .attr("y", 0);
+        .attr("y", 0)
+        // .append("text")
+        //     .text((data) => {
+        //         console.log(data[label])
+        //         data[label]
+        //     });
+        .html(data[label])
+        .style("opacity", 0.6)
 
+
+        .style("left", (mouseX + 30) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+        .style("top", (mouseY + 10) + "px")
 
 
 
@@ -871,6 +960,7 @@ function createScatterplot(data, x_axis, y_axis, label, div_id, w = 690, h = 600
             .style("opacity", 0.5)
             .on("mouseover", mouseover)
             .on("mouseleave", mouseleave)
+            
 
 
 
