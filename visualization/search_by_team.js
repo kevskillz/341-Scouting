@@ -182,6 +182,8 @@ function process_num(num) {
                      * REVERSE ORDER OF DIV INIT
                      */
 
+                    document.getElementById('spider').innerHTML = '';
+
                     document.getElementById('noteTitle').innerHTML = name + ' Notes';
                     document.getElementById('cone_piece_graph').innerHTML = '';
                     document.getElementById('cube_piece_graph').innerHTML = '';
@@ -189,7 +191,6 @@ function process_num(num) {
                     document.getElementById('game_piece_graph').innerHTML = '';
                     document.getElementById('auto_graph').innerHTML = '';                   
                     document.getElementById('point_graph').innerHTML = '';
-                    document.getElementById('spider').innerHTML = '';
                     document.getElementById('heatMap').innerHTML = '';
                     document.getElementById('test').innerHTML = '';
 
@@ -197,6 +198,8 @@ function process_num(num) {
 
                 
                     console.log(response[0]["TELE_CHARGING_STATION_POINTS"]);
+                    createSpider([last], ['TELE CHARGING STATION PPG', 'AUTO PPG', 'GAME PIECE PPG'], 'spider');
+
                     // createLineGraph(response, 'MatchNumber', 'CONE_PIECE_POINTS', 'cone_piece_graph');
                     createBetterLineGraph(response, "CONE_PIECE_POINTS", 'cone_piece_graph', 'Cone Points');
                     // createLineGraph(response, 'MatchNumber', 'CUBE_PIECE_POINTS', 'cube_piece_graph');
@@ -210,7 +213,6 @@ function process_num(num) {
                     // createLineGraph(response, 'MatchNumber', 'TOTAL_POINTS', 'point_graph');
                     createBetterLineGraph(response, 'TOTAL_POINTS', 'point_graph', 'Total Points');
 
-                    createSpider([last], ['TELE CHARGING STATION PPG', 'AUTO PPG', 'GAME PIECE PPG'], 'spider');
 
                     createHeatMap(heatMap, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23, s24, s25, s26, s27);
 
@@ -344,6 +346,10 @@ function process_num(num) {
                         newPit[0]['SideConePortal'] = '✔️'
                     else
                         newPit[0]['SideConePortal'] = '❌'
+
+                    if(response[0]['TeleConeScoreLevel'] == 'Mid,High,Low'){
+                        newPit[0]['TeleConeScoreLevel'] = 'High,Mid,Low'
+                    }
                     newPit[0]['AutoPiecesScored'] = 'Can score ' + response[0]['AutoPiecesScored'];
                     newPit[0]['RobotWidth'] = response[0]['RobotWidth'] + ' inches';
                     newPit[0]['RobotLength'] = response[0]['RobotLength'] + ' inches';

@@ -19,7 +19,7 @@ $.ajax({
                 }
                 
                 createTable(response, fields, spec, "table", [{ column: "TeamColor", dir: "desc" },{ column: "MatchNumber", dir: "asc" }], //sort by this first
-                null)
+                null, true, 100)
         
             },
             error: function (xhr, status, err) {
