@@ -37,7 +37,16 @@ body {
 #box4 {
     flex-grow: 100;
 }
-
+#left {
+    flex-grow: 100;
+    width: 100%;
+    text-align: left;
+}
+#right {
+    flex-grow: 100;
+    width: 100%;
+    text-align: right;
+}
 .middle-column {
     display: flex;
     flex-direction: column;

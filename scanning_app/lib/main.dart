@@ -21,10 +21,10 @@ final String compName = "Hatboro";
 
 void main() {
   String? mtch = _localStorage["MatchData"];
-  String? pit = _localStorage["PitData"];
+  // String? pit = _localStorage["PitData"];
 
   String? mtchCnt = _localStorage["MatchCounter"];
-  String? pitCnt = _localStorage["PitCounter"];
+  // String? pitCnt = _localStorage["PitCounter"];
 
   if (mtch != null) {
     List<String> matches = mtch.split("Ω");
@@ -35,12 +35,12 @@ void main() {
   if (mtchCnt != null) {
     stored = int.parse(mtchCnt);
   }
-  if (pitCnt != null) {
-    pitCounter = int.parse(pitCnt);
-  }
-  if (pit != null) {
-    pits = pit.split("Ω");
-  }
+  // if (pitCnt != null) {
+  //   pitCounter = int.parse(pitCnt);
+  // }
+  // if (pit != null) {
+  //   pits = pit.split("Ω");
+  // }
   runApp(MyApp());
 }
 
@@ -257,7 +257,7 @@ class _MyHomePageState extends State<MyHomePage> {
       pits.add(code);
       if (code != null) {
         pitCounter++;
-        _localStorage["PitCounter"] = pitCounter.toString();
+        // _localStorage["PitCounter"] = pitCounter.toString();
       }
       String pitInfo = "";
         pitInfo += compName + SEP;
@@ -266,7 +266,7 @@ class _MyHomePageState extends State<MyHomePage> {
         pitInfo += pits[l];
         if (l != pits.length - 1) pitInfo += "Ω";
       }
-      _localStorage["PitData"] = pitInfo;
+      // _localStorage["PitData"] = pitInfo;
     } else {
       arr[num] = code;
     }
@@ -345,7 +345,7 @@ class _MyHomePageState extends State<MyHomePage> {
     pushMatch(_localStorage["MatchData"].toString());
     pits = [];
     pitCounter = 0;
-    _localStorage["PitCounter"] = pitCounter.toString();
+    // _localStorage["PitCounter"] = pitCounter.toString();
   }
 
   void clear(int num) {

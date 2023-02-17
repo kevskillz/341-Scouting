@@ -110,23 +110,27 @@ $.ajax({
 
                 let scouts = {};
 
-
+                console.log(matchesAccounted)
                 for (let i = 0; i < ScoutName.length; i++) {
 
-                 
+                  console.log((ScoutName[i]));
+                  if (!matchesAccounted.hasOwnProperty(ScoutName[i])) {
+                    matchesAccounted[ScoutName[i]] = [];
+                  }
+
                   let scoutmodel = new Scout(ScoutName[i], BET_COLOR[i], WinnerColor[i], BET_AMOUNT[i], ScoutScore[i], OVER_UNDER[i], MATCH_OUTCOME);
                   if (matchesAccounted[ScoutName[i]].includes(`${MatchNumber[i]}`)) {
                     scouts[scoutmodel.ScoutName] = scoutmodel.ScoutScore
                     continue;
                   }
-                  else { matchesAccounted[ScoutName[i]].push( `${MatchNumber[i]}`) }
+                  else { matchesAccounted[ScoutName[i]].push(`${MatchNumber[i]}`) }
                   if (scouts.hasOwnProperty(scoutmodel.ScoutName)) {
                     scouts[scoutmodel.ScoutName] += scoutmodel.ScoutScore;
                   }
                   else scouts[scoutmodel.ScoutName] = scoutmodel.ScoutScore
                 }
 
-                for (const [key, value] of Object.entries(scouts)) {
+                for (const [key, value] of Object.entries(users)) {
                   leaderboard.push({ "ScoutName": key, "ScoutScore": value });
                 }
 
@@ -146,7 +150,9 @@ $.ajax({
                 }
                 fin = fin.slice(0, fin.length - 1);
                 console.log(fin)
-                createTable(leaderboard, [{ "Field": "ScoutName" }, { "Field": "ScoutScore" }], spec, "leaderboard", null, null, false)
+                console.log(leaderboard)
+                console.log(users)
+                createTable(leaderboard, [{ "Field": "ScoutName" }, { "Field": "ScoutScore" }], spec, "leaderboard", null, null, false, 200)
 
                 $.ajax({
                   type: 'GET',
@@ -154,7 +160,7 @@ $.ajax({
 
 
                   success: function (dt) {
-                    
+
                   }
 
 

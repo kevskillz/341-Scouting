@@ -1,10 +1,15 @@
 var arr = [null, null, null, null, null, null]
 function search(e) {
     if (e===undefined||e.code == 'Enter') {
+    let ppgS = {}
         for (let i = 1; i <= 6; i++) {
             let num = parseInt(document.getElementById(`${i}`).value)
             if (isNaN(num)) arr[i - 1] = null;
-            else arr[i - 1] = num
+            else  {
+                arr[i - 1] = num
+                // ppgS[i] = teamData[i]["TOTAL PPG"]
+
+            }
         }
 
         console.log(arr)
@@ -78,13 +83,12 @@ function search(e) {
                 let blueCube = 0
                 let redTeleCharge = 0
                 let blueTeleCharge = 0
-let ppgS = []
 
 
-
+                let temp = {}
                 
-                for(let i = 0; i < teamData.length; i++){
-                    for(let j = 0; j < teamData.length; j++){
+                for(let j = 0; j < teamData.length; j++){
+                    // for(let j = 0; j < teamData.length; j++){
                     // if(teamData[i]["TeamColor"] == 'B'){
                         // blueAuto += teamData[i]["AUTO PPG"]
                         // blueCone += teamData[i]["CONE PPG"]
@@ -101,24 +105,27 @@ let ppgS = []
                         // console.log(teamData[i]["TEAM"])
                         // console.log(teamData)
                         // console.log(arr)
-                        if(teamData[j]["TEAM"] == arr[i]){
+                        // if(teamData[j]["TEAM"] == arr[i]){
                         console.log(teamData[j]["TEAM"] + " in loop")
-                        console.log(arr[i])
-                        console.log(i)
+                        // console.log(arr[i])
+                        // console.log(i)
                         console.log(j)
-
-                            ppgS[j] = teamData[j]["TOTAL PPG"]
-                        }
+                        temp[teamData[j]["TEAM"]] = teamData[j]["TOTAL PPG"];
+                        // }
 
                     // }
-                    }
+                    
+                }
+
+                for (let i = 0; i < arr.length; i++) {
+                    ppgS[i] = temp[arr[i]];
                 }
 
 
                
                 console.log(teamData)
-                let bstr = ppgS[0] + "<br>" + ppgS[1] + "<br>" + ppgS[2] + "<br>" //"Auto Points: " + blueAuto + "<br>Cube Points: " + blueCube + "<br>Cone Points: " + blueCone + "<br>Tele Charge Points: " + blueTeleCharge;
-                let rstr = ppgS[3] + "<br>" + ppgS[4] + "<br>" + ppgS[5] //"Auto Points: " + redAuto + "<br>Cube Points: " + redCube + "<br>Cone Points: " + redCone + "<br>Tele Charge Points: " + redTeleCharge;
+                let bstr = "<br>" + ppgS[0] + "<br><br>" + ppgS[1] + "<br><br>" + ppgS[2] //"Auto Points: " + blueAuto + "<br>Cube Points: " + blueCube + "<br>Cone Points: " + blueCone + "<br>Tele Charge Points: " + blueTeleCharge;
+                let rstr = "<br>" + ppgS[3] + "<br><br>" + ppgS[4] + "<br><br>" + ppgS[5] //"Auto Points: " + redAuto + "<br>Cube Points: " + redCube + "<br>Cone Points: " + redCone + "<br>Tele Charge Points: " + redTeleCharge;
                 document.getElementById('bStats').innerHTML = bstr;
                 document.getElementById('RStats').innerHTML = rstr;
 

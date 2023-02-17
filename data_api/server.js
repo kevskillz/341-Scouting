@@ -99,13 +99,13 @@ function per_team_helper(data, fields, just_last = false) {
             entry = data[entry]
             // console.log(entry)
             // console.log(data.length)
-            if (val.includes('ConesIntaked')) {
+            if (val.includes('AutoConesIntaked') || val.includes('TeleConesIntaked')) {
                 entry['CONES_INTAKED'] += entry[val]
-                coneintaked++
+                coneintaked += entry[val]
             }
-            if (val.includes('CubesIntaked')) {
+            if (val.includes('AutoCubesIntaked') || val.includes('TeleCubesIntaked')) {
                 entry['CUBES_INTAKED'] += entry[val]
-                cubeintaked++
+                cubeintaked += entry[val]
             }
             if (val.includes('Mobility')) {
                 mobility += POINTS.MOBILITY
@@ -309,7 +309,8 @@ function per_team_helper(data, fields, just_last = false) {
     // }
     // console.log(Math.max(1, data.length - 1))
     pts = auto + tele
-    // console.log(mobility)
+    // // console.log(mobility)
+    // console.log((coneintaked + " divided by " + Math.max(1, data.length - 1)))
     data[data.length - 1]["CHARGING STATION PPG"] = parseFloat((charge / Math.max(1, data.length - 1)).toFixed(2));
     data[data.length - 1]["MOBILITY PPG"] = parseFloat((mobility / Math.max(1, data.length - 1)).toFixed(2));
     data[data.length - 1]["TELE CHARGING STATION PPG"] = parseFloat((telecharge / Math.max(1, data.length - 1)).toFixed(2));
@@ -329,7 +330,10 @@ function per_team_helper(data, fields, just_last = false) {
     pts /= Math.max(1, data.length - 1)
     auto /= Math.max(1, data.length - 1)
     data[data.length - 1]["GAME PIECE PPG"] = parseFloat((pts - data[data.length - 1]["CHARGING STATION PPG"] - data[data.length - 1]["MOBILITY PPG"]).toFixed(2));
-    data[data.length - 1]["AUTO PPG"] = parseFloat(auto.toFixed(2));
+   if(data[data.length - 1]["GAME PIECE PPG"] < 0){
+    data[data.length - 1]["GAME PIECE PPG"] = 0
+   }
+     data[data.length - 1]["AUTO PPG"] = parseFloat(auto.toFixed(2));
     data[data.length - 1]["TELE PPG"] = parseFloat(tele.toFixed(2));
     data[data.length - 1]["TOTAL PPG"] = parseFloat(pts.toFixed(2));
 
