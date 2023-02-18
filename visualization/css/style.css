@@ -531,7 +531,7 @@ a:hover, a:focus {
   background: -webkit-gradient(left top, right top, color-stop(0%, #ddf0f3), color-stop(100%, #5068a9));
   background: -webkit-gradient(linear, left top, right top, from(#ddf0f3), to(#5068a9));
   background: linear-gradient(to right, #ddf0f3 0%, #5068a9 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$firstcolor, endColorstr=$secondcolor, GradientType=1 );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=firstcolor, endColorstr=secondcolor, GradientType=1 );
 }
 
 .probootstrap-section.probootstrap-section-colored .section-heading h2, .probootstrap-section.probootstrap-section-dark .section-heading h2 {
