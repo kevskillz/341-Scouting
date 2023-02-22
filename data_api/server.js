@@ -351,7 +351,7 @@ app.get('/all', function (req, res) {
     lib.query().then((conn) => {
 
         conn.query(`SELECT * FROM MATCH_DATA`, function (err, result, fields) {
-            if (err) { console.log(err); return; }
+            if (err) { console.log(err); throw err;return; }
             res.send(result)
         });
     }).catch((msg) => {
@@ -367,7 +367,7 @@ app.get('/from_comp/:comp/team/:team', function (req, res) {
     lib.query().then((conn) => {
 
         conn.query(`SELECT * FROM MATCH_DATA WHERE CompName='${req.params.comp}' AND TeamName=${req.params.team}`, function (err, result, fields) {
-            if (err) { console.log(err); return; }
+            if (err) { console.log(err); throw err;return; }
             res.send(per_team_helper(result, fields))
         });
     }).catch((msg) => {
@@ -384,7 +384,7 @@ app.get('/from_comp/:comp/team/:team', function (req, res) {
     lib.query().then((conn) => {
 
         conn.query(`SELECT * FROM MATCH_DATA WHERE CompName='${req.params.comp}' AND TeamName=${req.params.team}`, function (err, result, fields) {
-            if (err) { console.log(err); return; }
+            if (err) { console.log(err); throw err;return; }
             res.send(per_team_helper(result, fields))
         });
     }).catch((msg) => {
@@ -399,7 +399,7 @@ app.get('/from_comp/:comp/all_teams', function (req, res) {
     lib.query().then((conn) => {
 
         conn.query(`SELECT * FROM MATCH_DATA WHERE CompName='${req.params.comp}'`, function (err, result, fields) {
-            if (err) { console.log(err); return; }
+            if (err) { console.log(err); throw err;return; }
             const teams = [...new Set(result.map(item => item.TeamName))];
             const resp = {}
             for (let team of teams) {
@@ -420,7 +420,7 @@ app.get('/from_comp/:comp/pit/:team', function (req, res) {
     lib.query().then((conn) => {
 
         conn.query(`SELECT * FROM PIT_DATA WHERE CompName='${req.params.comp}' AND TeamName=${req.params.team}`, function (err, result, fields) {
-            if (err) { console.log(err); return; }
+            if (err) { console.log(err); throw err; return; }
             res.send(result)
         });
     }).catch((msg) => {
@@ -433,9 +433,8 @@ app.get('/from_comp/:comp/pit/:team', function (req, res) {
 app.get('/from_comp/:comp/all_teams_arr', function (req, res) {
 
     lib.query().then((conn) => {
-
         conn.query(`SELECT * FROM MATCH_DATA WHERE CompName='${req.params.comp}'`, function (err, result, fields) {
-            if (err) { console.log(err); return; }
+            if (err) { console.log(err); throw err;return; }
             const teams = [...new Set(result.map(item => item.TeamName))];
             const resp = []
             for (let team of teams) {
@@ -458,7 +457,7 @@ app.get('/casino_data', function (req, res) {
     lib.query().then((conn) => {
 
         conn.query(`SELECT * FROM Casino_Data`, function (err, result, fields) {
-            if (err) { console.log(err); return; }
+            if (err) { console.log(err); throw err;return; }
             
             res.send(result)
         });
@@ -497,7 +496,7 @@ app.get('/team_fields', function (req, res) {
 app.get('/from_comp/:comp/match_predict/:match', function (req, res) {
     lib.query().then((conn) => {
         conn.query(`SELECT * FROM MATCH_DATA WHERE CompName='${req.params.comp}'`, function (err, result, fields) {
-            if (err) { console.log(err); return; }
+            if (err) { console.log(err); throw err;return; }
             let vis = {}
             const match = req.params.match
             const team_filt = result.filter(el => el.MATCH_NUMBER == match); // keep double equals, not triple!
@@ -545,7 +544,7 @@ app.get('/from_comp/:comp/match_predict/:match', function (req, res) {
 app.get('/from_comp/:comp/match_predict_custom/:teams', function (req, res) {
     lib.query().then((conn) => {
         conn.query(`SELECT * FROM MATCH_DATA WHERE CompName='${req.params.comp}'`, function (err, result, fields) {
-            if (err) { console.log(err); return; }
+            if (err) { console.log(err); throw err;return; }
             let vis = {}
             const types = req.params.teams.split('|')
             const team_filt = []
@@ -597,7 +596,7 @@ app.get('/from_comp/:comp/match_predict_custom/:teams', function (req, res) {
 app.get('/from_comp/:comp', function (req, res) {
     lib.query().then((conn) => {
         conn.query(`SELECT * FROM MATCH_DATA WHERE CompName='${req.params.comp}'`, function (err, result, fields) {
-            if (err) { console.log(err); return; }
+            if (err) { console.log(err); throw err;return; }
             res.send(result)
         });
     }).catch((msg) => {
@@ -611,7 +610,7 @@ app.get('/from_comp/:comp', function (req, res) {
 app.get('/match_fields', function (req, res) {
     lib.query().then((conn) => {
         conn.query(`DESCRIBE MATCH_DATA`, function (err, result, fields) {
-            if (err) { console.log(err); return; }
+            if (err) { console.log(err); throw err;return; }
             res.send(result)
         });
     }).catch((msg) => {
@@ -624,7 +623,7 @@ app.get('/pit_fields', function (req, res) {
     lib.query().then((conn) => {
         conn.query(`DESCRIBE PIT_DATA`, function (err, result, fields) {
             // console.log(fields);
-            if (err) { console.log(err); return; }
+            if (err) { console.log(err); throw err;return; }
             res.send(result)
         });
     }).catch((msg) => {
@@ -657,11 +656,11 @@ function processData(sepBig, sepSmall, fieldsArr, data) {
 app.get('/add_pit/:sepBig/:sepSmall/:data', function (req, res) {
     lib.query().then((conn) => {
         conn.query(`DESCRIBE PIT_DATA`, function (err, result, _) {
-            if (err) { console.log(err); return; }
+            if (err) { console.log(err); throw err;return; }
 
 
             conn.query(`INSERT IGNORE INTO PIT_DATA VALUES ${processData(req.params.sepBig, req.params.sepSmall, result, req.params.data)}`, function (err, result, fields) {
-                if (err) { console.log(err); return; }
+                if (err) { console.log(err); throw err;return; }
                 res.send(result)
             });
         });
@@ -695,10 +694,10 @@ function getProcessedData(sepBig, sepSmall, fieldsArr, data) {
 app.get('/add_match/:sepBig/:sepSmall/:data', function (req, res) {
     lib.query().then((conn) => {
         conn.query(`DESCRIBE MATCH_DATA`, function (err, result, fields) {
-            if (err) { console.log(err); return; }
+            if (err) { console.log(err); throw err;return; }
             // console.log(processData(req.params.sepBig, req.params.sepSmall, result, req.params.data))
             conn.query(`INSERT IGNORE INTO MATCH_DATA VALUES ${processData(req.params.sepBig, req.params.sepSmall, result, req.params.data)}`, function (err, result, fields) {
-                if (err) { console.log(err); return; }
+                if (err) { console.log(err); throw err;return; }
                 res.send(result)
             });
         });
@@ -723,7 +722,7 @@ function getCasinoData(sepBig, sepSmall, data) {
 app.get('/add_casino/:sepBig/:sepSmall/:data', function (req, res) {
     lib.query().then((conn) => {
             conn.query(`REPLACE INTO Casino_Data VALUES ${getCasinoData(req.params.sepBig, req.params.sepSmall, req.params.data)}`, function (err, result, fields) {
-                if (err) { console.log(err); return; }
+                if (err) { console.log(err); throw err;return; }
                 res.send(result)
             });
 
