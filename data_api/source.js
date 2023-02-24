@@ -17,7 +17,7 @@ const tunnelConfig = {
   password: process.env.tunnelPASS
 }
 const forwardConfig = {
-  srcHost: 'scouting.team341.com',
+  srcHost: '127.0.0.1',
   srcPort: 3306,
   dstHost: dbServer.host,
   dstPort: dbServer.port

@@ -6,7 +6,7 @@ $(document).mousemove(function (e) {
 
 
 const defaultComp = 'Hatboro'
-const ROOT_URL = 'http://scouting.team341.com/'
+const ROOT_URL = 'http://scouting.team341.com:3030/'
 const COMP_ID = 'nytr'
 
 const TableSpec = {

@@ -142,7 +142,7 @@ class _PitPageState extends State<PitPage> {
                     value: "Neither",
                   )
                 ]),
-                CheckboxObj("Can you achieve moibility (driving out of community) during auto?", "AutoMobility"),
+                CheckboxObj("Can you achieve mobility (driving out of community) during auto?", "AutoMobility"),
                 RadioGroupObj("Can you drive onto the charging station during auto?", "AutoStationDrive", const [
                   FormBuilderChipOption(
                     value: "Yes, can dock and engage",

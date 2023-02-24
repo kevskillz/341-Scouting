@@ -74,7 +74,7 @@ $.ajax({
           url: `${ROOT_URL}casino_data`,
           success: function (result) {
             $.ajax({
-              url: `https://www.thebluealliance.com/api/v3/event/2017${COMP_ID}/matches`,
+              url: `https://www.thebluealliance.com/api/v3/event/2023${COMP_ID}/matches`,
               headers: {
                 'X-TBA-Auth-Key': 'c94TkHlN655vkfGJK6xThPLQZC9KUhBk0dJKx32vtlGQzRApVwc1IGtEOuoqozvP'
               },

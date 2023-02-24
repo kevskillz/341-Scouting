@@ -255,13 +255,13 @@ final Map<String, FieldInfo> PIT_FIELDS = {
       formatter: FilteringTextInputFormatter.deny(''),
       inputType: TextInputType.text),
   'RobotWidth': FieldInfo(
-      formatter: FilteringTextInputFormatter.digitsOnly,
+    formatter: FilteringTextInputFormatter.allow(RegExp(r'(^\-?\d*\.?\d*)')),
       inputType: const TextInputType.numberWithOptions(decimal: true)),
   'RobotLength': FieldInfo(
-      formatter: FilteringTextInputFormatter.digitsOnly,
+      formatter: FilteringTextInputFormatter.allow(RegExp(r'(^\-?\d*\.?\d*)')),
       inputType: const TextInputType.numberWithOptions(decimal: true)),
   'StationRobotWidth': FieldInfo(
-      formatter: FilteringTextInputFormatter.digitsOnly,
+      formatter: FilteringTextInputFormatter.allow(RegExp(r'(^\-?\d*\.?\d*)')),
       inputType: const TextInputType.numberWithOptions(decimal: true)),
   'RobotVision': FieldInfo(
       formatter: FilteringTextInputFormatter.deny(''),
