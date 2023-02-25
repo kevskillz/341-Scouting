@@ -164,12 +164,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void pushPit(String data) async {
-    // print('http://127.0.0.1:3030/add_pit/' +
-    //     "Ω" +
-    //     "/" +
-    //     SEP +
-    //     "/" +
-    //     data);
     var url = Uri.parse('http://127.0.0.1:3030/add_pit/' +
         "Ω" +
         "/" +
