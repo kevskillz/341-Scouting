@@ -21,6 +21,9 @@ const POINTS = {
 }
 
 
+setInterval(function () {
+    process.exit(0);
+ }, 1 * 60 * 60 * 1000 * 2); // 2 hours 
 
 function per_team_helper(data, fields, just_last = false) {
     for (let entry of data) {
