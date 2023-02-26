@@ -430,6 +430,10 @@ app.get('/from_comp/:comp/pit/:team', function (req, res) {
     })
 })
 
+app.get('/health', function (req, res) {
+        res.status(200).send('ok')    
+})
+
 app.get('/from_comp/:comp/all_teams_arr', function (req, res) {
 
     lib.query().then((conn) => {

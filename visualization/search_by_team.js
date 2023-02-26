@@ -192,7 +192,7 @@ function process_num(num) {
                     document.getElementById('auto_graph').innerHTML = '';                   
                     document.getElementById('point_graph').innerHTML = '';
                     document.getElementById('heatMap').innerHTML = '';
-                    document.getElementById('test').innerHTML = '';
+                    document.getElementById('notes').innerHTML = '';
 
 
 
@@ -241,7 +241,7 @@ function process_num(num) {
                     }
 
                     let spec = new Array(fields.length).fill(TableSpec.NORMAL)
-                    spec[0] = TableSpec.EXCLUDE;
+                   
                     for (row of rows) {
                         row = row.c;
                         if (row[teamIndex].v == num) {
@@ -253,11 +253,13 @@ function process_num(num) {
                                 let _name = person.Name
                                 val[_name] = row[person.Index] == null ? '' : row[person.Index].v;
                             }
-                            // 
-                            createTable([val], fields, [], "test", null, null, false, 300)
+                            console.log(val)
+                            let notes = "<strong>Pre-Scouting:</strong> " + val["Pre-Scouting"] + "<br><strong>Ryan:</strong> " + val["Ryan"] + "<br><strong>Kade:</strong> " + val["Kade"] + "<br><strong>Eugene:</strong> " + val["Eugene"];
+                            document.getElementById('notes').innerHTML = notes;
                             break;
                         }
                     }
+                   
 
                     // document.getElementById('noteTitle').innerHTML = name + ' Notes';
 
@@ -355,9 +357,9 @@ function process_num(num) {
                     newPit[0]['RobotLength'] = response[0]['RobotLength'] + ' inches';
                     newPit[0]['StationRobotWidth'] = response[0]['StationRobotWidth'] + ' inches';
 
-                    let pitDatas = "<span style=\"margin-left:10em\">Scout Name: " + newPit[0]["ScoutName"]
-                    +"<br><span style=\"margin-left:10em\">Drivebase: " + newPit[0]["Drivetrain"] + "<br><span style=\"margin-left:10em\">Robot Vision: " + newPit[0]["RobotVision"] + "<br><span style=\"margin-left:10em\">Length: " + newPit[0]["RobotLength"] + "<br><span style=\"margin-left:10em\">Width: " + newPit[0]["RobotWidth"] + "<br><span style=\"margin-left:10em\">Station Width: " + newPit[0]["StationRobotWidth"] 
-                    + "<br><span style=\"margin-left:10em\">Mobility Points: " + newPit[0]["AutoMobility"] + "<br><span style=\"margin-left:10em\">Auto Piece Potential: " + newPit[0]["AutoPiecesScored"] + "<br><span style=\"margin-left:10em\">Auto Charging Station: " + newPit[0]["AutoStationDrive"];
+                    let pitDatas = "<span style=\"margin-left:10em\"><strong>Scout Name:</strong> " + newPit[0]["ScoutName"]
+                    +"<br><span style=\"margin-left:10em\"><strong>Drivebase:</strong> " + newPit[0]["Drivetrain"] + "<br><span style=\"margin-left:10em\"><strong>Robot Vision:</strong> " + newPit[0]["RobotVision"] + "<br><span style=\"margin-left:10em\"><strong>Length:</strong> " + newPit[0]["RobotLength"] + "<br><span style=\"margin-left:10em\"><strong>Width:</strong> " + newPit[0]["RobotWidth"] + "<br><span style=\"margin-left:10em\"><strong>Station Width:</strong> " + newPit[0]["StationRobotWidth"] 
+                    + "<br><span style=\"margin-left:10em\"><strong>Mobility Points:</strong> " + newPit[0]["AutoMobility"] + "<br><span style=\"margin-left:10em\"><strong>Auto Piece Potential:</strong> " + newPit[0]["AutoPiecesScored"] + "<br><span style=\"margin-left:10em\"><strong>Auto Charging Station:</strong> " + newPit[0]["AutoStationDrive"];
                     
                     // let pitDatas = "Scout Name: " + newPit[0]["ScoutName"]
                     // + "<span style=\"margin-left:30em\">Drivebase: " + newPit[0]["Drivetrain"] + "<br>Robot Vision: " + newPit[0]["RobotVision"] + "<span style=\"margin-left:30em\">Length: " + newPit[0]["RobotLength"] + "<br>Width: " + newPit[0]["RobotWidth"] + "<span style=\"margin-left:30em\">Station Width: " + newPit[0]["StationRobotWidth"] 
@@ -366,9 +368,9 @@ function process_num(num) {
                     // + "<br>Cubes From:<br>Ground: " + newPit[0]["CubeGround"] + " Portal: " + newPit[0]["CubePortal"] + " Shelf: " + newPit[0]["CubeShelf"]
                     // + "<br>Cone Possibilities: " + newPit[0]["TeleConeScoreLevel"]+ "<br>Cube Possibilities: " + newPit[0]["TeleCubeScoreLevel"] + "<br>Endgame Charge: " + newPit[0]["EndStationDrive"] + "<br>Notable Feats: " + newPit[0]["NotableFeat"];
                     // // createTable(newPit, fields, spec, "pit_table", null, null, false)
-                    let pitDatas2 = "<br><span style=\"margin-left:10em\">Cones From:<br><span style=\"margin-left:10em\">Ground: " + newPit[0]["ConeGround"] + " Portal: " + newPit[0]["ConePortal"] + " Shelf: " + newPit[0]["ConeShelf"] + " Side Ground: " + newPit[0]["SideConeGround"] + " Side Portal: " + newPit[0]["SideConePortal"] + " Side Shelf: " + newPit[0]["SideConeShelf"]
-                    + "<br><span style=\"margin-left:10em\">Cubes From:<br><span style=\"margin-left:10em\">Ground: " + newPit[0]["CubeGround"] + " Portal: " + newPit[0]["CubePortal"] + " Shelf: " + newPit[0]["CubeShelf"]
-                    + "<br><span style=\"margin-left:10em\">Cone Possibilities: " + newPit[0]["TeleConeScoreLevel"]+ "<br><span style=\"margin-left:10em\">Cube Possibilities: " + newPit[0]["TeleCubeScoreLevel"] + "<br><span style=\"margin-left:10em\">Endgame Charge: " + newPit[0]["EndStationDrive"] + "<br><span style=\"margin-left:10em\">Notable Feats: " + newPit[0]["NotableFeat"];
+                    let pitDatas2 = "<br><span style=\"margin-left:10em\"><strong>Cones From:</strong><br><span style=\"margin-left:10em\">Ground: " + newPit[0]["ConeGround"] + " Portal: " + newPit[0]["ConePortal"] + " Shelf: " + newPit[0]["ConeShelf"] + " Side Ground: " + newPit[0]["SideConeGround"] + " Side Portal: " + newPit[0]["SideConePortal"] + " Side Shelf: " + newPit[0]["SideConeShelf"]
+                    + "<br><span style=\"margin-left:10em\"><strong>Cubes From:</strong><br><span style=\"margin-left:10em\">Ground: " + newPit[0]["CubeGround"] + " Portal: " + newPit[0]["CubePortal"] + " Shelf: " + newPit[0]["CubeShelf"]
+                    + "<br><span style=\"margin-left:10em\"><strong>Cone Possibilities:</strong> " + newPit[0]["TeleConeScoreLevel"]+ "<br><span style=\"margin-left:10em\"><strong>Cube Possibilities:</strong> " + newPit[0]["TeleCubeScoreLevel"] + "<br><span style=\"margin-left:10em\"><strong>Endgame Charge:</strong> " + newPit[0]["EndStationDrive"] + "<br><span style=\"margin-left:10em\"><strong>Notable Feats:</strong> " + newPit[0]["NotableFeat"];
                     document.getElementById("pit_table").innerHTML = pitDatas;
                     document.getElementById("pit_table1").innerHTML = pitDatas2;
 

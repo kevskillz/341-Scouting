@@ -128,7 +128,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<bool> camAvailableF = QRolo.isCameraAvailable();
 
   void updateConnectionState() async {
-    var url = Uri.parse('http://httpbin.org/ip');
+    // var url = Uri.parse('http://httpbin.org/ip');
+   var url = Uri.parse('http://scouting.team341.com:3030/match_fields');
     var response = await http.get(url).timeout(const Duration(seconds: 2),
         onTimeout: () => http.Response('Error', 408));
 
@@ -139,13 +140,13 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void pushMatch(String data) async {
-    print('http://127.0.0.1:3030/add_match/' +
+    print('http://www.scouting.team341.com:3030/add_match/' +
         "Ω" +
         "/" +
         SEP +
         "/" +
         data);
-    var url = Uri.parse('http://127.0.0.1:3030/add_match/' +
+    var url = Uri.parse('http://www.scouting.team341.com:3030/add_match/' +
         "Ω" +
         "/" +
         SEP +
@@ -164,7 +165,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void pushPit(String data) async {
-    var url = Uri.parse('http://127.0.0.1:3030/add_pit/' +
+    var url = Uri.parse('http://www.scouting.team341.com:3030/add_pit/' +
         "Ω" +
         "/" +
         SEP +
