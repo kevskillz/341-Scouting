@@ -249,18 +249,18 @@ class _MyHomePageState extends State<MyHomePage> {
       },
     );
     if (num == 8) {
-      pits.add(code);
-      if (code != null) {
+      if (code != null && code != '') {
         pitCounter++;
+        pits.add(code);
+
         // _localStorage["PitCounter"] = pitCounter.toString();
       }
-      String pitInfo = "";
-        pitInfo += compName + SEP;
+      // String pitInfo = "";
 
-      for (int l = 0; l < pits.length; l++) {
-        pitInfo += pits[l];
-        if (l != pits.length - 1) pitInfo += "Ω";
-      }
+      // for (int l = 0; l < pits.length; l++) {
+      //   pitInfo += compName + SEP + pits[l];
+      //   if (l != pits.length - 1) pitInfo += "Ω";
+      // }
       // _localStorage["PitData"] = pitInfo;
     } else {
       arr[num] = code;
@@ -336,6 +336,7 @@ class _MyHomePageState extends State<MyHomePage> {
       pitInfo += pits[l];
       if (l != pits.length - 1) pitInfo += "Ω";
     }
+    print("HEHEHEHE" + pitInfo);
     pushPit(pitInfo);
     pushMatch(_localStorage["MatchData"].toString());
     pits = [];

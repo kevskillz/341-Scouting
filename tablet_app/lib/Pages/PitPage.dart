@@ -203,7 +203,7 @@ class _PitPageState extends State<PitPage> {
                     value: "Yes, can dock but not engage",
                   ),
                   FormBuilderChipOption(
-                    value: "No, can't dock or engage",
+                    value: "No, cant dock or engage",
                   ),
                 ]),
                 TextFieldObj(
