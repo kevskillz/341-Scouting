@@ -1,8 +1,12 @@
 # 341-Scouting
 
+
+
 Check out my blog post! [https://www.kevinlobo.us/blog/posts/scouting-app](https://www.kevinlobo.us/blog/posts/scouting-app)
 
 Check out the website here: https://scouting.team341.com/
+
+![home](/images/scouting_app/web_home.png)
 
 ***Note:** the API/Database is not up yet for this year since it is modified every year to match the game, so no data will be loaded* 
 
