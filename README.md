@@ -1,12 +1,12 @@
 # 341-Scouting
 
-Check out my blog post! [https://www.kevinlobo.us/blog/posts/scouting-app](https://www.kevinlobo.us/blog/posts/scouting-app)
+Check out my blog post for more detailed info on this project! [https://www.kevinlobo.us/blog/posts/scouting-app](https://www.kevinlobo.us/blog/posts/scouting-app)
 
-Most up-to-date code on team's private repo.
+Most up-to-date code on the team's private repo.
 
 Check out the website here: https://scouting.team341.com/
 
-***Note:** the API/Database is not up yet for this year since it is modified every year to match the game, so no data will be loaded* 
+***Note:** The API/Database is not up yet for this year since it is modified every year to match the game, so no data will be loaded* 
 
 ## The Problem
 In the past, our robotics team relied on paper scouting to keep track of robot metrics for every single match. This data was then manually transferred to an Excel spreadsheet to analyze, which was very time-consuming and often inaccurate. We required one person to always miss out because they were in charge of data entry, sitting in a corner looking at pieces of paper and typing them into Excel. Also this data could only be accessed on one computer and it was not very accessible for our team to use. Ultimately, using paper scouting was not only inefficient but also prone to errors. The manual data entry process took up a significant amount of time and often led to inaccuracies that affected our match predictions and team selections. I knew that we could digitize this process, and did just that!
